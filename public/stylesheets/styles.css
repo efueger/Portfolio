@@ -7,39 +7,37 @@
 
 hr {
   border-bottom: #e6e5e5;
-  opacity: 0.3; }
+  opacity: 0.3;
+  height: 1px; }
 
 h1, h2, h3, h4, p, a, li {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 100;
-  color: #282827; }
+  font-weight: normal;
+  color: #282827;
+  line-height: 1em; }
 
 h1 {
   font-size: 6em;
   letter-spacing: -6px;
-  line-height: 0.95em;
-  margin: 10px 0;
-  color: black; }
+  margin: 10px 0; }
 
 h2 {
   font-size: 4em;
-  letter-spacing: -4px;
-  line-height: 0.85em; }
+  letter-spacing: -4px; }
 
 h3 {
   font-size: 3em;
   letter-spacing: -3px;
-  line-height: 0.85em;
   margin: 10px 0 20px 0; }
 
 h4 {
   font-size: 2em;
   letter-spacing: -0.5px;
-  line-height: 0.85em;
   margin: 10px 0 20px 0; }
 
 p, a, li {
-  font-size: 1.2em; }
+  font-size: 1.2em;
+  line-height: 1.5em; }
 
 a {
   color: #fc5401; }
@@ -96,7 +94,7 @@ li {
 
 form {
   width: 100%;
-  padding: 10px;
+  padding: 10px !important;
   background: white;
   /* for non-css3 browsers */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$white', endColorstr='$lightgrey');
@@ -105,9 +103,9 @@ form {
   /* for webkit browsers */
   background: -moz-linear-gradient(top, white, #e6e5e5);
   /* for firefox 3.6+ */
-  border: 1px solid #e6e5e5;
+  border: 1px solid #e6e5e5 !important;
   position: relative;
-  margin: 20px 0 50px 0; }
+  margin: 20px 0 50px 0 !important; }
 
 form:before, form:after {
   content: "";
@@ -182,6 +180,7 @@ label {
   width: 30%;
   margin: 10px 0 10px 150px;
   line-height: 0;
+  padding: 0 0 5px 0;
   letter-spacing: 0; }
 
 .boxui.header, .boxui.box {

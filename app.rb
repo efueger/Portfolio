@@ -31,6 +31,10 @@ class App < Sinatra::Base
   get('/grid') do 
     slim :grid
   end
+
+  get('/slider') do 
+    slim :slider
+  end
   
 
 end
