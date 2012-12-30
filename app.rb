@@ -35,6 +35,9 @@ class App < Sinatra::Base
   get('/slider') do 
     slim :slider
   end
-  
+
+  get('/buttons') do 
+    slim :buttons
+  end  
 
 end
