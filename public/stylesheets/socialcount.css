@@ -209,6 +209,29 @@
 	animation-delay: .1s;
 }
 
+.socialcount .pinterest {
+	display: none;
+}
+.socialcount.js .pinterest {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+}
+.socialcount .pinterest .button {
+	bottom: 0;
+	pointer-events: auto;
+}
+.socialcount-large .pinterest .button {
+	bottom: 10px;
+}
+.socialcount > .pinterest:hover {
+	cursor: pointer;
+}
+.socialcount-small .pinterest .count {
+	text-indent: -999px;
+}
+
+
 @-webkit-keyframes socialCountLoadingFade {
 	0% { opacity: 0; }
 	50% { opacity: 0.8; }
