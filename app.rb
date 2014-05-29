@@ -24,20 +24,8 @@ class App < Sinatra::Base
     slim :index
   end
 
-  get('/styles') do 
-    slim :styles
-  end
-  
-  get('/grid') do 
-    slim :grid
-  end
-
   get('/slider') do 
     slim :slider
   end
-
-  get('/buttons') do 
-    slim :buttons
-  end  
 
 end
