@@ -24,8 +24,8 @@ class App < Sinatra::Base
     slim :index
   end
 
-  get('/slider') do 
-    slim :slider
+  get('/projects/greenlight') do 
+    slim :"projects/greenlight"
   end
 
 end
