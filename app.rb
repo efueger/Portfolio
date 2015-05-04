@@ -25,4 +25,12 @@ class App < Sinatra::Base
     slim :"projects/greenlight"
   end
 
+  get('/projects/reputationpie') do 
+    slim :"projects/reputationpie"
+  end
+
+  get('/projects/wantartat') do 
+    slim :"projects/wantartat"
+  end
+
 end
