@@ -43,38 +43,194 @@
     p For building this customed CRM we have used Rails. This permits us write better code, faster. This app manages sensitive data for the core of Green Light business, so assuring a solid unit test suite was a must, for this we created it using RSPEC and Cucumber.
     p The development team is conformed by 3 engineers working full time.
   .clear
+  h2 CODE EXAMPLE
+  .clear
   .code
     blockquote
       pre
         code data-language="ruby"
-          | class ApiController < ApplicationController
-            def set_location
-              unless cookies[:set_location]
-                neighborhood = Neighbourhood.closest(params[:latitude].to_f,params[:longitude].to_f)
-                cookies[:neighborhood] = neighborhood.id
+          | class Supplier < ActiveRecord::Base
+              include SearchableSorting
+              include CSVImportable
+              include Suppliers::Stringify
+              include Suppliers::CSV
+              include Suppliers::Contacts
+
+              has_many :suppliers_activities_types, dependent: :destroy
+              has_many :activity_types, through: :suppliers_activities_types
+              has_many :default_services, dependent: :destroy
+              has_many :locations, as: :addressable, dependent: :destroy
+              has_many :phones, as: :phoneable, dependent: :destroy
+              has_many :destinations, through: :locations
+              has_many :supplier_activity_feeds, dependent: :destroy
+              has_many :services, dependent: :destroy
+              has_many :activities, dependent: :destroy
+
+              alias_method :activity_feeds, :supplier_activity_feeds
+
+              scope :by_proposal, -> (proposal_id) { where(destination_id: Proposal.find(proposal_id).destinations.pluck(:id)) }
+              scope :search_by_name, -> (name) { where('lower(suppliers.name) LIKE ?', "%&#35{name.downcase}%") }
+              scope :supplier_list, -> (trip_id) { Trip.find(trip_id).suppliers }
+              scope :search_supplier, -> (trip_id, name) { supplier_list(trip_id).search_by_name(name) }
+
+              validates :name, :activity_type_ids, presence: true
+ 
+              accepts_nested_attributes_for :phones, allow_destroy: true, reject_if: proc { |phone| phone[:number].nil? || phone[:number].empty? }
+              accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
+              accepts_nested_attributes_for :suppliers_activities_types, allow_destroy: true, reject_if: :all_blank
+              accepts_nested_attributes_for :activity_types, allow_destroy: true, reject_if: :all_blank
+              accepts_nested_attributes_for :default_services, allow_destroy: true, reject_if: :all_blank
+
+              mapping do
+                indexes :id, type: :integer
+                indexes :name
+                indexes :owner do
+                  indexes :name
+                end
               end
-              cookies[:set_location] = 1 
-              cookies[:lat] = params[:latitude].to_f
-              cookies[:lng] = params[:longitude].to_f
-              render :json => neighborhood
+
+              def as_indexed_json(options={})
+                self.as_json(
+                  methods: [:name_simple, :joined_activity_types_sorted,
+                   :joined_destinations_sorted,:destinations_sorted,:activity_types_sorted],
+                  include:{
+                    activity_types:{ methods: [:name]},
+                    locations: {methods: [:id, :name, :destination_name]},
+                    destinations:{methods: [:id, :name,:dma_region,:region_name]}
+                  }
+                )
+              end
+             
+              def instances_by_trip(trip)
+                proposal = trip.proposal
+                activities = proposal.activities.includes(:instances).where(supplier_id: id)
+                activities.map(&:instances).flatten
+              end
+             
+              def search_activity_feeds(search = nil)
+                search.nil? ? supplier_activity_feeds : supplier_activity_feeds.search_params(search[:name])
+              end
+             
+              def valid_destination?
+                destinations.any?
+              end
+             
             end
-          end
+
+  h2 UNIT TEST
+  .clear
   .code
     blockquote
       pre
         code data-language="ruby"
-          | class ApiController  ApplicationController
-            def set_location
-              unless cookies[:set_location]
-                neighborhood = Neighbourhood.closest(params[:latitude].to_f,params[:longitude].to_f)
-                cookies[:neighborhood] = neighborhood.id
+          | require 'rails_helper'
+            RSpec.describe CSVImportable do
+              let (:test_class) { double("TestClass") { include CSVImportable } }
+              let (:file) { File.open(Rails.root.join("spec/fixtures/csv_example.csv")) }
+              let(:hash_row){ {:id=>"1",:first_name => 'pepe',:last_name => 'trueno' } }
+ 
+              before do
+                class FakeModel
+                  include ActiveModel::Model
+                  include CSVImportable
+                  csv_allow_headers :id, :first_name, :last_name
+             
+                  csv_allow_headers :id, :first_name, :last_name
+             
+                  attr_accessor :id,:first_name,:last_name
+                  def self.create(params); end
+                  def self.find_by_id(id); end
+             
+                  def update(params); end
+                end
               end
-              cookies[:set_location] = 1 
-              cookies[:lat] = params[:latitude].to_f
-              cookies[:lng] = params[:longitude].to_f
-              render :json => neighborhood
+             
+              describe "create a new entity" do
+                before { expect(FakeModel).to receive(:create).with(hash_row) }
+                it { FakeModel.import_sync(file) }
+              end
+             
+              describe "update an entity" do
+                before do
+                  expect_any_instance_of(FakeModel).to receive(:update).with(hash_row)
+                  expect(FakeModel).to receive(:find_by_id).with("1").and_return(FakeModel.new(hash_row))
+                end
+                it { FakeModel.import_sync(file) }
+              
+              end
+             
+              describe "csv_rename_header" do
+                before do
+                  class FakeModel
+                    csv_allow_headers :id, :first_name, :other_name
+                    csv_rename_headers last_name: :other_name
+                  end
+                end
+                let(:hash_row){ {:id=>"1",:first_name => 'pepe',:other_name => 'trueno' } }
+                before { expect(FakeModel).to receive(:create).with(hash_row) }
+                it { FakeModel.import_sync(file) }
+              end
+              describe "csv_allow_headers" do
+                before do
+                  class FakeModel
+                    csv_rename_headers last_name: :other_name
+                    csv_allow_headers :id, :other_name
+                  end
+                end
+                let(:hash_row){ {:id=>"1", :other_name => 'trueno' } }
+                before { expect(FakeModel).to receive(:create).with(hash_row) }
+                it { FakeModel.import_sync(file) }
+             
+              end
             end
-          end
+  hr
+  .clear
+  br
+  h2 CODE EXAMPLE
+
+  .code
+    blockquote
+      pre
+        code data-language="ruby"
+          | class Multisearch
+              def initialize(value)
+                @value = value
+                @client = Elasticsearch::Client.new(url: ENV['BONSAI_URL'], log: true)
+              end
+             
+              def index
+                @client.search(
+                  index: indexes(Proposal, Supplier, Trip, Person),
+                  body: body)
+              end
+             
+              def tasks
+                @client.search(
+                  index: indexes(Supplier, Trip, Person),
+                  body: body)
+              end
+             
+              private
+             
+              def indexes(*models)
+                models.map(&:index_name)
+              end
+             
+              def body
+                {
+                  min_score: 0.01,
+                  query: {
+                    bool:{
+                      should:[
+                        {match_phrase_prefix:{ name: @value }}]
+                    }
+                  },
+                  sort: [{name: 'asc'}, '_score'],
+                  size: 100
+                }
+              end
+            end
+
   .clear
   .process.half.left
     p Don't take our word for it. We run Green Light through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
@@ -124,9 +280,9 @@
     p Working on Green Light custom CRM has been an awesome learning experience. This app has required that we work with top of the notch technologies such as: Elastic Search, DMA Regions and Another Technology.
   .clear
   .piece.shorter
-    <iframe width="330" height="260" src="https://www.youtube.com/embed/6hr3hBQsnvA" frameborder="0" allowfullscreen></iframe>
+    h1 style="color: red;" MISSING DEMO VIDEO
   .piece.shorter
-    <iframe width="330" height="260" src="https://www.youtube.com/embed/6hr3hBQsnvA" frameborder="0" allowfullscreen></iframe>
+    h1 style="color: red;" MISSING DEMO VIDEO
   .piece.shorter
-    <iframe width="330" height="260" src="https://www.youtube.com/embed/6hr3hBQsnvA" frameborder="0" allowfullscreen></iframe>
+    h1 style="color: red;" MISSING DEMO VIDEO
   .clear

@@ -6,6 +6,10 @@
   font-family: 'museo';
   src: url("/typography/museo300-regular-webfont.eot");
   src: url("/typography/museo300-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/typography/museo300-regular-webfont.woff") format("woff"), url("/typography/museo300-regular-webfont.ttf") format("truetype"), url("/typography/museo300-regular-webfont.svg#museo300") format("svg"); }
+* {
+  margin: 0;
+  padding: 0; }
+
 body {
   background-image: url("../images/texture2.jpg"); }
 
@@ -69,7 +73,6 @@ p {
 
 .nav {
   width: 75%;
-  margin: 10px 0 0 0;
   text-align: right;
   float: right; }
   .nav li {
@@ -144,8 +147,8 @@ p {
   background-color: #272822;
   width: 80%;
   border-radius: 3px;
-  margin: 0 0 20px 0;
-  padding: 15px 0;
+  margin: 20px 0;
+  padding: 15px;
   overflow-x: scroll; }
 
 .dev-tags {
@@ -188,7 +191,7 @@ p {
   margin: 0 60px 40px 0; }
 
 .portfolio {
-  margin: 40px 0 0 0; }
+  margin: 40px 0; }
   .portfolio .piece {
     border: 1px solid #ccc;
     background-color: white;
@@ -207,5 +210,40 @@ pre {
   margin: 0 0 0px 0; }
   .codeclimate img {
     width: 80%; }
+
+.footer {
+  width: 100%;
+  background-color: black;
+  padding: 0 0 20px 0;
+  overflow: hidden;
+  margin: 60px 0 0 0; }
+  .footer .button {
+    margin: 3% 0 0 0;
+    width: 55%; }
+    .footer .button a {
+      padding: 5% 3%; }
+  .footer .nav {
+    width: 100%;
+    text-align: right;
+    margin: 0 0 6% 0; }
+    .footer .nav a {
+      color: #e8e8e8;
+      margin: 0 5% 0 0; }
+      .footer .nav a:hover {
+        color: #eb2200; }
+
+.social {
+  width: 55% !important; }
+  .social img {
+    margin: 0 0 0 10px; }
+
+.contact {
+  width: 45%; }
+
+.right {
+  float: right; }
+
+.left {
+  float: left; }
 
 /*# sourceMappingURL=styles.css.map */

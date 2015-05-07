@@ -25,6 +25,11 @@ $textgrey: #959494;
 
 //*DEFAULT*//
 
+*{
+	margin: 0;
+	padding: 0;
+}
+
 body {
 	background-image: url('../images/texture2.jpg');
 }
@@ -121,7 +126,6 @@ p{
 
 .nav {
   width: 75%;
-  margin: 10px 0 0 0;
   text-align: right;
   float: right;
   li {
@@ -222,8 +226,8 @@ p{
 	background-color: #272822;
 	width: 80%;
 	border-radius: 3px;
-	margin: 0 0 20px 0;
-	padding: 15px 0;
+	margin: 20px 0;
+	padding: 15px;
 	overflow-x: scroll;
 }
 
@@ -282,7 +286,7 @@ p{
 }
 
 .portfolio{
-	margin: 40px 0 0 0;
+	margin: 40px 0;
 
 	.piece {
 		border: 1px solid #ccc;
@@ -308,4 +312,50 @@ pre {
 	img {
 		width: 80%;
 	}
+}
+
+.footer {
+  width: 100%;
+  background-color: black;
+  padding: 0 0 20px 0;
+  overflow: hidden;
+  margin: 60px 0 0 0;
+  .button {
+    margin: 3% 0 0 0;
+    width: 55%;
+    a {
+      padding: 5% 3%;
+    }
+  }
+  .nav {
+    width: 100%;
+    text-align: right;
+    margin: 0 0 6% 0;
+    a {
+      color: #e8e8e8;
+      margin: 0 5% 0 0;
+      &:hover {
+        color: #eb2200;
+      }
+    }
+  }
+}
+
+.social {
+  width: 55% !important;
+  img {
+    margin: 0 0 0 10px;
+  }
+}
+
+.contact {
+  width: 45%;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
 }

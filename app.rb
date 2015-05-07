@@ -37,4 +37,12 @@ class App < Sinatra::Base
     slim :"projects/transnode"
   end
 
+  get('/projects/opensublet') do 
+    slim :"projects/opensublet"
+  end
+
+  get('/projects/cpfmarket') do 
+    slim :"projects/cpfmarket"
+  end
+
 end
