@@ -33,4 +33,8 @@ class App < Sinatra::Base
     slim :"projects/wantartat"
   end
 
+  get('/projects/transnode') do 
+    slim :"projects/transnode"
+  end
+
 end
