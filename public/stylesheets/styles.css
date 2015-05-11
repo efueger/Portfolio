@@ -232,10 +232,8 @@ pre {
       .footer .nav a:hover {
         color: #eb2200; }
 
-.social {
-  width: 55% !important; }
-  .social img {
-    margin: 0 0 0 10px; }
+.social img {
+  margin: 0 0 0 10px; }
 
 .contact {
   width: 45%; }

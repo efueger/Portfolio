@@ -1,0 +1,21 @@
+@media (min-width:1024px) and (max-width: 1280px) { 
+/* big landscape tablets, laptops, and desktops */ 
+	#wrapper{
+		width: 95%;
+	}
+
+
+@media (min-width:1281px){ 
+/* hi-res laptops and desktops */ 
+	#wrapper{
+		width: 90%;
+	}
+
+	.half {
+		width: 65% !important;
+	}
+
+	.code {
+		width: 90% !important;
+	}
+}

@@ -42,44 +42,24 @@
     p This is a Ruby on Rails project. One of the most interesting parts of the app is the in depth integration with the Facebook API.
     p The development team is conformed by 2 engineers working full time.
   .clear
+  h2 CODE EXAMPLE
   .code
     blockquote
       pre
         code data-language="ruby"
-          | class ApiController < ApplicationController
-            def set_location
-              unless cookies[:set_location]
-                neighborhood = Neighbourhood.closest(params[:latitude].to_f,params[:longitude].to_f)
-                cookies[:neighborhood] = neighborhood.id
-              end
-              cookies[:set_location] = 1 
-              cookies[:lat] = params[:latitude].to_f
-              cookies[:lng] = params[:longitude].to_f
-              render :json => neighborhood
-            end
-          end
+          h2 style="color: red;" MISSING CODE EXAMPLE
+  h2 UNIT TEST
   .code
     blockquote
       pre
         code data-language="ruby"
-          | class ApiController  ApplicationController
-            def set_location
-              unless cookies[:set_location]
-                neighborhood = Neighbourhood.closest(params[:latitude].to_f,params[:longitude].to_f)
-                cookies[:neighborhood] = neighborhood.id
-              end
-              cookies[:set_location] = 1 
-              cookies[:lat] = params[:latitude].to_f
-              cookies[:lng] = params[:longitude].to_f
-              render :json => neighborhood
-            end
-          end
+          h2 style="color: red;" MISSING CODE EXAMPLE
   .clear
   .process.half.left
     p Don't take our word for it. We run Reputation Pie through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
   .clear
   .codeclimate
-    img src="/images/projects/greenlight/codeclimate.png"
+    h2 style="color: red;" MISSING CODE CLIMATE SCREENSHOT
   .clear
   hr.small.center
   .clear
@@ -123,9 +103,9 @@
     p Working on Reputation Pie has been an awesome learning experience. This app has required that we work with the Facebook API which has been super interesting.
   .clear
   .piece.shorter
-    <iframe width="330" height="260" src="https://www.youtube.com/embed/6hr3hBQsnvA" frameborder="0" allowfullscreen></iframe>
+    h1 style="color: red;" MISSING CODE EXAMPLE
   .piece.shorter
-    <iframe width="330" height="260" src="https://www.youtube.com/embed/6hr3hBQsnvA" frameborder="0" allowfullscreen></iframe>
+    h1 style="color: red;" MISSING CODE EXAMPLE
   .piece.shorter
-    <iframe width="330" height="260" src="https://www.youtube.com/embed/6hr3hBQsnvA" frameborder="0" allowfullscreen></iframe>
+    h1 style="color: red;" MISSING CODE EXAMPLE
   .clear
