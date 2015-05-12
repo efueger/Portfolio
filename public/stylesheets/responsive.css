@@ -1,7 +1,146 @@
+@media (min-width:320px) and (max-width: 479px){ 
+	#wrapper{
+		width: 96%;
+	}
+
+	.half {
+		width: 100%;
+	}
+
+	.view {
+		width: 75%;
+		margin: 2% 12%;
+	} 
+
+	.media {
+		width: 90%;
+	}
+
+	.piece {
+		width: 83%;
+		margin: 2% 6%;
+	}
+
+	.code, .codeclimate img {
+		width: 95%;
+	}
+
+	.nav {
+		width: 100%;
+		text-align: left;
+	}
+
+	.nav li {
+		font-size: 0.85em;
+		margin: 0 0 0 0.7em;
+	}
+
+}
+
+@media (min-width:480px) and (max-width: 640px){ 
+	#wrapper{
+		width: 96%;
+	}
+
+	.half {
+		width: 100%;
+	}
+
+	.view {
+		width: 75%;
+		margin: 2% 12%;
+	} 
+
+	.media {
+		width: 90%;
+	}
+
+	.piece {
+		width: 83%;
+		margin: 2% 6%;
+	}
+
+	.code, .codeclimate img {
+		width: 95%;
+	}
+
+	.nav {
+		width: 100%;
+		text-align: left;
+	}
+
+	.nav li {
+		font-size: 0.85em;
+		margin: 0 0 0 0.7em;
+	}
+
+}
+
+@media (min-width:641px) and (max-width: 767px){ 
+/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+	#wrapper{
+		width: 96%;
+	}
+
+	.half {
+		width: 70%;
+	}
+
+	.view {
+		width: 47%;
+		margin: 2% 1%;
+	} 
+
+	.media {
+		width: 86%;
+	}
+
+	.piece {
+		width: 65%;
+		margin: 2% 20%;
+	}
+
+	.code, .codeclimate img {
+		width: 95%;
+	}
+
+}
+
+@media (min-width:768px) and (max-width: 1023px) { 
+	#wrapper{
+		width: 96%;
+	}
+
+	.half {
+		width: 70%;
+	}
+
+	.view {
+		width: 39%;
+		margin: 2% 5%;
+	} 
+
+	.media {
+		width: 86%;
+	}
+
+	.piece {
+		width: 45%;
+	}
+
+	.code, .codeclimate img {
+		width: 95%;
+	}
+
+}
 @media (min-width:1024px) and (max-width: 1280px) { 
 /* big landscape tablets, laptops, and desktops */ 
 	#wrapper{
 		width: 95%;
+	}
+
+	.half {
+		width: 70%;
 	}
 
 
