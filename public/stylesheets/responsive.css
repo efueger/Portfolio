@@ -8,8 +8,8 @@
 	}
 
 	.view {
-		width: 75%;
-		margin: 2% 12%;
+		width: 95%;
+		margin: 2% ;
 	} 
 
 	.media {
@@ -28,16 +28,50 @@
 	.nav {
 		width: 100%;
 		text-align: left;
+		margin: 1em 0;
 	}
 
 	.nav li {
-		font-size: 0.4em;
-		margin: 0 0 0 0.5em;
+		margin: 0 0 0 0.3em;
 		letter-spacing: -0.5px;
 	}
 
 	.nav .active {
 		padding: 3px;
+	}
+
+	.nav a {
+		font-size: 0.5em !important;
+		margin: 0;
+	}
+
+	.logo {
+		width: 100%;
+	}
+
+	.logo img {
+		width: 50%;
+	}
+
+	.title {
+		margin: 0;
+	}
+
+	.title h1 {
+		font-size: 2em;
+	}
+
+	h3{
+		font-size: 0.7em;
+	}
+
+	.contact {
+		width: 100%;
+	}
+
+	.social img {
+		width: 10%;
+		float: right;
 	}
 }
 
@@ -51,7 +85,7 @@
 	}
 
 	.view {
-		width: 75%;
+		width: 62%;
 		margin: 2% 12%;
 	} 
 
@@ -77,7 +111,6 @@
 		font-size: 0.85em;
 		margin: 0 0 0 0.7em;
 	}
-
 }
 
 @media (min-width:641px) and (max-width: 767px){ 
@@ -108,6 +141,11 @@
 		width: 95%;
 	}
 
+	.nav {
+		width: 100%;
+		text-align: left;
+	}
+
 }
 
 @media (min-width:768px) and (max-width: 1023px) { 
@@ -120,10 +158,13 @@
 	}
 
 	.view {
-		width: 39%;
-		margin: 2% 5%;
+		width: 45%;
+		margin: 2%;
 	} 
 
+	.main {
+		margin: 0 0 0 7%;
+	}
 	.media {
 		width: 86%;
 	}
@@ -134,6 +175,21 @@
 
 	.code, .codeclimate img {
 		width: 95%;
+	}
+
+	.nav {
+		width: 70%;
+		text-align: right;
+		float: right;
+		margin: 1em 0 0 0;
+	}
+
+	.logo {
+		width: 30%;
+	}
+	.nav li {
+		font-size: 1em;
+		margin: 0 0 0 0.5em;
 	}
 
 }
@@ -147,6 +203,10 @@
 		width: 70%;
 	}
 
+	.view {
+		width: 29%;
+	}
+}
 
 @media (min-width:1281px){ 
 /* hi-res laptops and desktops */ 
