@@ -46,69 +46,7 @@
   .code
     blockquote
       pre
-        code data-language="ruby"
-          | require 'spec_helper'
 
-          	describe Contact, :type => :model do
-          	  let(:email){ build(:email) }
-          	  let(:phone){ build(:phone) }
-          	  let(:contact){ build(:contact, emails: [email], phones: [phone]) }
-          	  subject{ contact }
-
-          	  it{ is_expected.to respond_to(:name)}
-          	  it{ is_expected.to respond_to(:title)}
-          	  it{ is_expected.to respond_to(:role)}
-          	  it{ is_expected.to respond_to(:type_user)}
-          	  it{ is_expected.to respond_to(:birthday)}
-          	  it{ is_expected.to respond_to(:status)}
-          	  it{ is_expected.to respond_to(:created_at)}
-          	  it{ is_expected.to respond_to(:updated_at)}
-
-          	  it{ expect(contact.emails).to include(email)}
-          	  it{ expect(contact.phones).to include(phone)}
-
-          	  describe 'validation' do
-          	    it{ is_expected.to validate_presence_of(:name)  }
-          	    it{ is_expected.to validate_presence_of(:type_user)  }
-          	    it{ is_expected.to validate_presence_of(:emails)  }
-          	    it{ is_expected.to validate_presence_of(:phones)  }
-          	  end
-
-          	  context 'with optional relation' do
-          	    let(:location){ build(:location) }
-          	    let(:user){ build(:user) }
-
-          	    describe 'location' do
-          	      before{ contact.location = location }
-          	      it{ expect(contact.location).to be(location)  }
-          	    end
-
-          	    describe 'user' do
-          	      before{ contact.user = user }
-          	      it{ expect(contact.user).to be(user)  }
-          	    end
-          	  end
-
-          	  context 'create' do
-          	    describe 'multiple roles' do
-          	      let(:attributes){ attributes_for(:contact) }
-          	      it do
-          	        expect{create(:contact, attributes ) }.to change(Contact, :count).by(1)
-          	      end
-          	    end
-
-          	    describe 'accepts_nested_attributes' do
-          	      describe 'contacts' do
-          	        let(:attributes){attributes_for(:contact, emails:[],phones:[],emails_attributes: [attributes_for(:email)] ,phones_attributes: [attributes_for(:phone)])}
-          	        it { expect{Contact.new(attributes)}.to_not raise_error }
-          	      end
-          	    end
-          	  end
-          	end
-  h2 UNIT TEST
-  .code
-    blockquote
-      pre
         code data-language="ruby"
           | class Contact < ActiveRecord::Base
               include Searchable
@@ -143,6 +81,80 @@
                 (location)? location.roles : []
               end
 
+            end
+
+
+
+
+
+
+
+
+
+      
+  h2 UNIT TEST
+  .code
+    blockquote
+      pre
+        code data-language="ruby"
+        code data-language="ruby"
+          | require 'spec_helper'
+
+            describe Contact, :type => :model do
+              let(:email){ build(:email) }
+              let(:phone){ build(:phone) }
+              let(:contact){ build(:contact, emails: [email], phones: [phone]) }
+              subject{ contact }
+
+              it{ is_expected.to respond_to(:name)}
+              it{ is_expected.to respond_to(:title)}
+              it{ is_expected.to respond_to(:role)}
+              it{ is_expected.to respond_to(:type_user)}
+              it{ is_expected.to respond_to(:birthday)}
+              it{ is_expected.to respond_to(:status)}
+              it{ is_expected.to respond_to(:created_at)}
+              it{ is_expected.to respond_to(:updated_at)}
+
+              it{ expect(contact.emails).to include(email)}
+              it{ expect(contact.phones).to include(phone)}
+
+              describe 'validation' do
+                it{ is_expected.to validate_presence_of(:name)  }
+                it{ is_expected.to validate_presence_of(:type_user)  }
+                it{ is_expected.to validate_presence_of(:emails)  }
+                it{ is_expected.to validate_presence_of(:phones)  }
+              end
+
+              context 'with optional relation' do
+                let(:location){ build(:location) }
+                let(:user){ build(:user) }
+
+                describe 'location' do
+                  before{ contact.location = location }
+                  it{ expect(contact.location).to be(location)  }
+                end
+
+                describe 'user' do
+                  before{ contact.user = user }
+                  it{ expect(contact.user).to be(user)  }
+                end
+              end
+
+              context 'create' do
+                describe 'multiple roles' do
+                  let(:attributes){ attributes_for(:contact) }
+                  it do
+                    expect{create(:contact, attributes ) }.to change(Contact, :count).by(1)
+                  end
+                end
+
+                describe 'accepts_nested_attributes' do
+                  describe 'contacts' do
+                    let(:attributes){attributes_for(:contact, emails:[],phones:[],emails_attributes: [attributes_for(:email)] ,phones_attributes: [attributes_for(:phone)])}
+                    it { expect{Contact.new(attributes)}.to_not raise_error }
+                  end
+                end
+              end
             end
   .clear
   .process.half.left
