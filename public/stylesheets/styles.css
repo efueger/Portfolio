@@ -99,7 +99,8 @@ p {
 
 .piece {
   float: left;
-  margin: 5px 20px 20px 0;
+  margin: 2%;
+  max-width: 355px;
   width: 31%;
   text-align: center; }
   .piece h1 {

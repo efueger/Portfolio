@@ -4,7 +4,7 @@
 .story
   .process.full
     .description
-      p CPF Market is a place where investor and people with commercial real state projects meet.
+      p CPF Market is a commercial real state web application that allows borrowers present their financing projects. At the same time it allows lenders search for financing opportunities.
   hr.small.center
   .main-tags
     a href="http://www.cpfmarket.com/" target="_blank"
@@ -39,16 +39,26 @@
   hr.small.center
   .process.half.left
     h1 Development
-    p The team created this app using Ruby on Rails. The payment method was done by integrating with Stripe.
+    p The team created this app using Ruby on Rails. 
+    p The payment method is managed in two ways: We integrated with Stripe which allows users to pay with a credit card. We also implemented promotional codes which is agregated directly to the data bases.
+    p Moreover, we implented Active Admin which is a Ruby on Rails framework which allows the app administration with a clean and easy to use interface.
     p The development team was conformed by 1 engineer working full time.
+
   .clear
-  h2 CODE EXAMPLE
+  h2 CODE EXAMPLE - PROMOTIONAL CODE
   .clear
   .code
     blockquote
       pre
         code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
+          | def code_used?
+              errors.add(:code, "Code used") if used
+              used
+            end
+
+            def find_promotional_code(params)
+              PromotionalCode.find_by(code: params[:code])
+            end
 
   h2 UNIT TEST
   .clear
@@ -56,13 +66,73 @@
     blockquote
       pre
         code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
+          | require 'rails_helper'
+
+            RSpec.describe PromotionalCode, :type => :model do
+              describe '.promotional_code' do
+                promotional_code = FactoryGirl.create(:promotional_code)
+
+                context 'code used' do
+                  result = promotional_code.used?
+                  it { expect(result).to be(false) }
+                end
+              end
+            end
+
+  h2 CODE EXAMPLE - CHARGES CONTROLLER
+  .clear
+  .code
+    blockquote
+      pre
+        code data-language="ruby"
+          | def payment_with_promotional_code
+              if find_promotional_code
+                find_promotional_code.update_attributes(used: true) if current_user.set_payment
+                redirect_to  properties_path
+              elsif find_promotional_code.nil?
+                redirect_to new_property_path, alert: "Please make sure you have a valid code"
+              else
+                redirect_to new_property_path, alert: "Please make sure you have a valid code"
+              end
+            end
+
+  h2 UNIT TEST
+  .clear
+  .code
+    blockquote
+      pre
+        code data-language="ruby"
+          | require 'rails_helper'
+
+            RSpec.describe ChargesController, :type => :controller do
+
+              describe "payment with promotional code" do
+                promotional_code = FactoryGirl.create(:promotional_code)
+
+                context "promotional code valid" do
+                  result = promotional_code.find_promotional_code(code: "M18A")
+                  it { expect(result).not_to be_nil } 
+                  it { expect {promotional_code.update(used: true)}}
+                end
+
+                context "promotional code not valid" do
+                  result = promotional_code.find_promotional_code(code: "H75")
+                  it { result.should be_nil }
+                end
+
+                context "promotional code nil" do
+                  it { expect(promotional_code.code).not_to be_empty }
+                end
+              end
+            end
+
+
   .clear
   .process.half.left
     p Don't take our word for it. We run CPF Market through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
   .clear
-  .codeclimate
-    h2 style="color: red;" MISSING CODE CLIMATE EXAMPLE
+  .codeclimate 
+    img style="width: 20%;"src="/images/projects/cpfmarket/codeclimate.jpg"
   .clear
   hr.small.center
   .clear
@@ -71,7 +141,7 @@
   .piece.text
     .icon
       img src="/images/call.svg"
-    h1 Kick Off calls
+    h1 Kick Off call
     p When starting off the project, the team met with CPF Market's team and together created a project brief. Detailing the project needs and brainstormed the best way to achieve them.
   .piece.text
     .icon
@@ -83,7 +153,6 @@
       img src="/images/trello.svg"
     h1 trello - project management
     p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-  .clear
   .piece.text
     .icon
       img src="/images/qa.svg"
@@ -103,11 +172,6 @@
   hr.small.center
   .process.half.left
     h1 demos
-  .clear
-  .piece.shorter
-    h1 style="color: red;" MISSING DEMO VIDEO
-  .piece.shorter
-    h1 style="color: red;" MISSING DEMO VIDEO
-  .piece.shorter
-    h1 style="color: red;" MISSING DEMO VIDEO
+  .video.left
+    <iframe src="https://player.vimeo.com/video/127854752" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   .clear

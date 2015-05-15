@@ -165,12 +165,10 @@
 	.main {
 		margin: 0 0 0 7%;
 	}
-	.media {
-		width: 86%;
-	}
 
 	.piece {
-		width: 45%;
+		width: 48%;
+		margin: 2%;
 	}
 
 	.code, .codeclimate img {
@@ -203,7 +201,7 @@
 		width: 70%;
 	}
 
-	.view {
+	.view, .piece {
 		width: 29%;
 	}
 }
@@ -220,5 +218,9 @@
 
 	.code {
 		width: 90% !important;
+	}
+
+	.piece {
+		width: 29%;
 	}
 }
