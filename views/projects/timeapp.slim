@@ -42,33 +42,131 @@
     p This app was created using Angular JS. The backend side was done using Ruby.
     p Time App is deeply integrated with Trello which is our project management system.
     p The development team was conformed by 1 engineer working full time.
-    h2 style="color: red;" MORE INFO ON WHAT THE TEAM DID ON THE DEVELOPMENT SIDE?
 
   .clear
-  h2 CODE EXAMPLE
+
+  h2 UNIT TEST - TIME LOGGER
   .clear
   .code
     blockquote
       pre
         code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
+          | require "rails_helper"
 
-  h2 UNIT TEST
+            RSpec.describe TimeLogger, :type => :model do
+              before(:each) do
+                User.destroy_all
+                Iteration.destroy_all
+                Timelog.destroy_all
+                stubbing_project_manager
+              end
+              let(:user) { create(:user) }
+              subject{ TimeLogger.new(user)}
+
+              describe "validate" do
+                let!(:iteration){ create(:iteration, project_id:"is-an-id",start: DateTime.now - 1.day)}
+                describe "presence" do
+                  it { is_expected.to validate_presence_of(:project_name) }
+                  it { is_expected.to validate_presence_of(:project_id) }
+                end
+              end
+
+              describe "#register" do
+                let(:timelog_1){ attributes_for(:timelog)}
+                let(:timelog_2){ attributes_for(:timelog)}
+                let(:attributes){ {project_id: "is-an-id", project_name: "this is my name", timelogs_attributes: [timelog_1,timelog_2]}}
+                let(:time_logger){ TimeLogger.new(user)}
+
+                describe "iteration" do
+                  describe "existing" do
+                    let!(:iteration){ create(:iteration, time: time, project_id:"is-an-id",start: DateTime.now - 1.day)}
+                    describe "iteration has more hours" do
+                      let(:time){ 30 }
+                      it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
+                    end
+                    describe "Record more hours than are available" do
+                      let(:time){ 1 }
+                      it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
+                    end
+
+                    describe "No record because no times available" do
+                      let(:time){ 1 }
+                      before {time_logger.create(attributes)}
+                      it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(0) }
+                    end
+                  end
+                  describe "not existing" do
+                    it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(0) }
+                  end
+                end
+              end
+            end
+
+  h2 CODE EXAMPLE - RUBY
   .clear
   .code
     blockquote
       pre
         code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
+          | class Api::TimelogsController <  ApiAuthenticatedController
+
+              def create
+                @timelogs = TimeLogger.new(current_user)
+                if @timelogs.create(timelogger_params)
+                  render json: @timelogs, status: 201, notice: "Successfully created Timelog"
+                else
+                  render json: @timelogs.errors.messages, status: 422
+                end
+              end
+
+              def update
+                @timelog = Timelog.find(params[:id])
+                if @timelog.update(timelog_params)
+                  render json: @timelog, status: 201, notice: "Successfully updated Timelog"
+                else
+                  render json: @timelog.errors.messages, status: 422
+                end
+              end
+
+              def index
+                @timelogs =  Timelog.performance(params_search)
+                render json: @timelogs
+              end
+
+              def get_by_card
+                @timelogs =  Timelog.only(:task_id, :fecha, :time, :value_ajust, :comment).where(:task_id => params[:card_id], :fecha => params[:date_start]..params[:date_end])
+                render json: @timelogs
+              end
+
+              def params_search
+                params.permit(:date_1, :date_2, :project_id, :user_id)
+              end
+
+              def timelog_params
+                params.require(:timelog).permit(:time,:comment)
+              end
+
+              def timelogger_params
+                params.require(:timelogger).permit(:project_id, :project_name, timelogs_attributes: timelog_attributes)
+              end
+
+              def timelog_attributes
+                [:task_id,:task_name, :comment, :time]
+              end
+
+            end
+
+  h2 CODE EXAMPLE - RUBY
   .clear
-  .process.half.left
-    p Don't take our word for it. We run Time App through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
-  .clear
-  .codeclimate
-    h2 style="color: red;" MISSING CODE CLIMATE EXAMPLE
-  .clear
-  hr.small.center
-  .clear
+  .code
+    blockquote
+      pre
+        code data-language="ruby"
+          | class Iteration
+              include Mongoid::Document
+
+              field :project_id, type: String
+.clear
   hr.small.center
   .process.half.left
     h1 demos
