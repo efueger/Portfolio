@@ -8,12 +8,13 @@
 	}
 
 	.view {
-		width: 95%;
-		margin: 2% ;
-	} 
+		width: 100%;
+  		margin: 2% auto;
+  		float: none;
+	}
 
 	.media {
-		width: 90%;
+		width: 100%;
 	}
 
 	.piece {
@@ -22,12 +23,12 @@
 	}
 
 	.code, .codeclimate img {
-		width: 95%;
+		width: 91%;
 	}
 
 	.nav {
 		width: 100%;
-		text-align: left;
+		text-align: right;
 		margin: 1em 0;
 	}
 
@@ -58,7 +59,7 @@
 	}
 
 	.title h1 {
-		font-size: 2em;
+		font-size: 1.5em;
 	}
 
 	h3{
@@ -73,6 +74,11 @@
 		width: 10%;
 		float: right;
 	}
+
+	.video {
+		margin: 1em 2% 0 0;
+		width: 98%;
+	}
 }
 
 @media (min-width:480px) and (max-width: 640px){ 
@@ -81,21 +87,24 @@
 	}
 
 	.half {
-		width: 100%;
+		width: 98%;
+  		padding-left: 10px;
 	}
 
 	.view {
-		width: 62%;
-		margin: 2% 12%;
-	} 
+		width: 100%;
+  		margin: 2% auto;
+  		float: none;
+	}
 
 	.media {
-		width: 90%;
+		width: 100%;
 	}
 
 	.piece {
-		width: 83%;
-		margin: 2% 6%;
+		width: 100%;
+  		margin: 2% auto;
+  		float: none;
 	}
 
 	.code, .codeclimate img {
@@ -104,12 +113,17 @@
 
 	.nav {
 		width: 100%;
-		text-align: left;
+		text-align: right;
 	}
 
 	.nav li {
-		font-size: 0.85em;
+		font-size: 0.8125em;
 		margin: 0 0 0 0.7em;
+	}
+
+	.video {
+		margin: 1em 2% 0 0;
+		width: 98%;
 	}
 }
 
@@ -121,6 +135,7 @@
 
 	.half {
 		width: 70%;
+		padding-left: 30px;
 	}
 
 	.view {
@@ -129,7 +144,7 @@
 	} 
 
 	.media {
-		width: 86%;
+		width: 100%;
 	}
 
 	.piece {
@@ -143,7 +158,11 @@
 
 	.nav {
 		width: 100%;
-		text-align: left;
+		text-align: right;
+	}
+
+	.video {
+		margin: 1em 2em 0 0;
 	}
 
 }
@@ -167,7 +186,7 @@
 	}
 
 	.piece {
-		width: 48%;
+		width: 46%;
 		margin: 2%;
 	}
 
@@ -190,6 +209,10 @@
 		margin: 0 0 0 0.5em;
 	}
 
+	.video {
+		margin: 1em 2em 0 0;
+	}
+
 }
 @media (min-width:1024px) and (max-width: 1280px) { 
 /* big landscape tablets, laptops, and desktops */ 
@@ -203,6 +226,14 @@
 
 	.view, .piece {
 		width: 29%;
+	}
+
+	.video {
+		margin: 1em 2em 0 0;
+	}
+
+	.text {
+		margin: 2%;
 	}
 }
 
@@ -223,4 +254,22 @@
 	.piece {
 		width: 29%;
 	}
+
+	.process {
+		width: 100%;
+	}
+
+	.text {
+		margin: 2%;
+	}
+
+}
+
+@media (min-width:1730px){ 
+/* hi-res laptops and desktops */ 
+
+	.text {
+		margin: 1%;
+	}
+
 }

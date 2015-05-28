@@ -246,6 +246,12 @@ pre {
   float: left; }
 
 .video {
-  margin: 0 2em 0 0; }
+  margin: 0 2em 0 0;
+  width: 480px;
+  height: 281px; }
+
+.video_media {
+    width: 100%;
+    height: 100%; }
 
 /*# sourceMappingURL=styles.css.map */
