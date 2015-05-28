@@ -1,399 +1,400 @@
-.title
-  h1 Time App
-  hr.half.center
-.story
-  .process.full
-    .description
-      p This is an internal app we use in the company to track the time of the development and design team. We also create status reports and communicate the client all progress.
-  hr.small.center
-  .main-tags
-    a href="http://time.softwarecriollo.com/" target="_blank"
+#wrapper
+  .title
+    h1 Time App
+    hr.half.center
+  .story
+    .process.full
+      .description
+        p This is an internal app we use in the company to track the time of the development and design team. We also create status reports and communicate the client all progress.
+    hr.small.center
+    .main-tags
+      a href="http://time.softwarecriollo.com/" target="_blank"
+        .tag
+          img src="/images/url.svg"
+          p time.softwarecriollo.com
       .tag
-        img src="/images/url.svg"
-        p time.softwarecriollo.com
-    .tag
-      img src="/images/time.svg"
-      p 4 months
+        img src="/images/time.svg"
+        p 4 months
 
-  .clear
+    .clear
 
-  hr.small.center
-  .clear
-  .process.half.left
-    h1 Design of UX and UI
-    p The design of this app is based on our team's and client's needs. The problem we were trying to solve was to make easier the process of logging time and reporting progress.
-  .clear
-  .piece
-    .media
-      a href="/images/projects/timeapp/timeapp-1.jpg" data-lightbox="timeapp" 
-        img src="/images/projects/timeapp/timeapp-1-small.jpg"
-  .piece
-    .media
-      a href="/images/projects/timeapp/timeapp-2.jpg" data-lightbox="timeapp"
-        img src="/images/projects/timeapp/timeapp-2-small.jpg"
-  .piece
-    .media
-      a href="/images/projects/timeapp/timeapp-3.jpg" data-lightbox="timeapp" 
-        img src="/images/projects/timeapp/timeapp-3-small.jpg"
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 Development
-    p This app was created using Angular JS. The backend side was done using Ruby.
-    p Time App is deeply integrated with Trello which is our project management system.
-    p The development team was conformed by 1 engineer working full time.
+    hr.small.center
+    .clear
+    .process.half.left
+      h1 Design of UX and UI
+      p The design of this app is based on our team's and client's needs. The problem we were trying to solve was to make easier the process of logging time and reporting progress.
+    .clear
+    .piece
+      .media
+        a href="/images/projects/timeapp/timeapp-1.jpg" data-lightbox="timeapp" 
+          img src="/images/projects/timeapp/timeapp-1-small.jpg"
+    .piece
+      .media
+        a href="/images/projects/timeapp/timeapp-2.jpg" data-lightbox="timeapp"
+          img src="/images/projects/timeapp/timeapp-2-small.jpg"
+    .piece
+      .media
+        a href="/images/projects/timeapp/timeapp-3.jpg" data-lightbox="timeapp" 
+          img src="/images/projects/timeapp/timeapp-3-small.jpg"
+    .clear
+    hr.small.center
+    .process.half.left
+      h1 Development
+      p This app was created using Angular JS. The backend side was done using Ruby.
+      p Time App is deeply integrated with Trello which is our project management system.
+      p The development team was conformed by 1 engineer working full time.
 
-  .clear
+    .clear
 
-  h2 UNIT TEST - TIME LOGGER
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | require "rails_helper"
+    h2 UNIT TEST - TIME LOGGER
+    .clear
+    .code
+      blockquote
+        pre
+          code data-language="ruby"
+            | require "rails_helper"
 
-            RSpec.describe TimeLogger, :type => :model do
-              before(:each) do
-                User.destroy_all
-                Iteration.destroy_all
-                Timelog.destroy_all
-                stubbing_project_manager
-              end
-              let(:user) { create(:user) }
-              subject{ TimeLogger.new(user)}
-
-              describe "validate" do
-                let!(:iteration){ create(:iteration, project_id:"is-an-id",start: DateTime.now - 1.day)}
-                describe "presence" do
-                  it { is_expected.to validate_presence_of(:project_name) }
-                  it { is_expected.to validate_presence_of(:project_id) }
+              RSpec.describe TimeLogger, :type => :model do
+                before(:each) do
+                  User.destroy_all
+                  Iteration.destroy_all
+                  Timelog.destroy_all
+                  stubbing_project_manager
                 end
-              end
+                let(:user) { create(:user) }
+                subject{ TimeLogger.new(user)}
 
-              describe "#register" do
-                let(:timelog_1){ attributes_for(:timelog)}
-                let(:timelog_2){ attributes_for(:timelog)}
-                let(:attributes){ {project_id: "is-an-id", project_name: "this is my name", timelogs_attributes: [timelog_1,timelog_2]}}
-                let(:time_logger){ TimeLogger.new(user)}
+                describe "validate" do
+                  let!(:iteration){ create(:iteration, project_id:"is-an-id",start: DateTime.now - 1.day)}
+                  describe "presence" do
+                    it { is_expected.to validate_presence_of(:project_name) }
+                    it { is_expected.to validate_presence_of(:project_id) }
+                  end
+                end
 
-                describe "iteration" do
-                  describe "existing" do
-                    let!(:iteration){ create(:iteration, time: time, project_id:"is-an-id",start: DateTime.now - 1.day)}
-                    describe "iteration has more hours" do
-                      let(:time){ 30 }
-                      it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
+                describe "#register" do
+                  let(:timelog_1){ attributes_for(:timelog)}
+                  let(:timelog_2){ attributes_for(:timelog)}
+                  let(:attributes){ {project_id: "is-an-id", project_name: "this is my name", timelogs_attributes: [timelog_1,timelog_2]}}
+                  let(:time_logger){ TimeLogger.new(user)}
+
+                  describe "iteration" do
+                    describe "existing" do
+                      let!(:iteration){ create(:iteration, time: time, project_id:"is-an-id",start: DateTime.now - 1.day)}
+                      describe "iteration has more hours" do
+                        let(:time){ 30 }
+                        it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
+                      end
+                      describe "Record more hours than are available" do
+                        let(:time){ 1 }
+                        it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
+                      end
+
+                      describe "No record because no times available" do
+                        let(:time){ 1 }
+                        before {time_logger.create(attributes)}
+                        it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(0) }
+                      end
                     end
-                    describe "Record more hours than are available" do
-                      let(:time){ 1 }
-                      it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
-                    end
-
-                    describe "No record because no times available" do
-                      let(:time){ 1 }
-                      before {time_logger.create(attributes)}
+                    describe "not existing" do
                       it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(0) }
                     end
                   end
-                  describe "not existing" do
-                    it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(0) }
+                end
+              end
+
+    h2 CODE EXAMPLE - RUBY
+    .clear
+    .code
+      blockquote
+        pre
+          code data-language="ruby"
+            | class Api::TimelogsController <  ApiAuthenticatedController
+
+                def create
+                  @timelogs = TimeLogger.new(current_user)
+                  if @timelogs.create(timelogger_params)
+                    render json: @timelogs, status: 201, notice: "Successfully created Timelog"
+                  else
+                    render json: @timelogs.errors.messages, status: 422
                   end
                 end
-              end
-            end
 
-  h2 CODE EXAMPLE - RUBY
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | class Api::TimelogsController <  ApiAuthenticatedController
-
-              def create
-                @timelogs = TimeLogger.new(current_user)
-                if @timelogs.create(timelogger_params)
-                  render json: @timelogs, status: 201, notice: "Successfully created Timelog"
-                else
-                  render json: @timelogs.errors.messages, status: 422
-                end
-              end
-
-              def update
-                @timelog = Timelog.find(params[:id])
-                if @timelog.update(timelog_params)
-                  render json: @timelog, status: 201, notice: "Successfully updated Timelog"
-                else
-                  render json: @timelog.errors.messages, status: 422
-                end
-              end
-
-              def index
-                @timelogs =  Timelog.performance(params_search)
-                render json: @timelogs
-              end
-
-              def get_by_card
-                @timelogs =  Timelog.only(:task_id, :fecha, :time, :value_ajust, :comment).where(:task_id => params[:card_id], :fecha => params[:date_start]..params[:date_end])
-                render json: @timelogs
-              end
-
-              def params_search
-                params.permit(:date_1, :date_2, :project_id, :user_id)
-              end
-
-              def timelog_params
-                params.require(:timelog).permit(:time,:comment)
-              end
-
-              def timelogger_params
-                params.require(:timelogger).permit(:project_id, :project_name, timelogs_attributes: timelog_attributes)
-              end
-
-              def timelog_attributes
-                [:task_id,:task_name, :comment, :time]
-              end
-
-            end
-
-  h2 CODE EXAMPLE - RUBY
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | class Iteration
-              include Mongoid::Document
-
-              field :project_id, type: String
-              field :time, type: Float
-              field :note, type: String
-              field :start, type: Date, default: DateTime.now
-              field :end_date, type: Date
-              field :invoice, type: Integer
-
-              validates_presence_of :start, :time
-              validates_numericality_of :time
-
-              scope :by_project, ->(project_id) { where(:project_id => project_id).order_by(:start.desc) }
-              scope :closed, -> {where(end_date: nil)}
-
-              before_create do |iteration|
-                prev_iteration = Iteration.current_iteration(iteration.project_id)
-                prev_iteration.close_iteration! if prev_iteration
-              end
-
-              def timelogs
-                Timelog.where(iteration_id: self.id)
-              end
-
-              def self.current_iteration(project)
-                where(:project_id => project, :start.lte => DateTime.now ).order_by(:start.desc).limit(1).first
-              end
-
-              def close_iteration!
-                last_timelog = self.timelogs.last_registered(1).first
-                self.end_date = last_timelog.fecha
-                self.save
-              end
-
-              def update_dates
-                self.start = first_log_date
-                self.end_date = last_log_date
-                self.save
-              end
-
-              def first_log_date
-                self.timelogs.order_by(:fecha.asc).first.fecha
-              end
-
-              def update_end_date
-                self.end_date = last_log_date
-                self.save
-              end
-
-              def last_log_date
-                last = self.timelogs.order_by(:fecha.asc).last
-                last ? last.fecha : DateTime.now
-              end
-
-              def can_register_hours?
-                time_for_iteration < time 
-              end
-
-              def remain_time
-                time - time_for_iteration
-              end
-
-              def time_worked
-                total_time = timelogs.inject(0.0){|total,timelog| total += timelog.time_worked }
-                total_time.round(2)
-              end
-
-              def time_for_iteration
-                total_time = timelogs.inject(0.0){|total,timelog| total += timelog.time_for_iteration }
-                total_time.round(2)
-              end
-
-              def as_json(options = nil)
-                super(options).merge({time_for_iteration: time_for_iteration})
-              end
-
-            end
-  h2 CODE EXAMPLE - ANGULAR
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="javascript"
-          | (function(){
-              var TimeApp = window.TimeApp;
-              var CacheStoreModule = angular.module('CacheStore', []);
-
-              CacheStoreModule.config(['$provide', function($provide) {
-                $provide.factory('ProjectCache',[function() {
-                  this.loadProjects = function(){
-                    return loadJsonCache('projects') || [];
-                  };
-
-                  this.saveProjects = function(new_projects){
-                    saveJsonCache('projects',new_projects);
-                  };
-                  this.findProject = function(project_id){
-                    this.projects = this.loadProjects();
-                    for (var i = this.projects.length - 1; i >= 0; i--) {
-                      project = this.projects[i];
-                      if(project.id == project_id)
-                        return project;
-                    };
-                  };
-                  this.projects = this.loadProjects(); 
-                  return this;
-                }]);
-
-                $provide.factory('IterationsCache',[function() {
-                  this.loadIterations = function(project_id){
-                    return loadJsonCache(project_id+'_iterarions') || [];
-                  };
-
-                  this.saveIterations = function(project_id, new_iterations){
-                    saveJsonCache(project_id+'_iterations',new_iterations);
-                  };
-
-                  return this;
-                }]);
-
-                $provide.factory('CardsCache',[function() {
-                  this.loadCards = function(project_id){
-                    return loadJsonCache(project_id+'_cards') || [];
-                  };
-
-                  this.saveCards = function(project_id, new_cards){ 
-                    saveJsonCache(project_id+'_cards',new_cards);
-                  };
-
-                  this.findCard = function(project_id,card_id){
-                    this.cards = this.loadCards(project_id);
-                    for (var i = this.cards.length - 1; i >= 0; i--) {
-                      card = this.cards[i];
-                      if(card.id == card_id)
-                        return card;
-                    };
-                  };
-
-                  this.getCardsByProjectId = function(project_id){
-                    this.cards = this.loadCards(project_id);
-                      return this.cards;
-                  };
-
-                  return this;
-                }]);
-
-                $provide.factory('ClientsCache',[function() {
-                  this.loadClients = function(){
-                    return loadJsonCache('clients') || [];
-                  };
-
-                  this.saveClients = function(new_clients){
-                    saveJsonCache('clients',new_clients);
-                  };
-                  this.findClient = function(client_id){
-                    this.clients = this.loadClients();
-                    for (var i = this.clients.length - 1; i >= 0; i--) {
-                      client = this.clients[i];
-                      if(client.id == client_id)
-                        return client;
-                    };
-                  }; 
-                  this.clients = this.loadClients();    
-                  return this;
-                }]);
-
-                $provide.factory('CurrentUser',["$location",function($location) {
-                  var currentUser;
-                  this.id= function(){
-                    currentUser.id;
-                  };
-
-                  this.isAuthenticated = function(){
-                    return currentUser.token_authentication != undefined;
-                  };
-
-                  this.changeUser = function(user){
-                    currentUser = user;
-                    $('meta[name="Token"]').attr('content',user.token_authentication);
-                  };
-                  this.token = function(){
-                   return currentUser.token_authentication;
-                  }
-                  this.saveCache = function(){
-                    saveJsonCache('currentUser',currentUser);
-                  };
-
-                  this.checkAuth = function(){      
-                    if(this.isAuthenticated()){
-                      $location.path('/');
-                    }
-                  }
-                  this.isPendingAuth = function(){      
-                    if( !this.isAuthenticated()){
-                      $location.path('/log-in');
-                    }
-                  }
-                  this.getUser = function(){
-                    return currentUser;
-                  }
-                  if( existCache("currentUser") )
-                    currentUser = new TimeApp.User( loadJsonCache("currentUser") );      
+                def update
+                  @timelog = Timelog.find(params[:id])
+                  if @timelog.update(timelog_params)
+                    render json: @timelog, status: 201, notice: "Successfully updated Timelog"
                   else
-                    currentUser = new TimeApp.User();
+                    render json: @timelog.errors.messages, status: 422
+                  end
+                end
 
-                  $('meta[name="Token"]').attr('content',currentUser.token_authentication);
-                  return this;
+                def index
+                  @timelogs =  Timelog.performance(params_search)
+                  render json: @timelogs
+                end
+
+                def get_by_card
+                  @timelogs =  Timelog.only(:task_id, :fecha, :time, :value_ajust, :comment).where(:task_id => params[:card_id], :fecha => params[:date_start]..params[:date_end])
+                  render json: @timelogs
+                end
+
+                def params_search
+                  params.permit(:date_1, :date_2, :project_id, :user_id)
+                end
+
+                def timelog_params
+                  params.require(:timelog).permit(:time,:comment)
+                end
+
+                def timelogger_params
+                  params.require(:timelogger).permit(:project_id, :project_name, timelogs_attributes: timelog_attributes)
+                end
+
+                def timelog_attributes
+                  [:task_id,:task_name, :comment, :time]
+                end
+
+              end
+
+    h2 CODE EXAMPLE - RUBY
+    .clear
+    .code
+      blockquote
+        pre
+          code data-language="ruby"
+            | class Iteration
+                include Mongoid::Document
+
+                field :project_id, type: String
+                field :time, type: Float
+                field :note, type: String
+                field :start, type: Date, default: DateTime.now
+                field :end_date, type: Date
+                field :invoice, type: Integer
+
+                validates_presence_of :start, :time
+                validates_numericality_of :time
+
+                scope :by_project, ->(project_id) { where(:project_id => project_id).order_by(:start.desc) }
+                scope :closed, -> {where(end_date: nil)}
+
+                before_create do |iteration|
+                  prev_iteration = Iteration.current_iteration(iteration.project_id)
+                  prev_iteration.close_iteration! if prev_iteration
+                end
+
+                def timelogs
+                  Timelog.where(iteration_id: self.id)
+                end
+
+                def self.current_iteration(project)
+                  where(:project_id => project, :start.lte => DateTime.now ).order_by(:start.desc).limit(1).first
+                end
+
+                def close_iteration!
+                  last_timelog = self.timelogs.last_registered(1).first
+                  self.end_date = last_timelog.fecha
+                  self.save
+                end
+
+                def update_dates
+                  self.start = first_log_date
+                  self.end_date = last_log_date
+                  self.save
+                end
+
+                def first_log_date
+                  self.timelogs.order_by(:fecha.asc).first.fecha
+                end
+
+                def update_end_date
+                  self.end_date = last_log_date
+                  self.save
+                end
+
+                def last_log_date
+                  last = self.timelogs.order_by(:fecha.asc).last
+                  last ? last.fecha : DateTime.now
+                end
+
+                def can_register_hours?
+                  time_for_iteration < time 
+                end
+
+                def remain_time
+                  time - time_for_iteration
+                end
+
+                def time_worked
+                  total_time = timelogs.inject(0.0){|total,timelog| total += timelog.time_worked }
+                  total_time.round(2)
+                end
+
+                def time_for_iteration
+                  total_time = timelogs.inject(0.0){|total,timelog| total += timelog.time_for_iteration }
+                  total_time.round(2)
+                end
+
+                def as_json(options = nil)
+                  super(options).merge({time_for_iteration: time_for_iteration})
+                end
+
+              end
+    h2 CODE EXAMPLE - ANGULAR
+    .clear
+    .code
+      blockquote
+        pre
+          code data-language="javascript"
+            | (function(){
+                var TimeApp = window.TimeApp;
+                var CacheStoreModule = angular.module('CacheStore', []);
+
+                CacheStoreModule.config(['$provide', function($provide) {
+                  $provide.factory('ProjectCache',[function() {
+                    this.loadProjects = function(){
+                      return loadJsonCache('projects') || [];
+                    };
+
+                    this.saveProjects = function(new_projects){
+                      saveJsonCache('projects',new_projects);
+                    };
+                    this.findProject = function(project_id){
+                      this.projects = this.loadProjects();
+                      for (var i = this.projects.length - 1; i >= 0; i--) {
+                        project = this.projects[i];
+                        if(project.id == project_id)
+                          return project;
+                      };
+                    };
+                    this.projects = this.loadProjects(); 
+                    return this;
+                  }]);
+
+                  $provide.factory('IterationsCache',[function() {
+                    this.loadIterations = function(project_id){
+                      return loadJsonCache(project_id+'_iterarions') || [];
+                    };
+
+                    this.saveIterations = function(project_id, new_iterations){
+                      saveJsonCache(project_id+'_iterations',new_iterations);
+                    };
+
+                    return this;
+                  }]);
+
+                  $provide.factory('CardsCache',[function() {
+                    this.loadCards = function(project_id){
+                      return loadJsonCache(project_id+'_cards') || [];
+                    };
+
+                    this.saveCards = function(project_id, new_cards){ 
+                      saveJsonCache(project_id+'_cards',new_cards);
+                    };
+
+                    this.findCard = function(project_id,card_id){
+                      this.cards = this.loadCards(project_id);
+                      for (var i = this.cards.length - 1; i >= 0; i--) {
+                        card = this.cards[i];
+                        if(card.id == card_id)
+                          return card;
+                      };
+                    };
+
+                    this.getCardsByProjectId = function(project_id){
+                      this.cards = this.loadCards(project_id);
+                        return this.cards;
+                    };
+
+                    return this;
+                  }]);
+
+                  $provide.factory('ClientsCache',[function() {
+                    this.loadClients = function(){
+                      return loadJsonCache('clients') || [];
+                    };
+
+                    this.saveClients = function(new_clients){
+                      saveJsonCache('clients',new_clients);
+                    };
+                    this.findClient = function(client_id){
+                      this.clients = this.loadClients();
+                      for (var i = this.clients.length - 1; i >= 0; i--) {
+                        client = this.clients[i];
+                        if(client.id == client_id)
+                          return client;
+                      };
+                    }; 
+                    this.clients = this.loadClients();    
+                    return this;
+                  }]);
+
+                  $provide.factory('CurrentUser',["$location",function($location) {
+                    var currentUser;
+                    this.id= function(){
+                      currentUser.id;
+                    };
+
+                    this.isAuthenticated = function(){
+                      return currentUser.token_authentication != undefined;
+                    };
+
+                    this.changeUser = function(user){
+                      currentUser = user;
+                      $('meta[name="Token"]').attr('content',user.token_authentication);
+                    };
+                    this.token = function(){
+                     return currentUser.token_authentication;
+                    }
+                    this.saveCache = function(){
+                      saveJsonCache('currentUser',currentUser);
+                    };
+
+                    this.checkAuth = function(){      
+                      if(this.isAuthenticated()){
+                        $location.path('/');
+                      }
+                    }
+                    this.isPendingAuth = function(){      
+                      if( !this.isAuthenticated()){
+                        $location.path('/log-in');
+                      }
+                    }
+                    this.getUser = function(){
+                      return currentUser;
+                    }
+                    if( existCache("currentUser") )
+                      currentUser = new TimeApp.User( loadJsonCache("currentUser") );      
+                    else
+                      currentUser = new TimeApp.User();
+
+                    $('meta[name="Token"]').attr('content',currentUser.token_authentication);
+                    return this;
+                  }]);
+
                 }]);
 
-              }]);
+                var saveJsonCache = function(name,obj){
+                  localStorage[name] = JSON.stringify(obj);
+                };
 
-              var saveJsonCache = function(name,obj){
-                localStorage[name] = JSON.stringify(obj);
-              };
+                var loadJsonCache = function(name){
+                  if(localStorage[name])
+                    return JSON.parse(localStorage[name]);
+                  else
+                    return undefined;
+                };
+   
+                var existCache = function(name){
+                  return localStorage[name] != undefined
+                };
+              })();
 
-              var loadJsonCache = function(name){
-                if(localStorage[name])
-                  return JSON.parse(localStorage[name]);
-                else
-                  return undefined;
-              };
- 
-              var existCache = function(name){
-                return localStorage[name] != undefined
-              };
-            })();
-
-.clear
-  hr.small.center
-  .process.half.left
-    h1 demos
-  .video.left
-    <iframe src="https://player.vimeo.com/video/129043914" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   .clear
+    hr.small.center
+    .process.half.left
+      h1 demos
+    .video.left
+      <iframe src="https://player.vimeo.com/video/129043914" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    .clear

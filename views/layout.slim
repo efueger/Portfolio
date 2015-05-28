@@ -11,7 +11,6 @@ html
     link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/default.min.css"
     link href='/stylesheets/responsive.css' media='screen' rel='stylesheet' type='text/css'
     link href='/stylesheets/atelier-forest.dark.css' media='screen' rel='stylesheet' type='text/css'
-
     meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"
 
     script src="/js/highlight.pack.js"
@@ -25,26 +24,27 @@ html
     script src='/js/css3-mediaqueries.js' type='text/javascript'
 
 	body
-	  #wrapper
-        .logo
-          a href="http://softwarecriollo.com/"
-            img src="/images/logo.svg"
-        .nav
-          ul
-            li
-              a href="http://softwarecriollo.com/#whyus" why us
-            li
-              a href="http://softwarecriollo.com/#process" our process
-            li 
-              a.active href="/" portfolio
-            li 
-              a href="http://softwarecriollo.com/services" services
-            li 
-              a href="http://softwarecriollo.com/values" our values 
-            li 
-              a href="http://softwarecriollo.com/thoughts/thoughts" thoughts  
-        .clear
-        == yield
+    .header
+	    #wrapper
+          .logo
+            a href="http://softwarecriollo.com/"
+              img src="/images/logowhite.svg"
+          .nav
+            ul
+              li
+                a href="http://softwarecriollo.com/#whyus" why us
+              li
+                a href="http://softwarecriollo.com/#process" our process
+              li 
+                a.active href="/" portfolio
+              li 
+                a href="http://softwarecriollo.com/services" services
+              li 
+                a href="http://softwarecriollo.com/values" our values 
+              li 
+                a href="http://softwarecriollo.com/thoughts/thoughts" thoughts  
+    .clear
+    == yield
 
     .footer
         #wrapper
