@@ -271,10 +271,38 @@
 
 }
 
+@media (min-width:1400px){ 
+/* hi-res laptops and desktops */
+
+	.piece {
+		width: 35%;
+	}
+
+	.text {
+		margin: 2%;
+	}
+
+}
+
+
 @media (min-width:1730px){ 
 /* hi-res laptops and desktops */ 
 
 	.text {
 		margin: 1%;
 	}
+
+}
+
+@media (min-width:2000px){ 
+/* hi-res laptops and desktops */
+
+	.piece {
+		width: 20%;
+	}
+
+	.text {
+		margin: 1%;
+	}
+
 }
