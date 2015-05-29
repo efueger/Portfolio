@@ -260,7 +260,7 @@ pre {
 
 .video_media {
   width: 100%;
-  height: 350px; }
+  height: 100%; }
 
 .header {
   background-color: black;
@@ -284,5 +284,10 @@ pre {
 .process.steps {
   text-align: center;
   margin: 2em 0 !important; }
+
+.images {
+  float: none;
+  margin: 0 auto;
+  width: 80%; }
 
 /*# sourceMappingURL=styles.css.map */
