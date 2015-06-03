@@ -23,37 +23,74 @@
     h1 Front End
     p In Therapy Sublet we used Bootstrap for implementing the Front End. No specific design was required for the implementation of this project.
   .clear
-  .piece
-    .media
-      a href="/images/projects/opensublet/opensublet-1.jpg" data-lightbox="opensublet" 
-        img src="/images/projects/opensublet/opensublet-1-small.jpg"
-  .piece
-    .media
-      a href="/images/projects/opensublet/opensublet-2.jpg" data-lightbox="opensublet"
-        img src="/images/projects/opensublet/opensublet-2-small.jpg"
-  .piece
-    .media
-      a href="/images/projects/opensublet/opensublet-3.jpg" data-lightbox="opensublet"
-        img src="/images/projects/opensublet/opensublet-3-small.jpg"
+  
+  .center
+    .piece index="0"
+      .media
+        a href="/images/projects/opensublet/opensublet-1.jpg" data-lightbox="opensublet" 
+          img src="/images/projects/opensublet/opensublet-1-small.jpg"
+          .fondo
+    .piece index="1"
+      .media
+        a href="/images/projects/opensublet/opensublet-2.jpg" data-lightbox="opensublet"
+          img src="/images/projects/opensublet/opensublet-2-small.jpg"
+          .fondo
+    .piece index="2"
+      .media
+        a href="/images/projects/opensublet/opensublet-3.jpg" data-lightbox="opensublet"
+          img src="/images/projects/opensublet/opensublet-3-small.jpg"
+          .fondo
+
   .clear
   hr.small.center
   .process.half.left
     h1 Development
     p This is a Ruby on Rails project. We created a custom calendar to block dates for booking the rooms. We also integrate with Stripe as a payment gateway.
     p The development team is conformed by 2 engineers working full time.
+
   .clear
-  h2 CODE EXAMPLE
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
-  h2 UNIT TEST
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
+
+  div id="tabs"
+    ul
+      li
+        a href="#tabs-1" Code Example
+      li
+        a href="#tabs-2" Unit Test
+
+    div id="tabs-1"
+      .code
+        blockquote
+          pre
+            code data-language="ruby"
+              | # Create a drop-down with date values
+                # Params:
+                #   form: Form Object
+                #   field: Name of the field
+                
+                def create_date_select_sample(field, value)
+                  date_select field, nil, {
+                      use_month_numbers: :true,
+                      use_two_digit_numbers: :true,
+                      start_year: Time.now.year,
+                      selected: value,
+                      prompt: { year: 'year', month: 'month', day: 'day' },
+                      include_blank: value.nil?
+                    },
+                    { class: 'form-control input-sm' }
+                end
+
+                # Create a drop-down with time values
+                # Params:
+                #   form: Form Object
+                #   field: Name of the field
+
+    div id="tabs-2"
+      .code
+        blockquote
+          pre
+            code data-language="ruby"
+              h1 style="color: red;" MISSING CODE EXAMPLE
+
   .clear
   .process.half.left
     p Don't take our word for it. We run Therapy Sublet through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
@@ -65,6 +102,7 @@
   .clear
   .process.half.left
     h1 The Process
+  .clear
   .piece.text
     .icon
       img src="/images/report.svg"
@@ -80,7 +118,6 @@
       img src="/images/trello.svg"
     h1 trello - project management
     p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-  .clear
   .piece.text
     .icon
       img src="/images/qa.svg"

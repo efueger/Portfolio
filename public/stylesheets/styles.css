@@ -13,6 +13,18 @@
 body {
   background-color: white; }
 
+.fondo{
+  background-color: black;
+  opacity: .5;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.media {
+  z-index: -1;
+}
+
 .clear {
   clear: both; }
 
@@ -102,13 +114,23 @@ p {
 
 .piece {
   float: left;
-  margin: 0 4% 2% 0;
   max-width: 355px;
-  width: 35%;
-  text-align: center; }
+  width: 31%;
+  text-align: center;
+  height: 300px; }
   .piece h1 {
     font-size: 1.2em;
     text-transform: uppercase; }
+
+.piece .media img {
+  width: 100%;
+  height: 100%;
+}
+
+.piece .media {
+  width: 100%;
+  height: 100%;
+}
 
 .media {
   border: 1px solid #ccc;
@@ -156,9 +178,7 @@ p {
   background-color: #272822;
   width: 100%;
   border-radius: 3px;
-  margin: 20px 0;
-  padding: 15px;
-  overflow-x: scroll; }
+  margin-left: -12px; }
 
 .dev-tags {
   text-align: left !important; }

@@ -199,3 +199,23 @@
     opacity: .75;
     color: black;
 }
+
+.piece.slick-active {
+    opacity: 1 !important;
+}
+
+.slick-active .media a .fondo {
+  position: absolute;
+}
+
+.slick-slide .media {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  position: relative;
+}
+
+.piece.slick-slide {
+  width: 355px;
+  height: 300px;
+  max-width: 1500px !important;
+}

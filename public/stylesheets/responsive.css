@@ -14,26 +14,13 @@
   		float: none;
 	}
 
-	.media {
-		width: 100%;
-	}
-
-	/*.media a img {
-		width: 100% !important;
-	}*/
-
-	.piece {
+	.piece.text {
 		width: 83%;
 		margin: 2% 6%;
 	}
 
-	.code, .codeclimate img {
+	.codeclimate img {
 		width: 91%;
-	}
-
-	.code {
-		width: 90% !important;
-		margin-left: 1% !important;
 	}
 
 	.nav {
@@ -89,6 +76,10 @@
 		margin: 1em 2% 0 1%;
 		width: 97%;
 	}
+
+  	.piece .media {
+  		margin: 0 auto;
+	}
 }
 
 @media (min-width:480px) and (max-width: 640px){ 
@@ -107,21 +98,13 @@
   		float: none;
 	}
 
-	.media {
-		width: 100%;
-	}
-
-	/*.media a img {
-		width: 100% !important;
-	}*/
-
-	.piece {
+	.piece.text {
 		width: 100%;
   		margin: 2% auto;
   		float: none;
 	}
 
-	.code, .codeclimate img {
+	.codeclimate img {
 		width: 95%;
 	}
 
@@ -139,6 +122,7 @@
 		margin: 1em 2% 0 1%;
 		width: 97%;
 	}
+
 }
 
 @media (min-width:641px) and (max-width: 767px){ 
@@ -161,17 +145,13 @@
 		width: 100%;
 	}
 
-	/*.media a img {
-		width: 100% !important;
-	}*/
-
-	.piece {
+	.piece.text {
 		width: 65%;
 		margin: 2% auto;
 		float: none;
 	}
 
-	.code, .codeclimate img {
+	.codeclimate img {
 		width: 95%;
 	}
 
@@ -204,7 +184,7 @@
 		margin: 0 0 0 7%;
 	}
 
-	.piece {
+	.piece.text {
 		width: 46%;
 		margin: 2%;
 	}
@@ -214,12 +194,7 @@
 		height: 100%;
 	}
 
-	/*.media a img {
-		width: 100% !important;
-		height: 100% !important;
-	}*/
-
-	.code, .codeclimate img {
+	.codeclimate img {
 		width: 95%;
 	}
 
@@ -269,6 +244,11 @@
 		width: 27% !important;
 		margin: 2%;
 	}
+
+	.piece.slick-slide {
+		width: 450px !important;
+		height: 385px !important;
+	}
 }
 
 @media (min-width:1281px){ 
@@ -302,6 +282,11 @@
 		width: 100%;
 	}
 
+	.piece.slick-slide {
+		width: 560px !important;
+		height: 475px !important;
+	}
+
 }
 
 @media (min-width:1400px){ 
@@ -315,6 +300,10 @@
 		margin: 2%;
 	}
 
+	.piece.slick-slide {
+		width: 700px !important;
+		height: 595px !important;
+	}
 }
 
 @media (min-width:1730px){ 
@@ -323,7 +312,6 @@
 	.text {
 		margin: 1%;
 	}
-
 }
 
 @media (min-width:2000px){ 
@@ -336,5 +324,4 @@
 	.text {
 		margin: 1%;
 	}
-
 }

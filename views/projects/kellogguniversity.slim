@@ -24,18 +24,24 @@
       h1 Design of ui and ux
       p For the design of Kellogg App we used the current look and feel of the University in order to be consistent with the existant brand.
     .clear
-    .piece
-      .media
-        a href="/images/projects/kellogguniversity/kellogg-1.jpg" data-lightbox="kellogguniversity" 
-          img src="/images/projects/kellogguniversity/kellogg-1-small.jpg"
-    .piece
-      .media
-        a href="/images/projects/kellogguniversity/kellogg-2.jpg" data-lightbox="kellogguniversity"
-          img src="/images/projects/kellogguniversity/kellogg-2-small.jpg"
-    .piece
-      .media
-        a href="/images/projects/kellogguniversity/kellogg-3.jpg" data-lightbox="kellogguniversity" 
-          img src="/images/projects/kellogguniversity/kellogg-3-small.jpg"
+    
+    .center
+      .piece index="0"
+        .media
+          a href="/images/projects/kellogguniversity/kellogg-1.jpg" data-lightbox="kellogguniversity" 
+            img src="/images/projects/kellogguniversity/kellogg-1-small.jpg"
+            .fondo
+      .piece index="1"
+        .media
+          a href="/images/projects/kellogguniversity/kellogg-2.jpg" data-lightbox="kellogguniversity"
+            img src="/images/projects/kellogguniversity/kellogg-2-small.jpg"
+            .fondo
+      .piece index="2"
+        .media
+          a href="/images/projects/kellogguniversity/kellogg-3.jpg" data-lightbox="kellogguniversity" 
+            img src="/images/projects/kellogguniversity/kellogg-3-small.jpg"
+            .fondo
+
     .clear
     hr.small.center
     .process.half.left
@@ -43,28 +49,36 @@
       p This project started as a rescue project. This was somehow challenging, since the base of the project had not been written by our team and lacked proper testing. 
       p For building this customed CRM we have used Rails. This permits us write better code, faster. This app manages sensitive data for the core of Green Light business, so assuring a solid unit test suite was a must, for this we created it using RSPEC and Cucumber.
       p The development team is conformed by 3 engineers working full time.
-    .clear
-    h2 CODE EXAMPLE
-    .clear
-    .code
-      blockquote
-        pre
-          code data-language="ruby"
-      			h1 style="color: red;" MISSING CODE EXAMPLE
 
-    h2 UNIT TEST
     .clear
-    .code
-      blockquote
-        pre
-          code data-language="ruby"
-      			h1 style="color: red;" MISSING CODE EXAMPLE
+
+    div id="tabs"
+      ul
+        li
+          a href="#tabs-1" Code Example
+        li
+          a href="#tabs-2" Unit Test
+
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                h1 style="color: red;" MISSING CODE EXAMPLE
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                h1 style="color: red;" MISSING CODE EXAMPLE
 
     .clear
     hr.small.center
     .clear
     .process.left
       h1 The Process
+    .clear
     .piece.text
       .icon
         img src="/images/call.svg"

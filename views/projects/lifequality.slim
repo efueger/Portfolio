@@ -24,18 +24,24 @@
       h1 Front End
       p Life Quality team already had their designed mockups. They asked us to implement these images and slice them into HTML + CSS.
     .clear
-    .piece
-      .media
-        a href="/images/projects/lifequality/lifequality-1.jpg" data-lightbox="lifequality" 
-          img src="/images/projects/lifequality/lifequality-1-small.jpg"
-    .piece
-      .media
-        a href="/images/projects/lifequality/lifequality-2.jpg" data-lightbox="lifequality"
-          img src="/images/projects/lifequality/lifequality-2-small.jpg"
-    .piece
-      .media
-        a href="/images/projects/lifequality/lifequality-3.jpg" data-lightbox="lifequality" 
-          img src="/images/projects/lifequality/lifequality-3-small.jpg"
+    
+    .center
+      .piece index="0"
+        .media
+          a href="/images/projects/lifequality/lifequality-1.jpg" data-lightbox="lifequality" 
+            img src="/images/projects/lifequality/lifequality-1-small.jpg"
+            .fondo
+      .piece index="1"
+        .media
+          a href="/images/projects/lifequality/lifequality-2.jpg" data-lightbox="lifequality"
+            img src="/images/projects/lifequality/lifequality-2-small.jpg"
+            .fondo
+      .piece index="2"
+        .media
+          a href="/images/projects/lifequality/lifequality-3.jpg" data-lightbox="lifequality" 
+            img src="/images/projects/lifequality/lifequality-3-small.jpg"
+            .fondo
+
     .clear
     hr.small.center
     .process.half.left
@@ -45,21 +51,28 @@
       h2 style="color: red;" MORE INFO ON WHAT THE TEAM DID ON THE DEVELOPMENT SIDE?
 
     .clear
-    h2 CODE EXAMPLE
-    .clear
-    .code
-      blockquote
-        pre
-          code data-language="ruby"
-            h2 style="color: red;" MISSING CODE EXAMPLE
+    
+    div id="tabs"
+      ul
+        li
+          a href="#tabs-1" Code Example
+        li
+          a href="#tabs-2" Unit Test
 
-    h2 UNIT TEST
-    .clear
-    .code
-      blockquote
-        pre
-          code data-language="ruby"
-            h2 style="color: red;" MISSING CODE EXAMPLE
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                h1 style="color: red;" MISSING CODE EXAMPLE
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                h1 style="color: red;" MISSING CODE EXAMPLE
+
     .clear
     .process.half.left
       p Don't take our word for it. We run Life Quality through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
@@ -71,6 +84,7 @@
     .clear
     .process.left
       h1 The Process
+    .clear
     .piece.text
       .icon
         img src="/images/call.svg"
@@ -86,7 +100,6 @@
         img src="/images/trello.svg"
       h1 trello - project management
       p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-    .clear
     .piece.text
       .icon
         img src="/images/qa.svg"

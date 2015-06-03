@@ -23,37 +23,54 @@
     h1 Design of ui and ux
     p Reputation Pie's target is young people between 18 - 38 years old. The design had to speak to them. We created a clean yet graphic interface in which people can interact easily with their Facebook data.
   .clear
-  .piece
-    .media
-      a href="/images/projects/reputationpie/reputationpie-1.jpg" data-lightbox="greenlight" 
-        img src="/images/projects/reputationpie/reputationpie-1-small.jpg"
-  .piece
-    .media
-      a href="/images/projects/reputationpie/reputationpie-2.jpg" data-lightbox="greenlight"
-        img src="/images/projects/reputationpie/reputationpie-2-small.jpg"
-  .piece
-    .media
-      a href="/images/projects/reputationpie/reputationpie-3.jpg" data-lightbox="greenlight" 
-        img src="/images/projects/reputationpie/reputationpie-3-small.jpg"
+
+  .center
+    .piece index="0"
+      .media
+        a href="/images/projects/reputationpie/reputationpie-1.jpg" data-lightbox="greenlight" 
+          img src="/images/projects/reputationpie/reputationpie-1-small.jpg"
+          .fondo
+    .piece index="1"
+      .media
+        a href="/images/projects/reputationpie/reputationpie-2.jpg" data-lightbox="greenlight"
+          img src="/images/projects/reputationpie/reputationpie-2-small.jpg"
+          .fondo
+    .piece index="2"
+      .media
+        a href="/images/projects/reputationpie/reputationpie-3.jpg" data-lightbox="greenlight" 
+          img src="/images/projects/reputationpie/reputationpie-3-small.jpg"
+          .fondo
+
   .clear
   hr.small.center
   .process.half.left
     h1 Development
     p This is a Ruby on Rails project. One of the most interesting parts of the app is the in depth integration with the Facebook API.
     p The development team is conformed by 2 engineers working full time.
+
   .clear
-  h2 CODE EXAMPLE
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
-  h2 UNIT TEST
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
+
+  div id="tabs"
+    ul
+      li
+        a href="#tabs-1" Code Example
+      li
+        a href="#tabs-2" Unit Test
+
+    div id="tabs-1"
+      .code
+        blockquote
+          pre
+            code data-language="ruby"
+              h1 style="color: red;" MISSING CODE EXAMPLE
+
+    div id="tabs-2"
+      .code
+        blockquote
+          pre
+            code data-language="ruby"
+              h1 style="color: red;" MISSING CODE EXAMPLE
+              
   .clear
   .process.half.left
     p Don't take our word for it. We run Reputation Pie through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
@@ -65,6 +82,7 @@
   .clear
   .process.half.left
     h1 The Process
+  .clear
   .piece.text
     .icon
       img src="/images/call.svg"
@@ -80,7 +98,6 @@
       img src="/images/trello.svg"
     h1 trello - project management
     p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-  .clear
   .piece.text
     .icon
       img src="/images/qa.svg"
@@ -91,7 +108,7 @@
       img src="/images/deploys.svg"
     h1 Deployments
     p We do weekly deploys to the project and push all new features to production.
-  .piece
+  .piece.text
     .icon
       img src="/images/client.svg"
     h1 Client approval

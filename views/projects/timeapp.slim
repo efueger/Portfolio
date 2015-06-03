@@ -24,18 +24,24 @@
       h1 Design of UX and UI
       p The design of this app is based on our team's and client's needs. The problem we were trying to solve was to make easier the process of logging time and reporting progress.
     .clear
-    .piece
-      .media
-        a href="/images/projects/timeapp/timeapp-1.jpg" data-lightbox="timeapp" 
-          img src="/images/projects/timeapp/timeapp-1-small.jpg"
-    .piece
-      .media
-        a href="/images/projects/timeapp/timeapp-2.jpg" data-lightbox="timeapp"
-          img src="/images/projects/timeapp/timeapp-2-small.jpg"
-    .piece
-      .media
-        a href="/images/projects/timeapp/timeapp-3.jpg" data-lightbox="timeapp" 
-          img src="/images/projects/timeapp/timeapp-3-small.jpg"
+
+    .center
+      .piece index="0"
+        .media
+          a href="/images/projects/timeapp/timeapp-1.jpg" data-lightbox="timeapp" 
+            img src="/images/projects/timeapp/timeapp-1-small.jpg"
+            .fondo
+      .piece index="1"
+        .media
+          a href="/images/projects/timeapp/timeapp-2.jpg" data-lightbox="timeapp"
+            img src="/images/projects/timeapp/timeapp-2-small.jpg"
+            .fondo
+      .piece index="2"
+        .media
+          a href="/images/projects/timeapp/timeapp-3.jpg" data-lightbox="timeapp" 
+            img src="/images/projects/timeapp/timeapp-3-small.jpg"
+            .fondo
+
     .clear
     hr.small.center
     .process.half.left
@@ -46,205 +52,213 @@
 
     .clear
 
-    h2 UNIT TEST - TIME LOGGER
-    .clear
-    .code
-      blockquote
-        pre
-          code data-language="ruby"
-            | require "rails_helper"
+    div id="tabs"
+      ul
+        li
+          a href="#tabs-1" Unit Test - Time Logger
+        li
+          a href="#tabs-2" Code Example - Ruby
+        li
+          a href="#tabs-2" Code Example - Ruby
+        li
+          a href="#tabs-2" Code Example - Angular
 
-              RSpec.describe TimeLogger, :type => :model do
-                before(:each) do
-                  User.destroy_all
-                  Iteration.destroy_all
-                  Timelog.destroy_all
-                  stubbing_project_manager
-                end
-                let(:user) { create(:user) }
-                subject{ TimeLogger.new(user)}
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | require "rails_helper"
 
-                describe "validate" do
-                  let!(:iteration){ create(:iteration, project_id:"is-an-id",start: DateTime.now - 1.day)}
-                  describe "presence" do
-                    it { is_expected.to validate_presence_of(:project_name) }
-                    it { is_expected.to validate_presence_of(:project_id) }
-                  end
-                end
+                  RSpec.describe TimeLogger, :type => :model do
+                    before(:each) do
+                      User.destroy_all
+                      Iteration.destroy_all
+                      Timelog.destroy_all
+                      stubbing_project_manager
+                    end
+                    let(:user) { create(:user) }
+                    subject{ TimeLogger.new(user)}
 
-                describe "#register" do
-                  let(:timelog_1){ attributes_for(:timelog)}
-                  let(:timelog_2){ attributes_for(:timelog)}
-                  let(:attributes){ {project_id: "is-an-id", project_name: "this is my name", timelogs_attributes: [timelog_1,timelog_2]}}
-                  let(:time_logger){ TimeLogger.new(user)}
-
-                  describe "iteration" do
-                    describe "existing" do
-                      let!(:iteration){ create(:iteration, time: time, project_id:"is-an-id",start: DateTime.now - 1.day)}
-                      describe "iteration has more hours" do
-                        let(:time){ 30 }
-                        it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
-                      end
-                      describe "Record more hours than are available" do
-                        let(:time){ 1 }
-                        it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
-                      end
-
-                      describe "No record because no times available" do
-                        let(:time){ 1 }
-                        before {time_logger.create(attributes)}
-                        it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(0) }
+                    describe "validate" do
+                      let!(:iteration){ create(:iteration, project_id:"is-an-id",start: DateTime.now - 1.day)}
+                      describe "presence" do
+                        it { is_expected.to validate_presence_of(:project_name) }
+                        it { is_expected.to validate_presence_of(:project_id) }
                       end
                     end
-                    describe "not existing" do
-                      it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(0) }
+
+                    describe "#register" do
+                      let(:timelog_1){ attributes_for(:timelog)}
+                      let(:timelog_2){ attributes_for(:timelog)}
+                      let(:attributes){ {project_id: "is-an-id", project_name: "this is my name", timelogs_attributes: [timelog_1,timelog_2]}}
+                      let(:time_logger){ TimeLogger.new(user)}
+
+                      describe "iteration" do
+                        describe "existing" do
+                          let!(:iteration){ create(:iteration, time: time, project_id:"is-an-id",start: DateTime.now - 1.day)}
+                          describe "iteration has more hours" do
+                            let(:time){ 30 }
+                            it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
+                          end
+                          describe "Record more hours than are available" do
+                            let(:time){ 1 }
+                            it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(2) }
+                          end
+
+                          describe "No record because no times available" do
+                            let(:time){ 1 }
+                            before {time_logger.create(attributes)}
+                            it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(0) }
+                          end
+                        end
+                        describe "not existing" do
+                          it{ expect{ time_logger.create(attributes) }.to change{Timelog.count}.by(0) }
+                        end
+                      end
                     end
                   end
-                end
-              end
 
-    h2 CODE EXAMPLE - RUBY
-    .clear
-    .code
-      blockquote
-        pre
-          code data-language="ruby"
-            | class Api::TimelogsController <  ApiAuthenticatedController
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class Api::TimelogsController <  ApiAuthenticatedController
 
-                def create
-                  @timelogs = TimeLogger.new(current_user)
-                  if @timelogs.create(timelogger_params)
-                    render json: @timelogs, status: 201, notice: "Successfully created Timelog"
-                  else
-                    render json: @timelogs.errors.messages, status: 422
+                    def create
+                      @timelogs = TimeLogger.new(current_user)
+                      if @timelogs.create(timelogger_params)
+                        render json: @timelogs, status: 201, notice: "Successfully created Timelog"
+                      else
+                        render json: @timelogs.errors.messages, status: 422
+                      end
+                    end
+
+                    def update
+                      @timelog = Timelog.find(params[:id])
+                      if @timelog.update(timelog_params)
+                        render json: @timelog, status: 201, notice: "Successfully updated Timelog"
+                      else
+                        render json: @timelog.errors.messages, status: 422
+                      end
+                    end
+
+                    def index
+                      @timelogs =  Timelog.performance(params_search)
+                      render json: @timelogs
+                    end
+
+                    def get_by_card
+                      @timelogs =  Timelog.only(:task_id, :fecha, :time, :value_ajust, :comment).where(:task_id => params[:card_id], :fecha => params[:date_start]..params[:date_end])
+                      render json: @timelogs
+                    end
+
+                    def params_search
+                      params.permit(:date_1, :date_2, :project_id, :user_id)
+                    end
+
+                    def timelog_params
+                      params.require(:timelog).permit(:time,:comment)
+                    end
+
+                    def timelogger_params
+                      params.require(:timelogger).permit(:project_id, :project_name, timelogs_attributes: timelog_attributes)
+                    end
+
+                    def timelog_attributes
+                      [:task_id,:task_name, :comment, :time]
+                    end
+
                   end
-                end
 
-                def update
-                  @timelog = Timelog.find(params[:id])
-                  if @timelog.update(timelog_params)
-                    render json: @timelog, status: 201, notice: "Successfully updated Timelog"
-                  else
-                    render json: @timelog.errors.messages, status: 422
+      div id="tabs-3"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class Iteration
+                    include Mongoid::Document
+
+                    field :project_id, type: String
+                    field :time, type: Float
+                    field :note, type: String
+                    field :start, type: Date, default: DateTime.now
+                    field :end_date, type: Date
+                    field :invoice, type: Integer
+
+                    validates_presence_of :start, :time
+                    validates_numericality_of :time
+
+                    scope :by_project, ->(project_id) { where(:project_id => project_id).order_by(:start.desc) }
+                    scope :closed, -> {where(end_date: nil)}
+
+                    before_create do |iteration|
+                      prev_iteration = Iteration.current_iteration(iteration.project_id)
+                      prev_iteration.close_iteration! if prev_iteration
+                    end
+
+                    def timelogs
+                      Timelog.where(iteration_id: self.id)
+                    end
+
+                    def self.current_iteration(project)
+                      where(:project_id => project, :start.lte => DateTime.now ).order_by(:start.desc).limit(1).first
+                    end
+
+                    def close_iteration!
+                      last_timelog = self.timelogs.last_registered(1).first
+                      self.end_date = last_timelog.fecha
+                      self.save
+                    end
+
+                    def update_dates
+                      self.start = first_log_date
+                      self.end_date = last_log_date
+                      self.save
+                    end
+
+                    def first_log_date
+                      self.timelogs.order_by(:fecha.asc).first.fecha
+                    end
+
+                    def update_end_date
+                      self.end_date = last_log_date
+                      self.save
+                    end
+
+                    def last_log_date
+                      last = self.timelogs.order_by(:fecha.asc).last
+                      last ? last.fecha : DateTime.now
+                    end
+
+                    def can_register_hours?
+                      time_for_iteration < time 
+                    end
+
+                    def remain_time
+                      time - time_for_iteration
+                    end
+
+                    def time_worked
+                      total_time = timelogs.inject(0.0){|total,timelog| total += timelog.time_worked }
+                      total_time.round(2)
+                    end
+
+                    def time_for_iteration
+                      total_time = timelogs.inject(0.0){|total,timelog| total += timelog.time_for_iteration }
+                      total_time.round(2)
+                    end
+
+                    def as_json(options = nil)
+                      super(options).merge({time_for_iteration: time_for_iteration})
+                    end
+
                   end
-                end
 
-                def index
-                  @timelogs =  Timelog.performance(params_search)
-                  render json: @timelogs
-                end
-
-                def get_by_card
-                  @timelogs =  Timelog.only(:task_id, :fecha, :time, :value_ajust, :comment).where(:task_id => params[:card_id], :fecha => params[:date_start]..params[:date_end])
-                  render json: @timelogs
-                end
-
-                def params_search
-                  params.permit(:date_1, :date_2, :project_id, :user_id)
-                end
-
-                def timelog_params
-                  params.require(:timelog).permit(:time,:comment)
-                end
-
-                def timelogger_params
-                  params.require(:timelogger).permit(:project_id, :project_name, timelogs_attributes: timelog_attributes)
-                end
-
-                def timelog_attributes
-                  [:task_id,:task_name, :comment, :time]
-                end
-
-              end
-
-    h2 CODE EXAMPLE - RUBY
-    .clear
-    .code
-      blockquote
-        pre
-          code data-language="ruby"
-            | class Iteration
-                include Mongoid::Document
-
-                field :project_id, type: String
-                field :time, type: Float
-                field :note, type: String
-                field :start, type: Date, default: DateTime.now
-                field :end_date, type: Date
-                field :invoice, type: Integer
-
-                validates_presence_of :start, :time
-                validates_numericality_of :time
-
-                scope :by_project, ->(project_id) { where(:project_id => project_id).order_by(:start.desc) }
-                scope :closed, -> {where(end_date: nil)}
-
-                before_create do |iteration|
-                  prev_iteration = Iteration.current_iteration(iteration.project_id)
-                  prev_iteration.close_iteration! if prev_iteration
-                end
-
-                def timelogs
-                  Timelog.where(iteration_id: self.id)
-                end
-
-                def self.current_iteration(project)
-                  where(:project_id => project, :start.lte => DateTime.now ).order_by(:start.desc).limit(1).first
-                end
-
-                def close_iteration!
-                  last_timelog = self.timelogs.last_registered(1).first
-                  self.end_date = last_timelog.fecha
-                  self.save
-                end
-
-                def update_dates
-                  self.start = first_log_date
-                  self.end_date = last_log_date
-                  self.save
-                end
-
-                def first_log_date
-                  self.timelogs.order_by(:fecha.asc).first.fecha
-                end
-
-                def update_end_date
-                  self.end_date = last_log_date
-                  self.save
-                end
-
-                def last_log_date
-                  last = self.timelogs.order_by(:fecha.asc).last
-                  last ? last.fecha : DateTime.now
-                end
-
-                def can_register_hours?
-                  time_for_iteration < time 
-                end
-
-                def remain_time
-                  time - time_for_iteration
-                end
-
-                def time_worked
-                  total_time = timelogs.inject(0.0){|total,timelog| total += timelog.time_worked }
-                  total_time.round(2)
-                end
-
-                def time_for_iteration
-                  total_time = timelogs.inject(0.0){|total,timelog| total += timelog.time_for_iteration }
-                  total_time.round(2)
-                end
-
-                def as_json(options = nil)
-                  super(options).merge({time_for_iteration: time_for_iteration})
-                end
-
-              end
-    h2 CODE EXAMPLE - ANGULAR
-    .clear
-    .code
-      blockquote
+      div id="tabs-1"
+        .code
+          blockquote
         pre
           code data-language="javascript"
             | (function(){
@@ -344,9 +358,11 @@
                       currentUser = user;
                       $('meta[name="Token"]').attr('content',user.token_authentication);
                     };
+
                     this.token = function(){
                      return currentUser.token_authentication;
-                    }
+                    };
+
                     this.saveCache = function(){
                       saveJsonCache('currentUser',currentUser);
                     };
@@ -355,15 +371,18 @@
                       if(this.isAuthenticated()){
                         $location.path('/');
                       }
-                    }
+                    };
+
                     this.isPendingAuth = function(){      
                       if( !this.isAuthenticated()){
                         $location.path('/log-in');
                       }
-                    }
+                    };
+
                     this.getUser = function(){
                       return currentUser;
-                    }
+                    };
+
                     if( existCache("currentUser") )
                       currentUser = new TimeApp.User( loadJsonCache("currentUser") );      
                     else
@@ -387,7 +406,7 @@
                 };
    
                 var existCache = function(name){
-                  return localStorage[name] != undefined
+                  return localStorage[name] != undefined;
                 };
               })();
 
