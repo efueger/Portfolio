@@ -33,11 +33,13 @@ html
     script  $(function() {
               var n = $(".video").length;
               if (n < 2) {
+                console.log(n);
                 $(".video").css('float', 'none');
-                $(".video").css('margin', '0 auto');
+                $(".video").css('margin', '1em auto');
               } else {
+                console.log(n);
                 $(".video").css('float', 'left');
-                $(".video").css('margin', '0 2em 0 0');
+                $(".video").css('margin', '1em 2em 1em 0');
               }
             });
 
@@ -74,30 +76,29 @@ html
                 a href="http://softwarecriollo.com/services" services
               li 
                 a href="http://softwarecriollo.com/values" our values 
-              li 
-                a href="http://blog.apps.softwarecriollo.com/" thoughts 
-    .clear
+              li
+                a href="http://blog.apps.softwarecriollo.com/" thoughts
+        .clear
 
     == yield
 
     script type="text/javascript" src="/js/slick.min.js"
-
-    .footer
-        #wrapper
-            .contact.right
-              .nav.simple.right
-                ul
-                  li
-                    a href="http://softwarecriollo.com/opensource" open source
-                    a href="http://softwarecriollo.com/careers" careers
-                    a href="http://softwarecriollo.com/privacy" privacy
-                    a href="http://softwarecriollo.com/contact" contact us
-              .social.right
-                  a href="https://github.com/bakedweb" target="_blank"
-                      img src="/images/github.png"
-                  a href="http://dribbble.com/bellatrixmartnz" target="_blank"
-                      img src="/images/dribbble.png"
-                  a href="https://twitter.com/bakedweb" target="_blank"
-                      img src="/images/twitter.png"
-                  a href="http://www.facebook.com/pages/SoftwareCriollo/628828890535036" target="_blank"
-                      img src="/images/facebook.svg"
+  .footer
+    #wrapper
+        .contact.right
+          .nav.simple.right
+            ul
+              li
+                a href="http://softwarecriollo.com/opensource" open source
+                a href="http://softwarecriollo.com/careers" careers
+                a href="http://softwarecriollo.com/privacy" privacy
+                a href="http://softwarecriollo.com/contact" contact us
+          .social.right
+              a href="https://github.com/bakedweb" target="_blank"
+                  img src="/images/github.png"
+              a href="http://dribbble.com/bellatrixmartnz" target="_blank"
+                  img src="/images/dribbble.png"
+              a href="https://twitter.com/bakedweb" target="_blank"
+                  img src="/images/twitter.png"
+              a href="http://www.facebook.com/pages/SoftwareCriollo/628828890535036" target="_blank"
+                  img src="/images/facebook.svg"

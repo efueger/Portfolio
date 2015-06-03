@@ -19,6 +19,29 @@
 
     .clear
 
+.center
+  .piece index="0"
+    .media
+      a href="/images/projects/transnode/transnode-1.jpg" data-lightbox="greenlight" 
+        img src="/images/projects/transnode/transnode-1.jpg"
+        .fondo
+  .piece index="1"
+    .media
+      a href="/images/projects/transnode/transnode-2.jpg" data-lightbox="greenlight"
+        img src="/images/projects/transnode/transnode-2.jpg"
+        .fondo
+  .piece index="2"
+    .media
+      a href="/images/projects/transnode/transnode-3.jpg" data-lightbox="greenlight" 
+        img src="/images/projects/transnode/transnode-3.jpg"
+        .fondo
+
+#wrapper
+    .clear
+    .video
+      <iframe src="https://player.vimeo.com/video/127835270" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    .clear
+
     hr.small.center
     .clear
     .process.half.left
@@ -26,37 +49,20 @@
       p We did not design a specific UI for this project but rathered implemented a basic Bootstrap style and concentrated more on the development.
     .clear
 
-    .center
-      .piece index="0"
-        .media
-          a href="/images/projects/transnode/transnode-1.jpg" data-lightbox="greenlight" 
-            img src="/images/projects/transnode/transnode-1-small.jpg"
-            .fondo
-      .piece index="1"
-        .media
-          a href="/images/projects/transnode/transnode-2.jpg" data-lightbox="greenlight"
-            img src="/images/projects/transnode/transnode-2-small.jpg"
-            .fondo
-      .piece index="2"
-        .media
-          a href="/images/projects/transnode/transnode-3.jpg" data-lightbox="greenlight" 
-            img src="/images/projects/transnode/transnode-3-small.jpg"
-            .fondo
-
-    .clear
     hr.small.center
+    .clear
     .process.half.left
       h1 Development
       p On the Frontend side Transnode was built using technologies such as <a href="https://www.dartlang.org/" target="_blank">Dart</a> and <a href="https://angulardart.org/" target="_blank">Angular Dart</a>. These are new generation languages created by Google. Transnode is integrated with Amazon AWS and we are currently working on an integration with Google Apps for email client management and user logins. On the backend side we are using Ruby on Rails with automated tests to guarantee the right functioning of the app.
       p Dart applications can only be accessed by using Google Chromium browser.
-
     .clear
 
     div id="tabs"
       ul
-        li
+        li.border-left
           a href="#tabs-1" Code Example
-        li
+        li.border-right
+
           a href="#tabs-2" Unit Test
 
       div id="tabs-1"
@@ -143,35 +149,38 @@
                         before{ contact.user = user }
                         it{ expect(contact.user).to be(user)  }
                       end
-
-                  end
-
-                  context 'create' do
-                    describe 'multiple roles' do
-                      let(:attributes){ attributes_for(:contact) }
-                      it do
-                        expect{create(:contact, attributes ) }.to change(Contact, :count).by(1)
-                      end
                     end
 
-                    describe 'accepts_nested_attributes' do
-                      describe 'contacts' do
-                        let(:attributes){attributes_for(:contact, emails:[],phones:[],emails_attributes: [attributes_for(:email)] ,phones_attributes: [attributes_for(:phone)])}
-                        it { expect{Contact.new(attributes)}.to_not raise_error }
+                    context 'create' do
+                      describe 'multiple roles' do
+                        let(:attributes){ attributes_for(:contact) }
+                        it do
+                          expect{create(:contact, attributes ) }.to change(Contact, :count).by(1)
+                        end
+                      end
+
+                      describe 'accepts_nested_attributes' do
+                        describe 'contacts' do
+                          let(:attributes){attributes_for(:contact, emails:[],phones:[],emails_attributes: [attributes_for(:email)] ,phones_attributes: [attributes_for(:phone)])}
+                          it { expect{Contact.new(attributes)}.to_not raise_error }
+                        end
                       end
                     end
                   end
 
     .clear
-    .process.half.left
+
+    .climate-left
       p Don't take our word for it. We run Transnode through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
-    .clear
-    .codeclimate
-      h2 style="color: red;" MISSING CODE CLIMATE
-    .clear
+      .clear
+    .climate-right
+      .codeclimate
+        h2 style="color: red;" MISSING CODE CLIMATE
+      .clear
+
     hr.small.center
     .clear
-    .process.left
+    .process.half.left
       h1 The Process
     .clear
     .piece.text
@@ -205,11 +214,3 @@
       h1 Client approval
       p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
     .clear
-    hr.small.center
-    .process.left
-      h1 demos
-    .clear
-    .video.left
-      <iframe src="https://player.vimeo.com/video/127835270" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    .clear
-

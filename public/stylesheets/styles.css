@@ -86,6 +86,41 @@ p {
   .logo img {
     width: 50%; }
 
+#tabs li a {
+  font-size: 0.8125em;
+}
+
+.border-left {
+  border-top-left-radius: 4px !important;
+}
+
+.border-right {
+  border-top-right-radius: 4px !important;
+}
+
+.climate-left {
+  width: 50%;
+  height: 400px;
+  float: left;
+  margin: 30px 0 30px 0;
+  display: table; }
+  .climate-left p {
+    display: table-cell;
+    vertical-align: middle;
+    width: 95% !important; }
+
+.climate-right {
+  width: 50%;
+  height: 400px;
+  float: left;
+  margin: 30px 0 30px 0; }
+  .climate-right .codeclimate {
+    width: 100%;
+    height: 100%; }
+  .climate-right .codeclimate img {
+    width: 100%;
+    height: 100%; }
+
 .nav {
   width: 75%;
   text-align: right;
@@ -255,7 +290,7 @@ pre {
   .footer .nav {
     width: 100%;
     text-align: right;
-    margin: 0 0 4% 0; }
+    margin: 0 0 2% 0; }
     .footer .nav a {
       color: #e8e8e8;
       margin: 0 0 0 5%; }
@@ -275,8 +310,9 @@ pre {
   float: left; }
 
 .video {
-  margin: 4em 0.5em;
-  width: 48%; }
+  margin: 0 2em 1em 0;
+  width: 480px;
+  height: 281px; }
 
 .video_media {
   width: 100%;

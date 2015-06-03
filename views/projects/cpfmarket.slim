@@ -18,50 +18,55 @@
 
     .clear
 
+.center
+  .piece index="0"
+    .media
+      a href="/images/projects/cpfmarket/cpfmarket-1.jpg" data-lightbox="cpfmarket" 
+        img src="/images/projects/cpfmarket/cpfmarket-1.jpg"
+        .fondo
+  .piece index="1"
+    .media
+      a href="/images/projects/cpfmarket/cpfmarket-2.jpg" data-lightbox="cpfmarket"
+        img src="/images/projects/cpfmarket/cpfmarket-2.jpg"
+        .fondo
+  .piece index="2"
+    .media
+      a href="/images/projects/cpfmarket/cpfmarket-3.jpg" data-lightbox="cpfmarket" 
+        img src="/images/projects/cpfmarket/cpfmarket-3.jpg"
+        .fondo
+
+#wrapper
+    .clear
+    .video
+      <iframe src="https://player.vimeo.com/video/127854752" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    .clear
+
     hr.small.center
     .clear
     .process.half.left
       h1 Design of ui and ux
       p The design for CPF Market had to be sober yet modern. We went with a study of cool colors and serif fonts. The design exploration of the mockups was done using Invision App and there the design team collaborated with CPF Market's team to arrive to a functional solution for their users.
     .clear
-    
-    .center
-      .piece index="0"
-        .media
-          a href="/images/projects/cpfmarket/cpfmarket-1.jpg" data-lightbox="cpfmarket" 
-            img src="/images/projects/cpfmarket/cpfmarket-1-small.jpg"
-            .fondo
-      .piece index="1"
-        .media
-          a href="/images/projects/cpfmarket/cpfmarket-2.jpg" data-lightbox="cpfmarket"
-            img src="/images/projects/cpfmarket/cpfmarket-2-small.jpg"
-            .fondo
-      .piece index="2"
-        .media
-          a href="/images/projects/cpfmarket/cpfmarket-3.jpg" data-lightbox="cpfmarket" 
-            img src="/images/projects/cpfmarket/cpfmarket-3-small.jpg"
-            .fondo
 
-    .clear
     hr.small.center
+    .clear
     .process.half.left
       h1 Development
       p The team created this app using Ruby on Rails. 
       p The payment method is managed in two ways: We integrated with Stripe which allows users to pay with a credit card. We also implemented promotional codes which is agregated directly to the data bases.
       p Moreover, we implented Active Admin which is a Ruby on Rails framework which allows the app administration with a clean and easy to use interface.
       p The development team was conformed by 1 engineer working full time.
-
     .clear
-    
+
     div id="tabs"
       ul
-        li
+        li.border-left
           a href="#tabs-1" Promotional Code
         li
           a href="#tabs-2" Unit Test
         li
           a href="#tabs-3" Charges Controller
-        li
+        li.border-right
           a href="#tabs-4" Unit Test
 
       div id="tabs-1"
@@ -142,15 +147,19 @@
                   end
 
     .clear
-    .process.half.left
+
+    .climate-left
       p Don't take our word for it. We run CPF Market through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
-    .clear
-    .codeclimate 
-      img style="width: 20%;"src="/images/projects/cpfmarket/codeclimate.jpg"
-    .clear
+      .clear
+
+    .climate-right
+      .codeclimate
+        img src="/images/projects/cpfmarket/codeclimate.jpg"
+      .clear
+
     hr.small.center
     .clear
-    .process.left
+    .process.half.left
       h1 The Process
     .clear
     .piece.text
@@ -183,10 +192,4 @@
         img src="/images/client.svg"
       h1 Client approval
       p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
-    .clear
-    hr.small.center
-    .process.left
-      h1 demos
-    .video.left
-      <iframe src="https://player.vimeo.com/video/127854752" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     .clear

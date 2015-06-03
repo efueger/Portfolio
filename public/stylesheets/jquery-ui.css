@@ -194,9 +194,9 @@
 }
 .ui-tabs .ui-tabs-panel {
 	border-top-left-radius: 0;
-	border-top-right-radius: 3px;
-	border-bottom-left-radius: 3px;
-	border-bottom-right-radius: 3px;
+	border-top-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
 }
 /*#tabs .ui-tabs-panel { 
     background: #f5f3e5 url(http://code.jquery.com/ui/1.8.23/themes/south-street/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) repeat-x scroll 50% top; 
@@ -217,6 +217,7 @@
 	position: relative;
 	top: 0;
 	/*margin: 1px .2em 0 0;*/
+	margin-right: 1px;
 	border-bottom-width: 0;
 	padding: 0;
 	white-space: nowrap;
@@ -264,7 +265,8 @@
 .ui-widget-content {
 	/*border: 1px solid #555555;*/
 	/*background: #000000 url("images/ui-bg_loop_25_000000_21x21.png") 50% 50% repeat;*/
-	background: #000000;
+	/*background: #000000;*/
+	background: #22241F;
 	color: #ffffff;
 }
 .ui-widget-content a {
@@ -285,11 +287,7 @@
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-	/*border: 1px solid #444444;*/
-	/*background: #222222 url("images/ui-bg_highlight-soft_35_222222_1x100.png") 50% 50% repeat-x;*/
-	/*border: 1px solid #000000;*/
-	border-top: 1px solid #000000;
-	background: #23241f;
+	background: #45463E;
 	font-weight: normal;
 	color: #eeeeee;
 }
@@ -305,11 +303,7 @@
 .ui-state-focus,
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus {
-	/*border: 1px solid #0b93d5;*/
-	/*background: #003147 url("images/ui-bg_highlight-soft_33_003147_1x100.png") 50% 50% repeat-x;*/
-	/*border: 1px solid #FF9966;*/
-	/*border: 1px solid #000000;*/
-	background: #23241f;
+	background: #45463E;
 	font-weight: normal;
 	color: #ffffff;
 }
@@ -327,10 +321,7 @@
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	/*border: 1px solid #26b3f7;*/
-	/*background: #0972a5 url("images/ui-bg_highlight-hard_20_0972a5_1x100.png") 50% 50% repeat-x;*/
-	border: 1px solid #000000;
-	background: #000000;
+	background: #22241F;
 	font-weight: normal;
 	color: #ffffff;
 }
