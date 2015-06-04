@@ -25,8 +25,6 @@
 
 	.nav {
 		width: 100%;
-		text-align: right;
-		margin: 1em 0;
 	}
 
 	.nav li {
@@ -38,9 +36,8 @@
 		padding: 3px;
 	}
 
-	.nav a {
-		font-size: 0.625em !important;
-		margin: 0;
+	.nav a { /*Para el menu superior*/
+		font-size: 0.625em;
 	}
 
 	.logo {
@@ -48,15 +45,15 @@
 	}
 
 	.logo img {
-		width: 50%;
+		/*width: 50%;*/
 	}
 
-	.title {
+	/*.title {
 		margin: 0;
-	}
+	}*/
 
 	.title h1 {
-		font-size: 1.5em;
+		font-size: 1.375em;
 	}
 
 	h3{
@@ -110,17 +107,28 @@
 
 	.nav {
 		width: 100%;
-		text-align: right;
 	}
 
 	.nav li {
-		font-size: 0.75em;
-		margin: 0 0 0 0.7em;
+		margin: 0 0 0 0.625em;
+		letter-spacing: -0.5px;
+	}
+
+	.nav a { /*Para el menu superior*/
+		font-size: 0.7em;
 	}
 
 	.video {
 		margin: 1em 2% 1em 1%;
 		width: 97%;
+	}
+
+	.title h1 {
+		font-size: 1.625em;
+	}
+
+	.logo {
+		width: 80%;
 	}
 
 }
@@ -157,11 +165,23 @@
 
 	.nav {
 		width: 100%;
-		text-align: right;
+	}
+
+	.nav li {
+		margin: 0 0 0 0.625em;
+		letter-spacing: -0.5px;
 	}
 
 	.video {
 		margin: 1em 2em 1em 2%;
+	}
+
+	.title h1 {
+		font-size: 2.125em;
+	}
+
+	.logo {
+		width: 80%;
 	}
 
 }
@@ -200,25 +220,28 @@
 
 	.nav {
 		width: 70%;
-		text-align: right;
-		float: right;
 		margin: 1em 0 0 0;
 	}
 
-	.logo {
-		width: 30%;
-	}
 	.nav li {
-		font-size: 1em;
 		margin: 0 0 0 0.5em;
+		letter-spacing: -0.5px;
 	}
 
 	.video {
 		margin: 1em 2em 1em 2%;
 	}
 
-	.text {
+	/*.text {
 		width: 27% !important;
+	}*/
+
+	.title h1 {
+		font-size: 2.5em;
+	}
+
+	.logo {
+		width: 30%;
 	}
 }
 
@@ -259,6 +282,10 @@
 
 	.half {
 		width: 65%;
+	}
+
+	.view {
+		width: 29%;
 	}
 
 	.code {
@@ -323,5 +350,13 @@
 
 	.text {
 		margin: 1%;
+	}
+}
+
+@media (min-width:2245px){ 
+/* hi-res laptops and desktops */
+	.view img {
+		height: 395px;
+		width: 100%;
 	}
 }

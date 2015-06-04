@@ -33,11 +33,9 @@ html
     script  $(function() {
               var n = $(".video").length;
               if (n < 2) {
-                console.log(n);
                 $(".video").css('float', 'none');
                 $(".video").css('margin', '1em auto');
               } else {
-                console.log(n);
                 $(".video").css('float', 'left');
                 $(".video").css('margin', '1em 2em 1em 0');
               }
@@ -48,8 +46,6 @@ html
     link rel="stylesheet" type="text/css" href="/stylesheets/slick-theme.css"
     script  $(document).ready(function(){             
               $('.center').slick({
-                /*autoplay: true,
-                autoplaySpeed: 3000,*/
                 arrows: false,
                 centerMode: true,
                 slidesToShow: 1,
@@ -78,7 +74,7 @@ html
                 a href="http://softwarecriollo.com/values" our values 
               li
                 a href="http://blog.apps.softwarecriollo.com/" thoughts
-        .clear
+    .clear
 
     == yield
 

@@ -140,7 +140,8 @@ p {
     font-size: 0.95em;
     font-family: "museosans", "helveticaneue-light", "arial", "sans-serif"; }
   .nav a:hover, .nav.light li a:hover {
-    color: white; }
+    color: #eb2200;
+    /*color: white;*/ }
   .nav .active {
     border: 2px solid white;
     padding: 6px; }
@@ -184,7 +185,7 @@ p {
   padding: 1em 0; }
 
 .process {
-  width: 80%;
+  /*width: 80%;*/
   margin: 0 auto; }
   .process h1 {
     text-transform: uppercase;
@@ -210,7 +211,7 @@ p {
   float: left; }
 
 .code {
-  background-color: #272822;
+  /*background-color: #272822;*/
   width: 100%;
   border-radius: 3px;
   margin-left: -12px; }
