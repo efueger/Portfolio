@@ -1,112 +1,120 @@
-.title
-  h1 Kellogg University
-  hr.half.center
-.story
-  .process.full
-    .description
-      p Kellogg University approached us with the need to create an app to automize their new student matching process. We created an algorithm that follows certain parameters and matches new students with current students.
-  hr.small.center
-  .main-tags
-    a href="http://kellogg-university.herokuapp.com/" target="_blank"
+#wrapper
+  .title
+    h1 Kellogg University
+    hr.half.center
+  .story
+    .process.full
+      .description
+        p Kellogg University approached us with the need to create an app to automize their new student matching process. We created an algorithm that follows certain parameters and matches new students with current students.
+    hr.small.center
+    .main-tags
+      a href="http://kellogg-university.herokuapp.com/" target="_blank"
+        .tag
+          img src="/images/url.svg"
+          p kellogg-university.herokuapp.com
       .tag
-        img src="/images/url.svg"
-        p kellogg-university.herokuapp.com
-    .tag
-      img src="/images/time.svg"
-      p 3 months
+        img src="/images/time.svg"
+        p 3 months
 
-  .clear
-
-  hr.small.center
-  .clear
-  .process.half.left
-    h1 Design of ui and ux
-    p For the design of Kellogg App we used the current look and feel of the University in order to be consistent with the existant brand.
-  .clear
-  .piece
+    .clear
+.center
+  .piece index="0"
     .media
       a href="/images/projects/kellogguniversity/kellogg-1.jpg" data-lightbox="kellogguniversity" 
-        img src="/images/projects/kellogguniversity/kellogg-1-small.jpg"
-  .piece
+        img src="/images/projects/kellogguniversity/kellogg-1.jpg"
+        .fondo
+  .piece index="1"
     .media
       a href="/images/projects/kellogguniversity/kellogg-2.jpg" data-lightbox="kellogguniversity"
-        img src="/images/projects/kellogguniversity/kellogg-2-small.jpg"
-  .piece
+        img src="/images/projects/kellogguniversity/kellogg-2.jpg"
+        .fondo
+  .piece index="2"
     .media
       a href="/images/projects/kellogguniversity/kellogg-3.jpg" data-lightbox="kellogguniversity" 
-        img src="/images/projects/kellogguniversity/kellogg-3-small.jpg"
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 Development
-    p This project started as a rescue project. This was somehow challenging, since the base of the project had not been written by our team and lacked proper testing. 
-    p For building this customed CRM we have used Rails. This permits us write better code, faster. This app manages sensitive data for the core of Green Light business, so assuring a solid unit test suite was a must, for this we created it using RSPEC and Cucumber.
-    p The development team is conformed by 3 engineers working full time.
-  .clear
-  h2 CODE EXAMPLE
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-    			h1 style="color: red;" MISSING CODE EXAMPLE
+        img src="/images/projects/kellogguniversity/kellogg-3.jpg"
+        .fondo
+.clear
 
+#wrapper
+    .piece.shorter
+      h1 style="color: red;" MISSING DEMO VIDEO
+    .piece.shorter
+      h1 style="color: red;" MISSING DEMO VIDEO
+    .piece.shorter
+      h1 style="color: red;" MISSING DEMO VIDEO
+    .clear
 
-  h2 UNIT TEST
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-    			h1 style="color: red;" MISSING CODE EXAMPLE
+    hr.small.center
+    .clear
+    .process.left
+      h1 Design of ui and ux
+      p For the design of Kellogg App we used the current look and feel of the University in order to be consistent with the existant brand.
+    .clear
 
+    hr.small.center
+    .clear
+    .process.left
+      h1 Development
+      p This project started as a rescue project. This was somehow challenging, since the base of the project had not been written by our team and lacked proper testing. 
+      p For building this customed CRM we have used Rails. This permits us write better code, faster. This app manages sensitive data for the core of Green Light business, so assuring a solid unit test suite was a must, for this we created it using RSPEC and Cucumber.
+      p The development team is conformed by 3 engineers working full time.
+    .clear
 
+    div id="tabs"
+      ul
+        li.border-left
+          a href="#tabs-1" Code Example
+        li.border-right
+          a href="#tabs-2" Unit Test
 
-  .clear
-  hr.small.center
-  .clear
-  .process.left
-    h1 The Process
-  .piece.text
-    .icon
-      img src="/images/call.svg"
-    h1 kick off call
-    p To start the project our team met in Skype with Reputation Pie's team to fully understand the concept and brainstorm to execute some ideas.
-  .piece.text
-    .icon
-      img src="/images/report.svg"
-    h1 Status updates
-    p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
-  .piece.text
-    .icon
-      img src="/images/trello.svg"
-    h1 trello - project management
-    p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-  .clear
-  .piece.text
-    .icon
-      img src="/images/qa.svg"
-    h1 Quality Assurance
-    p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
-  .piece.text
-    .icon
-      img src="/images/deploys.svg"
-    h1 Deployments
-    p We do weekly deploys to the project and push all new features to production.
-  .piece
-    .icon
-      img src="/images/client.svg"
-    h1 Client approval
-    p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 demos
-  .clear
-  .piece.shorter
-    h1 style="color: red;" MISSING DEMO VIDEO
-  .piece.shorter
-    h1 style="color: red;" MISSING DEMO VIDEO
-  .piece.shorter
-    h1 style="color: red;" MISSING DEMO VIDEO
-  .clear
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+          			h1 style="color: red;" MISSING CODE EXAMPLE
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+          			h1 style="color: red;" MISSING CODE EXAMPLE
+
+    .clear
+    hr.small.center
+    .clear
+    .process.left
+      h1 The Process
+    .clear
+    .piece.text
+      .icon
+        img src="/images/call.svg"
+      h1 kick off call
+      p To start the project our team met in Skype with Reputation Pie's team to fully understand the concept and brainstorm to execute some ideas.
+    .piece.text
+      .icon
+        img src="/images/report.svg"
+      h1 Status updates
+      p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+    .piece.text
+      .icon
+        img src="/images/trello.svg"
+      h1 trello - project management
+      p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+    .piece.text
+      .icon
+        img src="/images/qa.svg"
+      h1 Quality Assurance
+      p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+    .piece.text
+      .icon
+        img src="/images/deploys.svg"
+      h1 Deployments
+      p We do weekly deploys to the project and push all new features to production.
+    .piece.text
+      .icon
+        img src="/images/client.svg"
+      h1 Client approval
+      p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+    .clear

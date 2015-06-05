@@ -1,177 +1,195 @@
-.title
-  h1 CPF Market
-  hr.half.center
-.story
-  .process.full
-    .description
-      p CPF Market is a commercial real state web application that allows borrowers present their financing projects. At the same time it allows lenders search for financing opportunities.
-  hr.small.center
-  .main-tags
-    a href="http://www.cpfmarket.com/" target="_blank"
+#wrapper
+  .title
+    h1 CPF Market
+    hr.half.center
+  .story
+    .process.full
+      .description
+        p CPF Market is a commercial real state web application that allows borrowers present their financing projects. At the same time it allows lenders search for financing opportunities.
+    hr.small.center
+    .main-tags
+      a href="http://www.cpfmarket.com/" target="_blank"
+        .tag
+          img src="/images/url.svg"
+          p cpfmarket.com
       .tag
-        img src="/images/url.svg"
-        p cpfmarket.com
-    .tag
-      img src="/images/time.svg"
-      p 3 months
+        img src="/images/time.svg"
+        p 3 months
 
-  .clear
+    .clear
 
-  hr.small.center
-  .clear
-  .process.half.left
-    h1 Design of ui and ux
-    p The design for CPF Market had to be sober yet modern. We went with a study of cool colors and serif fonts. The design exploration of the mockups was done using Invision App and there the design team collaborated with CPF Market's team to arrive to a functional solution for their users.
-  .clear
-  .piece
+.center
+  .piece index="0"
     .media
       a href="/images/projects/cpfmarket/cpfmarket-1.jpg" data-lightbox="cpfmarket" 
-        img src="/images/projects/cpfmarket/cpfmarket-1-small.jpg"
-  .piece
+        img src="/images/projects/cpfmarket/cpfmarket-1.jpg"
+        .fondo
+  .piece index="1"
     .media
       a href="/images/projects/cpfmarket/cpfmarket-2.jpg" data-lightbox="cpfmarket"
-        img src="/images/projects/cpfmarket/cpfmarket-2-small.jpg"
-  .piece
+        img src="/images/projects/cpfmarket/cpfmarket-2.jpg"
+        .fondo
+  .piece index="2"
     .media
       a href="/images/projects/cpfmarket/cpfmarket-3.jpg" data-lightbox="cpfmarket" 
-        img src="/images/projects/cpfmarket/cpfmarket-3-small.jpg"
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 Development
-    p The team created this app using Ruby on Rails. 
-    p The payment method is managed in two ways: We integrated with Stripe which allows users to pay with a credit card. We also implemented promotional codes which is agregated directly to the data bases.
-    p Moreover, we implented Active Admin which is a Ruby on Rails framework which allows the app administration with a clean and easy to use interface.
-    p The development team was conformed by 1 engineer working full time.
+        img src="/images/projects/cpfmarket/cpfmarket-3.jpg"
+        .fondo
+.clear
 
-  .clear
-  h2 CODE EXAMPLE - PROMOTIONAL CODE
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | def code_used?
-              errors.add(:code, "Code used") if used
-              used
-            end
+#wrapper
+    .video
+      <iframe src="https://player.vimeo.com/video/127854752" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    .clear
 
-            def find_promotional_code(params)
-              PromotionalCode.find_by(code: params[:code])
-            end
+    hr.small.center
+    .clear
+    .process.left
+      h1 Design of ui and ux
+      p The design for CPF Market had to be sober yet modern. We went with a study of cool colors and serif fonts. The design exploration of the mockups was done using Invision App and there the design team collaborated with CPF Market's team to arrive to a functional solution for their users.
+    .clear
 
-  h2 UNIT TEST
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | require 'rails_helper'
+    hr.small.center
+    .clear
+    .process.left
+      h1 Development
+      p The team created this app using Ruby on Rails. 
+      p The payment method is managed in two ways: We integrated with Stripe which allows users to pay with a credit card. We also implemented promotional codes which is agregated directly to the data bases.
+      p Moreover, we implented Active Admin which is a Ruby on Rails framework which allows the app administration with a clean and easy to use interface.
+      p The development team was conformed by 1 engineer working full time.
+    .clear
 
-            RSpec.describe PromotionalCode, :type => :model do
-              describe '.promotional_code' do
-                promotional_code = FactoryGirl.create(:promotional_code)
+    div id="tabs"
+      ul
+        li.border-left
+          a href="#tabs-1" Promotional Code
+        li
+          a href="#tabs-2" Unit Test
+        li
+          a href="#tabs-3" Charges Controller
+        li.border-right
+          a href="#tabs-4" Unit Test
 
-                context 'code used' do
-                  result = promotional_code.used?
-                  it { expect(result).to be(false) }
-                end
-              end
-            end
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | def code_used?
+                    errors.add(:code, "Code used") if used
+                    used
+                  end
 
-  h2 CODE EXAMPLE - CHARGES CONTROLLER
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | def payment_with_promotional_code
-              if find_promotional_code
-                find_promotional_code.update_attributes(used: true) if current_user.set_payment
-                redirect_to  properties_path
-              elsif find_promotional_code.nil?
-                redirect_to new_property_path, alert: "Please make sure you have a valid code"
-              else
-                redirect_to new_property_path, alert: "Please make sure you have a valid code"
-              end
-            end
+                  def find_promotional_code(params)
+                    PromotionalCode.find_by(code: params[:code])
+                  end
 
-  h2 UNIT TEST
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | require 'rails_helper'
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | require 'rails_helper'
 
-            RSpec.describe ChargesController, :type => :controller do
+                  RSpec.describe PromotionalCode, :type => :model do
+                    describe '.promotional_code' do
+                      promotional_code = FactoryGirl.create(:promotional_code)
 
-              describe "payment with promotional code" do
-                promotional_code = FactoryGirl.create(:promotional_code)
+                      context 'code used' do
+                        result = promotional_code.used?
+                        it { expect(result).to be(false) }
+                      end
+                    end
+                  end
 
-                context "promotional code valid" do
-                  result = promotional_code.find_promotional_code(code: "M18A")
-                  it { expect(result).not_to be_nil } 
-                  it { expect {promotional_code.update(used: true)}}
-                end
+      div id="tabs-3"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | def payment_with_promotional_code
+                    if find_promotional_code
+                      find_promotional_code.update_attributes(used: true) if current_user.set_payment
+                      redirect_to  properties_path
+                    elsif find_promotional_code.nil?
+                      redirect_to new_property_path, alert: "Please make sure you have a valid code"
+                    else
+                      redirect_to new_property_path, alert: "Please make sure you have a valid code"
+                    end
+                  end
 
-                context "promotional code not valid" do
-                  result = promotional_code.find_promotional_code(code: "H75")
-                  it { result.should be_nil }
-                end
+      div id="tabs-4"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | require 'rails_helper'
 
-                context "promotional code nil" do
-                  it { expect(promotional_code.code).not_to be_empty }
-                end
-              end
-            end
+                  RSpec.describe ChargesController, :type => :controller do
 
+                    describe "payment with promotional code" do
+                      promotional_code = FactoryGirl.create(:promotional_code)
 
-  .clear
-  .process.half.left
-    p Don't take our word for it. We run CPF Market through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
-  .clear
-  .codeclimate 
-    img style="width: 20%;"src="/images/projects/cpfmarket/codeclimate.jpg"
-  .clear
-  hr.small.center
-  .clear
-  .process.left
-    h1 The Process
-  .piece.text
-    .icon
-      img src="/images/call.svg"
-    h1 Kick Off call
-    p When starting off the project, the team met with CPF Market's team and together created a project brief. Detailing the project needs and brainstormed the best way to achieve them.
-  .piece.text
-    .icon
-      img src="/images/report.svg"
-    h1 Status updates
-    p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
-  .piece.text
-    .icon
-      img src="/images/trello.svg"
-    h1 trello - project management
-    p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-  .piece.text
-    .icon
-      img src="/images/qa.svg"
-    h1 Quality Assurance
-    p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
-  .piece.text
-    .icon
-      img src="/images/deploys.svg"
-    h1 Deployments
-    p We do weekly deploys to the project and push all new features to production.
-  .piece
-    .icon
-      img src="/images/client.svg"
-    h1 Client approval
-    p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 demos
-  .video.left
-    <iframe src="https://player.vimeo.com/video/127854752" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  .clear
+                      context "promotional code valid" do
+                        result = promotional_code.find_promotional_code(code: "M18A")
+                        it { expect(result).not_to be_nil } 
+                        it { expect {promotional_code.update(used: true)}}
+                      end
+
+                      context "promotional code not valid" do
+                        result = promotional_code.find_promotional_code(code: "H75")
+                        it { result.should be_nil }
+                      end
+
+                      context "promotional code nil" do
+                        it { expect(promotional_code.code).not_to be_empty }
+                      end
+                    end
+                  end
+
+    .clear
+
+    .climate-left
+      p Don't take our word for it. We run CPF Market through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
+      .clear
+
+    .climate-right
+      .codeclimate
+        img src="/images/projects/cpfmarket/codeclimate.jpg"
+      .clear
+
+    hr.small.center
+    .clear
+    .proces.left
+      h1 The Process
+    .clear
+    .piece.text
+      .icon
+        img src="/images/call.svg"
+      h1 Kick Off call
+      p When starting off the project, the team met with CPF Market's team and together created a project brief. Detailing the project needs and brainstormed the best way to achieve them.
+    .piece.text
+      .icon
+        img src="/images/report.svg"
+      h1 Status updates
+      p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+    .piece.text
+      .icon
+        img src="/images/trello.svg"
+      h1 trello - project management
+      p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+    .piece.text
+      .icon
+        img src="/images/qa.svg"
+      h1 Quality Assurance
+      p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+    .piece.text
+      .icon
+        img src="/images/deploys.svg"
+      h1 Deployments
+      p We do weekly deploys to the project and push all new features to production.
+    .piece.text
+      .icon
+        img src="/images/client.svg"
+      h1 Client approval
+      p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+    .clear

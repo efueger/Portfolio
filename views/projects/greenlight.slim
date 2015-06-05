@@ -1,291 +1,268 @@
-.title
-  h1 Green Light - Custom CRM
-  hr.half.center
-.story
-  .process.full
-    .description
-      p Green Light is a group trip organization company. They sell and manage thousands of group trips per year. Their process was done using Excel Spreadsheets and they needed a customized CRM to manage their business successfully.
-  hr.small.center
-  .main-tags
-    a href="https://www.touropspro.com/" target="_blank"
-      .tag
-        img src="/images/url.svg"
-        p touropspro.com
-    .tag
-      img src="/images/time.svg"
-      p ongoing +8 months
-
-  .clear
-
-  hr.small.center
-  .clear
-  .process.half.left
-    h1 Design of ui and ux
-    p The CRM had a basic style already defined. We worked closely with Green Light to define the interaction their team needed. We defined all views using Invision where we could collaborate and make comments. We continued their clean and functional look and feel that goes with their brand.
-  .clear
-  .piece
+.title-header
+  #wrapper
+    .title
+      h1 Green Light - Custom CRM
+      hr.half.center
+    .story
+      .process.full
+        .description
+          p Green Light is a group trip organization company. They sell and manage thousands of group trips per year. Their process was done using Excel Spreadsheets and they needed a customized CRM to manage their business successfully.
+      .main-tags
+        a href="https://www.touropspro.com/" target="_blank"
+          .tag
+            img src="/images/url.svg"
+            p touropspro.com
+        .tag
+          img src="/images/time.svg"
+          p ongoing +8 months
+    .clear
+.center
+  .piece index="0"
     .media
       a href="/images/projects/greenlight/42721215.jpg" data-lightbox="greenlight" 
         img src="/images/projects/greenlight/42721215-small.jpg"
-  .piece
+        .fondo
+  .piece index="1"
     .media
       a href="/images/projects/greenlight/68423030.jpg" data-lightbox="greenlight"
         img src="/images/projects/greenlight/68423030-small.jpg"
-  .piece
+        .fondo
+  .piece index="2"
     .media
       a href="/images/projects/greenlight/53407563.jpg" data-lightbox="greenlight" 
         img src="/images/projects/greenlight/53407563-small.jpg"
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 Development
-    p This project started as a rescue project. This was somehow challenging, since the base of the project had not been written by our team and lacked proper testing. 
-    p For building this customed CRM we have used Rails. This permits us write better code, faster. This app manages sensitive data for the core of Green Light business, so assuring a solid unit test suite was a must, for this we created it using RSPEC and Cucumber.
-    p The development team is conformed by 3 engineers working full time.
-  .clear
-  h2 CODE EXAMPLE
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | class Supplier < ActiveRecord::Base
-              include SearchableSorting
-              include CSVImportable
-              include Suppliers::Stringify
-              include Suppliers::CSV
-              include Suppliers::Contacts
+        .fondo
+.clear
 
-              has_many :suppliers_activities_types, dependent: :destroy
-              has_many :activity_types, through: :suppliers_activities_types
-              has_many :default_services, dependent: :destroy
-              has_many :locations, as: :addressable, dependent: :destroy
-              has_many :phones, as: :phoneable, dependent: :destroy
-              has_many :destinations, through: :locations
-              has_many :supplier_activity_feeds, dependent: :destroy
-              has_many :services, dependent: :destroy
-              has_many :activities, dependent: :destroy
+#wrapper
+    .video.left
+      <iframe src="https://player.vimeo.com/video/127755580" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    .video.left
+      <iframe src="https://player.vimeo.com/video/127756521" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    .clear
 
-              alias_method :activity_feeds, :supplier_activity_feeds
+    hr.small.center
+    .clear
+    .process.design.left
+      h1 Design of ui and ux
+      p The CRM had a basic style already defined. We worked closely with Green Light to define the interaction their team needed. We defined all views using Invision where we could collaborate and make comments. We continued their clean and functional look and feel that goes with their brand.
+    .clear
+    .process.development.left
+      h1 Development
+      p This project started as a rescue project. This was somehow challenging, since the base of the project had not been written by our team and lacked proper testing. 
+      p For building this customed CRM we have used Rails. This permits us write better code, faster. This app manages sensitive data for the core of Green Light business, so assuring a solid unit test suite was a must, for this we created it using RSPEC and Cucumber.
+      p The development team is conformed by 3 engineers working full time.
 
-              scope :by_proposal, -> (proposal_id) { where(destination_id: Proposal.find(proposal_id).destinations.pluck(:id)) }
-              scope :search_by_name, -> (name) { where('lower(suppliers.name) LIKE ?', "%&#35{name.downcase}%") }
-              scope :supplier_list, -> (trip_id) { Trip.find(trip_id).suppliers }
-              scope :search_supplier, -> (trip_id, name) { supplier_list(trip_id).search_by_name(name) }
+    .clear
+    
+    div id="tabs"
+      ul
+        li.border-left
+          a href="#tabs-1" Code Example
+        li
+          a href="#tabs-2" Unit Test
+        li.border-right
+          a href="#tabs-3" Code Example
 
-              validates :name, :activity_type_ids, presence: true
- 
-              accepts_nested_attributes_for :phones, allow_destroy: true, reject_if: proc { |phone| phone[:number].nil? || phone[:number].empty? }
-              accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
-              accepts_nested_attributes_for :suppliers_activities_types, allow_destroy: true, reject_if: :all_blank
-              accepts_nested_attributes_for :activity_types, allow_destroy: true, reject_if: :all_blank
-              accepts_nested_attributes_for :default_services, allow_destroy: true, reject_if: :all_blank
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class Supplier < ActiveRecord::Base
+                    include SearchableSorting
+                    include CSVImportable
+                    include Suppliers::Stringify
+                    include Suppliers::CSV
+                    include Suppliers::Contacts
 
-              mapping do
-                indexes :id, type: :integer
-                indexes :name
-                indexes :owner do
-                  indexes :name
-                end
-              end
+                    has_many :suppliers_activities_types, dependent: :destroy
+                    has_many :activity_types, through: :suppliers_activities_types
+                    has_many :default_services, dependent: :destroy
+                    has_many :locations, as: :addressable, dependent: :destroy
+                    has_many :phones, as: :phoneable, dependent: :destroy
+                    has_many :destinations, through: :locations
+                    has_many :supplier_activity_feeds, dependent: :destroy
+                    has_many :services, dependent: :destroy
+                    has_many :activities, dependent: :destroy
 
-              def as_indexed_json(options={})
-                self.as_json(
-                  methods: [:name_simple, :joined_activity_types_sorted,
-                   :joined_destinations_sorted,:destinations_sorted,:activity_types_sorted],
-                  include:{
-                    activity_types:{ methods: [:name]},
-                    locations: {methods: [:id, :name, :destination_name]},
-                    destinations:{methods: [:id, :name,:dma_region,:region_name]}
-                  }
-                )
-              end
-             
-              def instances_by_trip(trip)
-                proposal = trip.proposal
-                activities = proposal.activities.includes(:instances).where(supplier_id: id)
-                activities.map(&:instances).flatten
-              end
-             
-              def search_activity_feeds(search = nil)
-                search.nil? ? supplier_activity_feeds : supplier_activity_feeds.search_params(search[:name])
-              end
-             
-              def valid_destination?
-                destinations.any?
-              end
-             
-            end
+                    alias_method :activity_feeds, :supplier_activity_feeds
 
-  h2 UNIT TEST
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | require 'rails_helper'
-            RSpec.describe CSVImportable do
-              let (:test_class) { double("TestClass") { include CSVImportable } }
-              let (:file) { File.open(Rails.root.join("spec/fixtures/csv_example.csv")) }
-              let(:hash_row){ {:id=>"1",:first_name => 'pepe',:last_name => 'trueno' } }
- 
-              before do
-                class FakeModel
-                  include ActiveModel::Model
-                  include CSVImportable
-                  csv_allow_headers :id, :first_name, :last_name
-             
-                  csv_allow_headers :id, :first_name, :last_name
-             
-                  attr_accessor :id,:first_name,:last_name
-                  def self.create(params); end
-                  def self.find_by_id(id); end
-             
-                  def update(params); end
-                end
-              end
-             
-              describe "create a new entity" do
-                before { expect(FakeModel).to receive(:create).with(hash_row) }
-                it { FakeModel.import_sync(file) }
-              end
-             
-              describe "update an entity" do
-                before do
-                  expect_any_instance_of(FakeModel).to receive(:update).with(hash_row)
-                  expect(FakeModel).to receive(:find_by_id).with("1").and_return(FakeModel.new(hash_row))
-                end
-                it { FakeModel.import_sync(file) }
-              
-              end
-             
-              describe "csv_rename_header" do
-                before do
-                  class FakeModel
-                    csv_allow_headers :id, :first_name, :other_name
-                    csv_rename_headers last_name: :other_name
+                    scope :by_proposal, -> (proposal_id) { where(destination_id: Proposal.find(proposal_id).destinations.pluck(:id)) }
+                    scope :search_by_name, -> (name) { where('lower(suppliers.name) LIKE ?', "%&#35{name.downcase}%") }
+                    scope :supplier_list, -> (trip_id) { Trip.find(trip_id).suppliers }
+                    scope :search_supplier, -> (trip_id, name) { supplier_list(trip_id).search_by_name(name) }
+
+                    validates :name, :activity_type_ids, presence: true
+       
+                    accepts_nested_attributes_for :phones, allow_destroy: true, reject_if: proc { |phone| phone[:number].nil? || phone[:number].empty? }
+                    accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: :all_blank
+                    accepts_nested_attributes_for :suppliers_activities_types, allow_destroy: true, reject_if: :all_blank
+                    accepts_nested_attributes_for :activity_types, allow_destroy: true, reject_if: :all_blank
+                    accepts_nested_attributes_for :default_services, allow_destroy: true, reject_if: :all_blank
+
+                    mapping do
+                      indexes :id, type: :integer
+                      indexes :name
+                      indexes :owner do
+                        indexes :name
+                      end
+                    end
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | require 'rails_helper'
+
+                  RSpec.describe CSVImportable do
+                    let (:test_class) { double("TestClass") { include CSVImportable } }
+                    let (:file) { File.open(Rails.root.join("spec/fixtures/csv_example.csv")) }
+                    let(:hash_row){ {:id=>"1",:first_name => 'pepe',:last_name => 'trueno' } }
+
+                    before do
+                      class FakeModel
+                        include ActiveModel::Model
+                        include CSVImportable
+                        csv_allow_headers :id, :first_name, :last_name
+
+                        csv_allow_headers :id, :first_name, :last_name
+
+                        attr_accessor :id,:first_name,:last_name
+                        def self.create(params); end
+                        def self.find_by_id(id); end
+
+                        def update(params); end
+                      end
+                    end
+
+                    describe "create a new entity" do
+                      before { expect(FakeModel).to receive(:create).with(hash_row) }
+                      it { FakeModel.import_sync(file) }
+                    end
+
+                    describe "update an entity" do
+                      before do
+                        expect_any_instance_of(FakeModel).to receive(:update).with(hash_row)
+                        expect(FakeModel).to receive(:find_by_id).with("1").and_return(FakeModel.new(hash_row))
+                      end
+                      it { FakeModel.import_sync(file) }
+                    end
+
+                    describe "csv_rename_header" do
+                      before do
+                        class FakeModel
+                          csv_allow_headers :id, :first_name, :other_name
+                          csv_rename_headers last_name: :other_name
+                        end
+                      end
+                      let(:hash_row){ {:id=>"1",:first_name => 'pepe',:other_name => 'trueno' } }
+                      before { expect(FakeModel).to receive(:create).with(hash_row) }
+                      it { FakeModel.import_sync(file) }
+                    end
+
+                    describe "csv_allow_headers" do
+                      before do
+                        class FakeModel
+                          csv_rename_headers last_name: :other_name
+                          csv_allow_headers :id, :other_name
+                        end
+                      end
+                      let(:hash_row){ {:id=>"1", :other_name => 'trueno' } }
+                      before { expect(FakeModel).to receive(:create).with(hash_row) }
+                      it { FakeModel.import_sync(file) }
+                    end
                   end
-                end
-                let(:hash_row){ {:id=>"1",:first_name => 'pepe',:other_name => 'trueno' } }
-                before { expect(FakeModel).to receive(:create).with(hash_row) }
-                it { FakeModel.import_sync(file) }
-              end
-              describe "csv_allow_headers" do
-                before do
-                  class FakeModel
-                    csv_rename_headers last_name: :other_name
-                    csv_allow_headers :id, :other_name
+
+      div id="tabs-3"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class Multisearch
+                    def initialize(value)
+                      @value = value
+                      @client = Elasticsearch::Client.new(url: ENV['BONSAI_URL'], log: true)
+                    end
+
+                    def index
+                      @client.search(
+                        index: indexes(Proposal, Supplier, Trip, Person),
+                        body: body)
+                    end
+
+                    def tasks
+                      @client.search(
+                        index: indexes(Supplier, Trip, Person),
+                        body: body)
+                    end
+
+                    private
+
+                    def indexes(*models)
+                      models.map(&:index_name)
+                    end
+
+                    def body
+                      {
+                        min_score: 0.01,
+                        query: {
+                          bool:{
+                            should:[
+                              {match_phrase_prefix:{ name: @value }}]
+                          }
+                        },
+                        sort: [{name: 'asc'}, '_score'],
+                        size: 100
+                      }
+                    end
                   end
-                end
-                let(:hash_row){ {:id=>"1", :other_name => 'trueno' } }
-                before { expect(FakeModel).to receive(:create).with(hash_row) }
-                it { FakeModel.import_sync(file) }
-             
-              end
-            end
-  hr
-  .clear
-  br
-  h2 CODE EXAMPLE
 
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          | class Multisearch
-              def initialize(value)
-                @value = value
-                @client = Elasticsearch::Client.new(url: ENV['BONSAI_URL'], log: true)
-              end
-             
-              def index
-                @client.search(
-                  index: indexes(Proposal, Supplier, Trip, Person),
-                  body: body)
-              end
-             
-              def tasks
-                @client.search(
-                  index: indexes(Supplier, Trip, Person),
-                  body: body)
-              end
-             
-              private
-             
-              def indexes(*models)
-                models.map(&:index_name)
-              end
-             
-              def body
-                {
-                  min_score: 0.01,
-                  query: {
-                    bool:{
-                      should:[
-                        {match_phrase_prefix:{ name: @value }}]
-                    }
-                  },
-                  sort: [{name: 'asc'}, '_score'],
-                  size: 100
-                }
-              end
-            end
+    .clear
 
-  .clear
-  .process.half.left
-    p Don't take our word for it. We run Green Light through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
-  .clear
-  .codeclimate
-    img src="/images/projects/greenlight/codeclimate.png"
-  .clear
-  hr.small.center
-  .clear
-  .process.left
-    h1 The Process
-  .piece.text
-    .icon
-      img src="/images/report.svg"
-    h1 Status updates
-    p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
-  .piece.text
-    .icon
-      img src="/images/call.svg"
-    h1 Weekly calls
-    p On Tuesdays our team meets in Skype with Green Light team to demo new features and brainstorm on new needs.
-    br
-    br
+    .climate-left
+      p Don't take our word for it. We run Green Light through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
+      .clear
 
-  .piece.text
-    .icon
-      img src="/images/trello.svg"
-    h1 trello - project management
-    p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-    br
-  .piece.text
-    .icon
-      img src="/images/qa.svg"
-    h1 Quality Assurance
-    p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
-    br
-    br
+    .climate-right
+      .codeclimate
+        img src="/images/projects/greenlight/codeclimate.png"
+      .clear
 
-  .piece.text
-    .icon
-      img src="/images/deploys.svg"
-    h1 Deployments
-    p We do weekly deploys to the project and push all new features to production.
-    br
-  .piece.text
-    .icon
-      img src="/images/client.svg"
-    h1 Client approval
-    p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
-  .clear
-  hr.small.center
-  .process.left
-    h1 demos
-  .video.left
-    <iframe src="https://player.vimeo.com/video/127755580" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  .video.left
-    <iframe src="https://player.vimeo.com/video/127756521" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  .clear
+    hr.small.center
+    .clear
+    .process.left
+      h1 The Process
+    .clear
+    .piece.text
+      .icon
+        img src="/images/report.svg"
+      h1 Status updates
+      p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+    .piece.text
+      .icon
+        img src="/images/call.svg"
+      h1 Weekly calls
+      p On Tuesdays our team meets in Skype with Green Light team to demo new features and brainstorm on new needs.
+    .piece.text
+      .icon
+        img src="/images/trello.svg"
+      h1 trello - project management
+      p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+    .piece.text
+      .icon
+        img src="/images/qa.svg"
+      h1 Quality Assurance
+      p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+    .piece.text
+      .icon
+        img src="/images/deploys.svg"
+      h1 Deployments
+      p We do weekly deploys to the project and push all new features to production.
+    .piece.text
+      .icon
+        img src="/images/client.svg"
+      h1 Client approval
+      p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+    .clear

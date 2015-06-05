@@ -1,115 +1,131 @@
-.title
-  h1 Life Quality
-  hr.half.center
-.story
-  .process.full
-    .description
-      p Life Quality is a social network meant to share and track your goals and aspirations to attain a better quality of life.
-  hr.small.center
-  .main-tags
-    a href="http://life-quality.herokuapp.com/main" target="_blank"
+#wrapper
+  .title
+    h1 Life Quality
+    hr.half.center
+  .story
+    .process.full
+      .description
+        p Life Quality is a social network meant to share and track your goals and aspirations to attain a better quality of life.
+    hr.small.center
+    .main-tags
+      a href="http://life-quality.herokuapp.com/main" target="_blank"
+        .tag
+          img src="/images/url.svg"
+          p life-quality.herokuapp.com/main
       .tag
-        img src="/images/url.svg"
-        p life-quality.herokuapp.com/main
-    .tag
-      img src="/images/time.svg"
-      p 7 months
+        img src="/images/time.svg"
+        p 7 months
 
-  .clear
+    .clear
 
-  hr.small.center
-  .clear
-  .process.half.left
-    h1 Front End
-    p Life Quality team already had their designed mockups. They asked us to implement these images and slice them into HTML + CSS.
-  .clear
-  .piece
+.center
+  .piece index="0"
     .media
       a href="/images/projects/lifequality/lifequality-1.jpg" data-lightbox="lifequality" 
-        img src="/images/projects/lifequality/lifequality-1-small.jpg"
-  .piece
+        img src="/images/projects/lifequality/lifequality-1.jpg"
+        .fondo
+  .piece index="1"
     .media
       a href="/images/projects/lifequality/lifequality-2.jpg" data-lightbox="lifequality"
-        img src="/images/projects/lifequality/lifequality-2-small.jpg"
-  .piece
+        img src="/images/projects/lifequality/lifequality-2.jpg"
+        .fondo
+  .piece index="2"
     .media
       a href="/images/projects/lifequality/lifequality-3.jpg" data-lightbox="lifequality" 
-        img src="/images/projects/lifequality/lifequality-3-small.jpg"
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 Development
-    p The team created this app using Ruby on Rails. 
-    p The development team was conformed by 1 engineer working full time.
-    h2 style="color: red;" MORE INFO ON WHAT THE TEAM DID ON THE DEVELOPMENT SIDE?
+        img src="/images/projects/lifequality/lifequality-3.jpg"
+        .fondo
+.clear
 
-  .clear
-  h2 CODE EXAMPLE
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
+#wrapper
+    .piece.shorter
+      h1 style="color: red;" MISSING DEMO VIDEO
+    .piece.shorter
+      h1 style="color: red;" MISSING DEMO VIDEO
+    .piece.shorter
+      h1 style="color: red;" MISSING DEMO VIDEO
+    .clear
 
-  h2 UNIT TEST
-  .clear
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-          h2 style="color: red;" MISSING CODE EXAMPLE
-  .clear
-  .process.half.left
-    p Don't take our word for it. We run Life Quality through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
-  .clear
-  .codeclimate
-    h2 style="color: red;" MISSING CODE CLIMATE EXAMPLE
-  .clear
-  hr.small.center
-  .clear
-  .process.left
-    h1 The Process
-  .piece.text
-    .icon
-      img src="/images/call.svg"
-    h1 Kick Off call
-    p When starting off the project, the team met with CPF Market's team and together created a project brief. Detailing the project needs and brainstormed the best way to achieve them.
-  .piece.text
-    .icon
-      img src="/images/report.svg"
-    h1 Status updates
-    p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
-  .piece.text
-    .icon
-      img src="/images/trello.svg"
-    h1 trello - project management
-    p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-  .clear
-  .piece.text
-    .icon
-      img src="/images/qa.svg"
-    h1 Quality Assurance
-    p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
-  .piece.text
-    .icon
-      img src="/images/deploys.svg"
-    h1 Deployments
-    p We do weekly deploys to the project and push all new features to production.
-  .piece
-    .icon
-      img src="/images/client.svg"
-    h1 Client approval
-    p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 demos
-  .clear
-  .piece.shorter
-    h1 style="color: red;" MISSING DEMO VIDEO
-  .piece.shorter
-    h1 style="color: red;" MISSING DEMO VIDEO
-  .piece.shorter
-    h1 style="color: red;" MISSING DEMO VIDEO
-  .clear
+    hr.small.center
+    .clear
+    .process.left
+      h1 Front End
+      p Life Quality team already had their designed mockups. They asked us to implement these images and slice them into HTML + CSS.
+    .clear
+
+    hr.small.center
+    .clear
+    .process.left
+      h1 Development
+      p The team created this app using Ruby on Rails. 
+      p The development team was conformed by 1 engineer working full time.
+      h2 style="color: red;" MORE INFO ON WHAT THE TEAM DID ON THE DEVELOPMENT SIDE?
+    .clear
+
+    div id="tabs"
+      ul
+        li.border-left
+          a href="#tabs-1" Code Example
+        li.border-right
+          a href="#tabs-2" Unit Test
+
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                h1 style="color: red;" MISSING CODE EXAMPLE
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                h1 style="color: red;" MISSING CODE EXAMPLE
+
+    .clear
+
+    .climate-left
+      p Don't take our word for it. We run Life Quality through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
+      .clear
+
+    .climate-right
+      .codeclimate
+        h2 style="color: red;" MISSING CODE CLIMATE EXAMPLE
+      .clear
+
+    hr.small.center
+    .clear
+    .process.left
+      h1 The Process
+    .clear
+    .piece.text
+      .icon
+        img src="/images/call.svg"
+      h1 Kick Off call
+      p When starting off the project, the team met with CPF Market's team and together created a project brief. Detailing the project needs and brainstormed the best way to achieve them.
+    .piece.text
+      .icon
+        img src="/images/report.svg"
+      h1 Status updates
+      p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+    .piece.text
+      .icon
+        img src="/images/trello.svg"
+      h1 trello - project management
+      p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+    .piece.text
+      .icon
+        img src="/images/qa.svg"
+      h1 Quality Assurance
+      p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+    .piece.text
+      .icon
+        img src="/images/deploys.svg"
+      h1 Deployments
+      p We do weekly deploys to the project and push all new features to production.
+    .piece.text
+      .icon
+        img src="/images/client.svg"
+      h1 Client approval
+      p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+    .clear

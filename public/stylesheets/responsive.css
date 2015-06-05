@@ -4,7 +4,8 @@
 	}
 
 	.half {
-		width: 100%;
+		width: 96%;
+		padding-left: 2%;
 	}
 
 	.view {
@@ -13,23 +14,17 @@
   		float: none;
 	}
 
-	.media {
-		width: 100%;
-	}
-
-	.piece {
+	.piece.text {
 		width: 83%;
 		margin: 2% 6%;
 	}
 
-	.code, .codeclimate img {
+	.codeclimate img {
 		width: 91%;
 	}
 
 	.nav {
 		width: 100%;
-		text-align: right;
-		margin: 1em 0;
 	}
 
 	.nav li {
@@ -41,9 +36,8 @@
 		padding: 3px;
 	}
 
-	.nav a {
-		font-size: 0.5em !important;
-		margin: 0;
+	.nav a { /*Para el menu superior*/
+		font-size: 0.625em;
 	}
 
 	.logo {
@@ -51,15 +45,15 @@
 	}
 
 	.logo img {
-		width: 50%;
+		/*width: 50%;*/
 	}
 
-	.title {
+	/*.title {
 		margin: 0;
-	}
+	}*/
 
 	.title h1 {
-		font-size: 1.5em;
+		font-size: 1.375em;
 	}
 
 	h3{
@@ -76,8 +70,12 @@
 	}
 
 	.video {
-		margin: 1em 2% 0 0;
-		width: 98%;
+		margin: 1em 2% 1em 1%;
+		width: 97%;
+	}
+
+  	.piece .media {
+  		margin: 0 auto;
 	}
 }
 
@@ -97,34 +95,42 @@
   		float: none;
 	}
 
-	.media {
-		width: 100%;
-	}
-
-	.piece {
+	.piece.text {
 		width: 100%;
   		margin: 2% auto;
   		float: none;
 	}
 
-	.code, .codeclimate img {
+	.codeclimate img {
 		width: 95%;
 	}
 
 	.nav {
 		width: 100%;
-		text-align: right;
 	}
 
 	.nav li {
-		font-size: 0.8125em;
-		margin: 0 0 0 0.7em;
+		margin: 0 0 0 0.625em;
+		letter-spacing: -0.5px;
+	}
+
+	.nav a { /*Para el menu superior*/
+		font-size: 0.7em;
 	}
 
 	.video {
-		margin: 1em 2% 0 0;
-		width: 98%;
+		margin: 1em 2% 1em 1%;
+		width: 97%;
 	}
+
+	.title h1 {
+		font-size: 1.625em;
+	}
+
+	.logo {
+		width: 80%;
+	}
+
 }
 
 @media (min-width:641px) and (max-width: 767px){ 
@@ -147,22 +153,35 @@
 		width: 100%;
 	}
 
-	.piece {
+	.piece.text {
 		width: 65%;
-		margin: 2% 20%;
+		margin: 2% auto;
+		float: none;
 	}
 
-	.code, .codeclimate img {
+	.codeclimate img {
 		width: 95%;
 	}
 
 	.nav {
 		width: 100%;
-		text-align: right;
+	}
+
+	.nav li {
+		margin: 0 0 0 0.625em;
+		letter-spacing: -0.5px;
 	}
 
 	.video {
-		margin: 1em 2em 0 0;
+		margin: 1em 2em 1em 2%;
+	}
+
+	.title h1 {
+		font-size: 2.125em;
+	}
+
+	.logo {
+		width: 80%;
 	}
 
 }
@@ -185,35 +204,47 @@
 		margin: 0 0 0 7%;
 	}
 
-	.piece {
+	.piece.text {
 		width: 46%;
 		margin: 2%;
 	}
 
-	.code, .codeclimate img {
+	.media a img {
+		width: 100%;
+		height: 100%;
+	}
+
+	.codeclimate img {
 		width: 95%;
 	}
 
 	.nav {
 		width: 70%;
-		text-align: right;
-		float: right;
 		margin: 1em 0 0 0;
+	}
+
+	.nav li {
+		margin: 0 0 0 0.5em;
+		letter-spacing: -0.5px;
+	}
+
+	.video {
+		margin: 1em 2em 1em 2%;
+	}
+
+	/*.text {
+		width: 27% !important;
+	}*/
+
+	.title h1 {
+		font-size: 2.5em;
 	}
 
 	.logo {
 		width: 30%;
 	}
-	.nav li {
-		font-size: 1em;
-		margin: 0 0 0 0.5em;
-	}
-
-	.video {
-		margin: 1em 2em 0 0;
-	}
-
 }
+
 @media (min-width:1024px) and (max-width: 1280px) { 
 /* big landscape tablets, laptops, and desktops */ 
 	#wrapper{
@@ -229,11 +260,17 @@
 	}
 
 	.video {
-		margin: 1em 2em 0 0;
+		margin: 1em 2em 1em 0;
 	}
 
 	.text {
+		width: 27% !important;
 		margin: 2%;
+	}
+
+	.piece.slick-slide {
+		width: 450px !important;
+		height: 385px !important;
 	}
 }
 
@@ -244,11 +281,15 @@
 	}
 
 	.half {
-		width: 65% !important;
+		width: 65%;
+	}
+
+	.view {
+		width: 29%;
 	}
 
 	.code {
-		width: 90% !important;
+		width: 98% !important;
 	}
 
 	.piece {
@@ -256,13 +297,40 @@
 	}
 
 	.process {
+		width: 100% !important;
+	}
+
+	.text {
+		width: 27% !important;
+		margin: 2%;
+	}
+
+	.process {
 		width: 100%;
+	}
+
+	.piece.slick-slide {
+		width: 560px !important;
+		height: 475px !important;
+	}
+
+}
+
+@media (min-width:1400px){ 
+/* hi-res laptops and desktops */
+
+	.piece {
+		width: 35%;
 	}
 
 	.text {
 		margin: 2%;
 	}
 
+	.piece.slick-slide {
+		width: 700px !important;
+		height: 595px !important;
+	}
 }
 
 @media (min-width:1730px){ 
@@ -271,5 +339,24 @@
 	.text {
 		margin: 1%;
 	}
+}
 
+@media (min-width:2000px){ 
+/* hi-res laptops and desktops */
+
+	.piece {
+		width: 20%;
+	}
+
+	.text {
+		margin: 1%;
+	}
+}
+
+@media (min-width:2245px){ 
+/* hi-res laptops and desktops */
+	.view img {
+		height: 395px;
+		width: 100%;
+	}
 }
