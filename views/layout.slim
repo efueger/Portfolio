@@ -33,11 +33,14 @@ html
     script  $(function() {
               var n = $(".video").length;
               if (n < 2) {
+                console.log(n);
                 $(".video").css('float', 'none');
                 $(".video").css('margin', '1em auto');
               } else {
+                console.log(n);
                 $(".video").css('float', 'left');
-                $(".video").css('margin', '1em 2em 1em 0');
+                $(".video").css('margin', '1em 1% 1em 0');
+                $(".video").css('width', '49%');
               }
             });
 
@@ -45,7 +48,7 @@ html
     // Add the slick-theme.css if you want default styling
     link rel="stylesheet" type="text/css" href="/stylesheets/slick-theme.css"
     script  $(document).ready(function(){             
-              $('.center').slick({
+              $('.centro').slick({
                 arrows: false,
                 centerMode: true,
                 slidesToShow: 1,
