@@ -204,7 +204,7 @@
     opacity: 1 !important;
 }
 
-.slick-active .media a .fondo {
+.slick-active .media .fondo {
   position: absolute;
 }
 
@@ -215,7 +215,8 @@
 }
 
 .piece.slick-slide {
-  width: 355px;
-  height: 300px;
-  max-width: 1500px !important;
+  max-width: 600px;
+  max-height: 700px;
+  width: 600px;
+  height: 700px;
 }

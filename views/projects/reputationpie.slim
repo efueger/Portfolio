@@ -18,22 +18,19 @@
 
     .clear
 
-.center
-  .piece index="0"
+.centro
+  .piece index="0" style="width: 700px;"
     .media
-      a href="/images/projects/reputationpie/reputationpie-1.jpg" data-lightbox="greenlight" 
-        img src="/images/projects/reputationpie/reputationpie-1.jpg"
-        .fondo
-  .piece index="1"
+      img src="/images/projects/reputationpie/reputationpie-1.jpg"
+      .fondo
+  .piece index="1" style="width: 700px;"
     .media
-      a href="/images/projects/reputationpie/reputationpie-2.jpg" data-lightbox="greenlight"
-        img src="/images/projects/reputationpie/reputationpie-2.jpg"
-        .fondo
-  .piece index="2"
+      img src="/images/projects/reputationpie/reputationpie-2.jpg"
+      .fondo
+  .piece index="2" style="width: 700px;"
     .media
-      a href="/images/projects/reputationpie/reputationpie-3.jpg" data-lightbox="greenlight" 
-        img src="/images/projects/reputationpie/reputationpie-3.jpg"
-        .fondo
+      img src="/images/projects/reputationpie/reputationpie-3.jpg"
+      .fondo
 .clear
 
 #wrapper
@@ -51,14 +48,14 @@
 
     hr.small.center
     .clear
-    .process.left
+    .process.design.left
       h1 Design of ui and ux
       p Reputation Pie's target is young people between 18 - 38 years old. The design had to speak to them. We created a clean yet graphic interface in which people can interact easily with their Facebook data.
     .clear
 
     hr.small.center
     .clear
-    .process.left
+    .process.development.left
       h1 Development
       p This is a Ruby on Rails project. One of the most interesting parts of the app is the in depth integration with the Facebook API.
       p The development team is conformed by 2 engineers working full time.
@@ -68,23 +65,79 @@
     div id="tabs"
       ul
         li.border-left
-          a href="#tabs-1" Code Example
+          a href="#tabs-1" Code Example - Facebook
         li.border-right
-          a href="#tabs-2" Unit Test
+          a href="#tabs-2" Code Example - TagsController
 
       div id="tabs-1"
         .code
           blockquote
             pre
               code data-language="ruby"
-                h1 style="color: red;" MISSING CODE EXAMPLE
+                | class Facebook
+
+                    def initialize(user_token)
+                      @graph = Koala::Facebook::API.new(user_token)
+                    end
+
+                    def all_friends
+                      @graph.get_connections("me", "taggable_friends?fields=name, picture.width(215).height(215)")  
+                    end
+
+                    def info_user
+                      @graph.get_object("me")
+                    end
+
+                    def picture_user
+                      @graph.get_object('me', fields: "picture.width(215).height(215)")
+                    end
+
+                  end
 
       div id="tabs-2"
         .code
           blockquote
             pre
               code data-language="ruby"
-                h1 style="color: red;" MISSING CODE EXAMPLE
+                | class TagsController < ApplicationController
+                    before_action :authenticate_user!
+                    before_action :check_current_user
+                    before_action :validation_user_friend
+                    before_action :initialize_model, only: [:add_friend_tag, :tags_friend_vote]
+
+                    def params_tag
+                      params.permit(:friend_id, :new_friend_tag, :tags_friend_id, :state)
+                    end
+
+                    def add_friend_tag
+                      friend_id = params_tag[:friend_id].to_i
+                      @tags_friends.add_friend_tag(friend_id, params_tag[:new_friend_tag])
+                      @tags = TagsFriend.where(friend_tagged_id: friend_id)
+                      render :json => {:tag => @tags }
+                    end
+
+                    def tags_friend_vote
+                      @tags_friends.tags_friend_vote(params_tag[:state], params_tag[:tags_friend_id], params_tag[:friend_id])
+                      @votes = TagsVote.vote_by_tag_friend(params_tag[:tags_friend_id], params_tag[:friend_id])
+                      render :json => {:vote => @votes }
+                    end
+
+                    def friend_latest_tags
+                      @vote = TagsVote.vote_by_tag_friend(params_tag[:tags_friend_id], params_tag[:friend_id])
+                      render :json => {:vote => @vote }
+                    end
+
+                    def count_profesional_tags
+                      count = Profession.count
+                      render :json => {:count => count}
+                    end
+
+                    private
+
+                    def initialize_model
+                      @tags_friends = ManageTagsFriends.new(current_user)
+                    end
+                  end
                 
     .clear
 
@@ -94,12 +147,12 @@
 
     .climate-right
       .codeclimate
-        h2 style="color: red;" MISSING CODE CLIMATE SCREENSHOT
+        img src="/images/projects/reputationpie/code_climate_5-6-15.png" style="max-width: 256px; max-height: 269px;"
       .clear
 
     hr.small.center
     .clear
-    .process.left
+    .process.process_h.left
       h1 The Process
     .clear
     .piece.text

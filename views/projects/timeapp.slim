@@ -18,43 +18,42 @@
 
     .clear
 
-.center
-  .piece index="0"
+.centro
+  .piece index="0" style="width: 700px;"
     .media
-      a href="/images/projects/timeapp/timeapp-1.jpg" data-lightbox="timeapp" 
-        img src="/images/projects/timeapp/timeapp-1.jpg"
-        .fondo
-  .piece index="1"
+      img src="/images/projects/timeapp/timeapp-1.jpg"
+      .fondo
+  .piece index="1" style="width: 700px;"
     .media
-      a href="/images/projects/timeapp/timeapp-2.jpg" data-lightbox="timeapp"
-        img src="/images/projects/timeapp/timeapp-2.jpg"
-        .fondo
-  .piece index="2"
+      img src="/images/projects/timeapp/timeapp-2.jpg"
+      .fondo
+  .piece index="2" style="width: 700px;"
     .media
-      a href="/images/projects/timeapp/timeapp-3.jpg" data-lightbox="timeapp" 
-        img src="/images/projects/timeapp/timeapp-3.jpg"
-        .fondo
+      img src="/images/projects/timeapp/timeapp-3.jpg"
+      .fondo
 .clear
 
 #wrapper
-    .video.left
-      <iframe src="https://player.vimeo.com/video/129043914" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    .center-video
+      .video
+        <iframe src="https://player.vimeo.com/video/129043914" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      .clear
     .clear
 
     hr.small.center
     .clear
-    .process.left
+    .process.design.left
       h1 Design of UX and UI
       p The design of this app is based on our team's and client's needs. The problem we were trying to solve was to make easier the process of logging time and reporting progress.
     .clear
+    
     hr.small.center
     .clear
-    .process.left
+    .process.development.left
       h1 Development
       p This app was created using Angular JS. The backend side was done using Ruby.
       p Time App is deeply integrated with Trello which is our project management system.
       p The development team was conformed by 1 engineer working full time.
-      h2 style="color: red;" MORE INFO ON WHAT THE TEAM DID ON THE DEVELOPMENT SIDE?
     .clear
 
     div id="tabs"
@@ -174,7 +173,6 @@
                     def timelog_attributes
                       [:task_id,:task_name, :comment, :time]
                     end
-
                   end
 
       div id="tabs-3"
@@ -258,7 +256,6 @@
                     def as_json(options = nil)
                       super(options).merge({time_for_iteration: time_for_iteration})
                     end
-
                   end
 
       div id="tabs-4"
@@ -418,12 +415,3 @@
                   })();
 
     .clear
-
-    .climate-left
-      p Don't take our word for it. We run Time App through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
-      .clear
-
-    .climate-right
-      .codeclimate
-        h2 style="color: red;" MISSING CODE CLIMATE EXAMPLE
-      .clear
