@@ -98,6 +98,17 @@ p {
   border-top-right-radius: 4px !important;
 }
 
+.climate-top {
+  width: 100%;
+  height: 100px;
+  margin: 30px auto;
+  text-align: center;
+  display: table; }
+  .climate-top p {
+    display: table-cell;
+    vertical-align: middle;
+    width: 95% !important; }
+
 .climate-left {
   width: 50%;
   height: 400px;
@@ -108,6 +119,14 @@ p {
     display: table-cell;
     vertical-align: middle;
     width: 95% !important; }
+  .climate-top .codeclimate {
+    width: 100%;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle; }
+  .climate-top .codeclimate img {
+    width: 100%;
+    margin: 0 auto; }
 
 .climate-right {
   width: 50%;
