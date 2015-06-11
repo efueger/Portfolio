@@ -76,7 +76,7 @@
 
 	.slick-slide img
 	{
-		height: 130% !important;
+		height: 150% !important;
 	}
 
 	.piece.slick-slide {
@@ -267,7 +267,7 @@
 	}
 
 	.piece.slick-slide {
-		width: 700px !important;
+		/*width: 700px !important;*/
 		height: 400px !important;
 	}
 
@@ -300,9 +300,9 @@
 		margin: 2%;
 	}
 
-	.piece.slick-slide {
+	/*.piece.slick-slide {
 		width: 950px !important;
-	}
+	}*/
 }
 
 @media (min-width:1281px){ 
