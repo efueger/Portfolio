@@ -92,6 +92,7 @@
 {
     display: block;
     position: absolute;
+    width: 100%;
 }
 .slick-slide.slick-loading img
 {

@@ -84,7 +84,9 @@ p {
   width: 25%;
   float: left; }
   .logo img {
-    width: 50%; }
+    /*width: 50%;*/
+    width: 200px;
+    height: 35px; }
 
 #tabs li a {
   font-size: 0.8125em;
@@ -229,6 +231,11 @@ p {
 .center {
   margin: 0 auto; }
 
+.center_process {
+  padding-left: 4%;
+  float: none;
+  margin: 0 auto; }
+
 .center-video {
   margin: 0 auto; }
 
@@ -365,7 +372,7 @@ pre {
   padding: 0.5% 0 0 0; }
 
 .description {
-  width: 75%;
+  width: 80%;
   margin: 0 auto; }
 
 .title-header {
