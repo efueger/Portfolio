@@ -215,8 +215,7 @@
 }
 
 .piece.slick-slide {
-  max-width: 600px;
+  max-width: 1150px;
   max-height: 700px;
-  width: 600px;
-  height: 700px;
+  height: 440px;
 }

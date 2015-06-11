@@ -15,8 +15,11 @@
 	}
 
 	.piece.text {
-		width: 83%;
-		margin: 2% 6%;
+		/*width: 83%;
+		margin: 2% 6%;*/
+		width: 100%;
+		margin: 0 auto;
+		float: none;
 	}
 
 	.nav {
@@ -73,13 +76,18 @@
 
 	.slick-slide img
 	{
-		width: 120%;
+		height: 130% !important;
 	}
 
 	.piece.slick-slide {
 		width: 300px !important;
 		height: 300px !important;
 	}
+
+	.center_process {
+  		padding-left: 0%;
+  		width: 100%
+  	}
 }
 
 @media (min-width:480px) and (max-width: 640px){ 
@@ -131,15 +139,15 @@
 		width: 80%;
 	}
 
-	.slick-slide img
-	{
-		width: 120%;
+	.piece.slick-slide {
+		width: 450px !important;
+		height: 300px !important;
 	}
 
-	.piece.slick-slide {
-		width: 460px !important;
-		height: 500px !important;
-	}
+	.center_process {
+  		padding-left: 0%;
+  		width: 100%
+  	}
 }
 
 @media (min-width:641px) and (max-width: 767px){ 
@@ -191,9 +199,14 @@
 	}
 
 	.piece.slick-slide {
-		/*width: 540px;*/
-		height: 500px !important;
+		width: 600px !important;
+		height: 350px !important;
 	}
+
+	.center_process {
+  		padding-left: 0%;
+  		width: 100%
+  	}
 }
 
 @media (min-width:768px) and (max-width: 1023px) { 
@@ -214,7 +227,8 @@
 		margin: 0 0 0 7%;
 	}
 
-	.piece.text {
+	/*.piece.text {*/
+	.text {
 		width: 46%;
 		margin: 2%;
 	}
@@ -226,7 +240,7 @@
 
 	.nav {
 		width: 70%;
-		margin: 1em 0 0 0;
+		/*margin: 0.5em 0 0 0;*/
 	}
 
 	.nav li {
@@ -253,9 +267,14 @@
 	}
 
 	.piece.slick-slide {
-		/*width: 540px;*/
-		height: 600px !important;
+		width: 700px !important;
+		height: 400px !important;
 	}
+
+	.center_process {
+  		padding-left: 0%;
+  		width: 90%
+  	}
 }
 
 @media (min-width:1024px) and (max-width: 1280px) { 
@@ -277,13 +296,12 @@
 	}
 
 	.text {
-		width: 27% !important;
+		width: 28% !important;
 		margin: 2%;
 	}
 
 	.piece.slick-slide {
-		/*width: 540px;*/
-		height: 600px !important;
+		width: 950px !important;
 	}
 }
 
@@ -310,7 +328,7 @@
 	}*/
 
 	.text {
-		width: 27% !important;
+		width: 28% !important;
 		margin: 2%;
 	}
 
@@ -333,14 +351,35 @@
 	.video {
 		height: 420px;
 	}
+
+	.design, .development {
+		width: 70% !important;
+	}
+
+	.design h1, .development h1 {
+		text-align: left;
+	}
+}
+
+@media (min-width:1500px){ 
+/* hi-res laptops and desktops */
+
+	.text {
+		width: 21% !important;
+		margin: 2%;
+	}
+
+	.center_process {
+  		padding-left: 4%;
+  	}
 }
 
 @media (min-width:1730px){ 
 /* hi-res laptops and desktops */ 
 
-	.text {
+	/*.text {
 		margin: 1%;
-	}
+	}*/
 
 	.video {
 		height: 465px;
@@ -355,7 +394,8 @@
 	}
 
 	.text {
-		margin: 1%;
+		width: 25% !important;
+		margin: 2%;
 	}
 
 	.video {

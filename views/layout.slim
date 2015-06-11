@@ -47,7 +47,7 @@ html
     link rel="stylesheet" type="text/css" href="/stylesheets/slick.css"
     // Add the slick-theme.css if you want default styling
     link rel="stylesheet" type="text/css" href="/stylesheets/slick-theme.css"
-    script  $(document).ready(function(){             
+    script  $(document).ready(function(){
               $('.centro').slick({
                 arrows: false,
                 centerMode: true,
@@ -55,6 +55,13 @@ html
                 variableWidth: true
               });
             });
+
+    script  $(document).ready(function(){
+              $(".centro").click(function() {
+                $('.centro').slick('slickNext');
+              });
+            });
+
 
 	body
     
