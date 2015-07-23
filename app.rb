@@ -61,4 +61,8 @@ class App < Sinatra::Base
     slim :"projects/bluebutton"
   end
 
+  get('/projects/twobirdsonestone') do 
+    slim :"projects/twobirdsonestone"
+  end
+
 end

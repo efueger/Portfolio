@@ -1,209 +1,217 @@
-.title
-  h1 Transnode
-  hr.half.center
-.story
-  .process.full
-    .description
-      p Transnode is a web app that manages all aspects of a multinational shipping company. It manages Taxes, Exchange Rates, Countries, States, Cities, Carriers, Customers, Invoices, Credit notes, among others. 
+#wrapper
+  .title
+    h1 Transnode
+    hr.half.center
+  .story
+    .process.full
+      .description
+        p Transnode is a web app that manages all aspects of a multinational shipping company. It manages Taxes, Exchange Rates, Countries, States, Cities, Carriers, Customers, Invoices, Credit notes, among others. 
 
-  hr.small.center
-  .main-tags
-    a href="http://frontend.apps.welkeglobal.com/" target="_blank"
+    hr.small.center
+    .main-tags
+      a href="http://frontend.apps.welkeglobal.com/" target="_blank"
+        .tag
+          img src="/images/url.svg"
+          p frontend.apps.welkeglobal.com (chromium)
       .tag
-        img src="/images/url.svg"
-        p frontend.apps.welkeglobal.com (chromium)
-    .tag
-      img src="/images/time.svg"
-      p ongoing +11 months
+        img src="/images/time.svg"
+        p ongoing +11 months
 
-  .clear
+    .clear
 
-  hr.small.center
-  .clear
-  .process.half.left
-    h1 Front end
-    p We did not design a specific UI for this project but rathered implemented a basic Bootstrap style and concentrated more on the development.
-  .clear
-  .piece
+.centro
+  .piece index="0" style="width: 700px;"
     .media
-      a href="/images/projects/transnode/transnode-1.jpg" data-lightbox="greenlight" 
-        img src="/images/projects/transnode/transnode-1-small.jpg"
-  .piece
+      img src="/images/projects/transnode/transnode-1.jpg"
+      .fondo
+  .piece index="1" style="width: 700px;"
     .media
-      a href="/images/projects/transnode/transnode-2.jpg" data-lightbox="greenlight"
-        img src="/images/projects/transnode/transnode-2-small.jpg"
-  .piece
+      img src="/images/projects/transnode/transnode-2.jpg" style="height: 100%;"
+      .fondo
+  .piece index="2" style="width: 700px;"
     .media
-      a href="/images/projects/transnode/transnode-3.jpg" data-lightbox="greenlight" 
-        img src="/images/projects/transnode/transnode-3-small.jpg"
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 Development
-    p On the Frontend side Transnode was built using technologies such as <a href="https://www.dartlang.org/" target="_blank">Dart</a> and <a href="https://angulardart.org/" target="_blank">Angular Dart</a>. These are new generation languages created by Google. Transnode is integrated with Amazon AWS and we are currently working on an integration with Google Apps for email client management and user logins. On the backend side we are using Ruby on Rails with automated tests to guarantee the right functioning of the app.
-    p Dart applications can only be accessed by using Google Chromium browser.
-  .clear
-  .code
-    blockquote
-      pre
+      img src="/images/projects/transnode/transnode-3.jpg" style="height: 100%;"
+      .fondo
+.clear
 
-        code data-language="ruby"
-          | class Contact < ActiveRecord::Base
-              include Searchable
-              include Filterable
-              include BranchManager
+#wrapper
+    .center-video
+      .video
+        <iframe src="https://player.vimeo.com/video/127835270" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      .clear
+    .clear
+    
+    hr.small.center
+    .clear
+    .process.design.left
+      h1 Front end
+      p We did not design a specific UI for this project but rathered implemented a basic Bootstrap style and concentrated more on the development.
+    .clear
 
-              belongs_to :location
-              has_one :user
-              has_many :emails, as: :of
-              has_many :phones, as: :of
-              accepts_nested_attributes_for :emails, allow_destroy: true
-              accepts_nested_attributes_for :phones, allow_destroy: true
+    hr.small.center
+    .clear
+    .process.development.left
+      h1 Development
+      p On the Frontend side Transnode was built using technologies such as <a href="https://www.dartlang.org/" target="_blank">Dart</a> and <a href="https://angulardart.org/" target="_blank">Angular Dart</a>. These are new generation languages created by Google. Transnode is integrated with Amazon AWS and we are currently working on an integration with Google Apps for email client management and user logins. On the backend side we are using Ruby on Rails with automated tests to guarantee the right functioning of the app.
+      p Dart applications can only be accessed by using Google Chromium browser.
+    .clear
 
-              enum type_user: {salesRep: 0, accountant: 1}
-              scope :sales_rep, -> {where(:type_user => ContactType::SALESREP)}
+    div id="tabs"
+      ul
+        li.border-left
+          a href="#tabs-1" Code Example
+        li.border-right
 
-              validates_presence_of :name, :type_user, :emails, :phones
+          a href="#tabs-2" Unit Test
 
-              def self.for_select
-                all.pluck(:id,:name)
-              end
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class Contact < ActiveRecord::Base
+                    include Searchable
+                    include Filterable
+                    include BranchManager
 
-              def self.sales_rep_for_select
-                sales_rep.for_select
-              end
+                    belongs_to :location
+                    has_one :user
+                    has_many :emails, as: :of
+                    has_many :phones, as: :of
+                    accepts_nested_attributes_for :emails, allow_destroy: true
+                    accepts_nested_attributes_for :phones, allow_destroy: true
 
-              def email
-                ( emails.empty? )? "n/h" : emails.first.email;
-              end
+                    enum type_user: {salesRep: 0, accountant: 1}
+                    scope :sales_rep, -> {where(:type_user => ContactType::SALESREP)}
 
-              def roles_for_users
-                (location)? location.roles : []
-              end
+                    validates_presence_of :name, :type_user, :emails, :phones
 
-            end
+                    def self.for_select
+                      all.pluck(:id,:name)
+                    end
 
+                    def self.sales_rep_for_select
+                      sales_rep.for_select
+                    end
 
+                    def email
+                      ( emails.empty? )? "n/h" : emails.first.email;
+                    end
 
-
-
-
-
-
-
-
-  h2 UNIT TEST
-  .code
-    blockquote
-      pre
-        code data-language="ruby"
-        code data-language="ruby"
-          | require 'spec_helper'
-
-            describe Contact, :type => :model do
-              let(:email){ build(:email) }
-              let(:phone){ build(:phone) }
-              let(:contact){ build(:contact, emails: [email], phones: [phone]) }
-              subject{ contact }
-
-              it{ is_expected.to respond_to(:name)}
-              it{ is_expected.to respond_to(:title)}
-              it{ is_expected.to respond_to(:role)}
-              it{ is_expected.to respond_to(:type_user)}
-              it{ is_expected.to respond_to(:birthday)}
-              it{ is_expected.to respond_to(:status)}
-              it{ is_expected.to respond_to(:created_at)}
-              it{ is_expected.to respond_to(:updated_at)}
-
-              it{ expect(contact.emails).to include(email)}
-              it{ expect(contact.phones).to include(phone)}
-
-              describe 'validation' do
-                it{ is_expected.to validate_presence_of(:name)  }
-                it{ is_expected.to validate_presence_of(:type_user)  }
-                it{ is_expected.to validate_presence_of(:emails)  }
-                it{ is_expected.to validate_presence_of(:phones)  }
-              end
-
-              context 'with optional relation' do
-                let(:location){ build(:location) }
-                let(:user){ build(:user) }
-
-                describe 'location' do
-                  before{ contact.location = location }
-                  it{ expect(contact.location).to be(location)  }
-                end
-
-                describe 'user' do
-                  before{ contact.user = user }
-                  it{ expect(contact.user).to be(user)  }
-                end
-              end
-
-              context 'create' do
-                describe 'multiple roles' do
-                  let(:attributes){ attributes_for(:contact) }
-                  it do
-                    expect{create(:contact, attributes ) }.to change(Contact, :count).by(1)
+                    def roles_for_users
+                      (location)? location.roles : []
+                    end
                   end
-                end
 
-                describe 'accepts_nested_attributes' do
-                  describe 'contacts' do
-                    let(:attributes){attributes_for(:contact, emails:[],phones:[],emails_attributes: [attributes_for(:email)] ,phones_attributes: [attributes_for(:phone)])}
-                    it { expect{Contact.new(attributes)}.to_not raise_error }
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | require 'spec_helper'
+                
+                  describe Contact, :type => :model do
+                    let(:email){ build(:email) }
+                    let(:phone){ build(:phone) }
+                    let(:contact){ build(:contact, emails: [email], phones: [phone]) }
+                    subject{ contact }
+
+                    it{ is_expected.to respond_to(:name)}
+                    it{ is_expected.to respond_to(:title)}
+                    it{ is_expected.to respond_to(:role)}
+                    it{ is_expected.to respond_to(:type_user)}
+                    it{ is_expected.to respond_to(:birthday)}
+                    it{ is_expected.to respond_to(:status)}
+                    it{ is_expected.to respond_to(:created_at)}
+                    it{ is_expected.to respond_to(:updated_at)}
+
+                    it{ expect(contact.emails).to include(email)}
+                    it{ expect(contact.phones).to include(phone)}
+
+                    describe 'validation' do
+                      it{ is_expected.to validate_presence_of(:name)  }
+                      it{ is_expected.to validate_presence_of(:type_user)  }
+                      it{ is_expected.to validate_presence_of(:emails)  }
+                      it{ is_expected.to validate_presence_of(:phones)  }
+                    end
+
+                    context 'with optional relation' do
+                      let(:location){ build(:location) }
+                      let(:user){ build(:user) }
+
+                      describe 'location' do
+                        before{ contact.location = location }
+                        it{ expect(contact.location).to be(location)  }
+                      end
+
+                      describe 'user' do
+                        before{ contact.user = user }
+                        it{ expect(contact.user).to be(user)  }
+                      end
+                    end
+
+                    context 'create' do
+                      describe 'multiple roles' do
+                        let(:attributes){ attributes_for(:contact) }
+                        it do
+                          expect{create(:contact, attributes ) }.to change(Contact, :count).by(1)
+                        end
+                      end
+
+                      describe 'accepts_nested_attributes' do
+                        describe 'contacts' do
+                          let(:attributes){attributes_for(:contact, emails:[],phones:[],emails_attributes: [attributes_for(:email)] ,phones_attributes: [attributes_for(:phone)])}
+                          it { expect{Contact.new(attributes)}.to_not raise_error }
+                        end
+                      end
+                    end
                   end
-                end
-              end
-            end
-  .clear
-  .process.half.left
-    p Don't take our word for it. We run Transnode through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
-  .clear
-  .codeclimate
-    h2 style="color: red;" MISSING CODE CLIMATE
-  .clear
-  hr.small.center
-  .clear
-  .process.left
-    h1 The Process
-  .piece.text
-    .icon
-      img src="/images/report.svg"
-    h1 Status updates
-    p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
-  .piece.text
-    .icon
-      img src="/images/trello.svg"
-    h1 trello - project management
-    p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-  .piece.text
-    .icon
-      img src="/images/qa.svg"
-    h1 Quality Assurance
-    p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
-  .piece.text
-    .icon
-      img src="/images/deploys.svg"
-    h1 Deployments
-    p We do weekly deploys to the project and push all new features to production.
-    br
-    br
-    br
-  .piece.text
-    .icon
-      img src="/images/feedback.svg"
-    h1 Weekly Feedback
-    p Every week Transnode's team get together, reviews a module of the app and send feedback to our team with how to improve it according to their use needs.
-  .piece
-    .icon
-      img src="/images/client.svg"
-    h1 Client approval
-    p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
-  .clear
-  hr.small.center
-  .process.half.left
-    h1 demos
-  .video.left
-    <iframe src="https://player.vimeo.com/video/127835270" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  .clear
+
+    .clear
+
+    .climate-top
+      p Don't take our word for it. We run Transnode through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
+      .clear
+    .climate-top
+      .codeclimate
+        img src="/images/projects/transnode/transnode-codeclimate.jpg" style="max-width: 964px; max-height: 557px;"
+      .clear
+
+    hr.small.center
+    .clear
+    .process.process_h.left
+      h1 The Process
+    .clear
+
+    .center_process
+      .piece.text
+        .icon
+          img src="/images/report.svg"
+        h1 Status updates
+        p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+      .piece.text
+        .icon
+          img src="/images/trello.svg"
+        h1 trello - project management
+        p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+      .piece.text
+        .icon
+          img src="/images/qa.svg"
+        h1 Quality Assurance
+        p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+      .piece.text
+        .icon
+          img src="/images/deploys.svg"
+        h1 Deployments
+        p We do weekly deploys to the project and push all new features to production.
+      .piece.text
+        .icon
+          img src="/images/feedback.svg"
+        h1 Weekly Feedback
+        p Every week Transnode's team get together, reviews a module of the app and send feedback to our team with how to improve it according to their use needs.
+      .piece.text
+        .icon
+          img src="/images/client.svg"
+        h1 Client approval
+        p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+      .clear

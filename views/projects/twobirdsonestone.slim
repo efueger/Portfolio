@@ -1,0 +1,258 @@
+#wrapper
+  .title
+    h1 Two Birds One Stone
+    hr.half.center
+  .story
+    .process.full
+      .description
+        p Josh came to us with a well defined set of screen that outlined his vision for this IOS Game. His superb graphic design skills allowed him to create all the graphic elements for the game and he found the programing help needed to realice his vision with SoftwareCriollo. 
+        p The game is simple. Kill 2 birds with 1 stone. See how far you can get and challenge your friends.
+        p This project tooks us a couple of months to release. We integrated it with Apple's Game Center in order to be able to challange friend and post the players highest score into GC's leader board. Moreover, we use the Motion-Social gem - that we previously developed - in order to easily share the highest score on Facebook and Twitter.
+    hr.small.center
+    .main-tags
+      a href="mysterious-atoll-7432.herokuapp.com" target="_blank"
+        .tag
+          img src="/images/url.svg"
+          p therapysublet.com
+      .tag
+        img src="/images/time.svg"
+        p ongoing +8 months
+
+
+    .clear
+
+.centro
+  .piece index="0" style="width: 700px;"
+    .media
+      img src="/images/projects/opensublet/opensublet-1.jpg" style="height: 100%;"
+      .fondo
+  .piece index="1" style="width: 700px;"
+    .media
+      img src="/images/projects/opensublet/opensublet-2.jpg" style="height: 100%;"
+      .fondo
+  .piece index="2" style="width: 700px;"
+    .media
+      img src="/images/projects/opensublet/opensublet-3.jpg"
+      .fondo
+.clear    
+  
+#wrapper
+    .piece.shorter
+      h1 style="color: red;" MISSING DEMO VIDEO
+    .piece.shorter
+      h1 style="color: red;" MISSING DEMO VIDEO
+    .piece.shorter
+      h1 style="color: red;" MISSING DEMO VIDEO
+    .clear
+
+    hr.small.center
+    .clear
+    .process.design.left
+      h1 Front End
+      p In Therapy Sublet we used Bootstrap for implementing the Front End. No specific design was required for the implementation of this project.
+    .clear
+
+    hr.small.center
+    .clear
+    .process.development.left
+      h1 Development
+      p This is a Ruby on Rails project. We created a custom calendar to block dates for booking the rooms. We also integrate with Stripe as a payment gateway.
+      p The development team is conformed by 2 engineers working full time.
+    .clear
+
+    div id="tabs"
+      ul
+        li.border-left
+          a href="#tabs-1" Code Example
+        li.border-right
+          a href="#tabs-2" Code Example
+
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | def create_impulse_vector_from_location(location)
+                    initial_x = Stone.initial_position[0]
+                    initial_y = Stone.initial_position[1]
+
+                    dx = location.x - initial_x
+                    dy = location.y - initial_y
+
+                    magnitud = Math.sqrt( (dx * dx ) + (dy * dy) )
+
+                    force = 20
+
+                    x = (dx / magnitud) * force 
+                    y = (dy / magnitud) * force
+
+                    impulse = CGVectorMake(x * -1 , y * -1)
+
+                    if Stone.initial_position[1] > location.y
+                      @stone.enable_physics
+                      @stone.hidden = false
+                      @stone.physicsBody.applyImpulse(impulse)
+
+                      @ruber.apply_impulse(impulse)
+                      @slingshot.play_fired
+                      @should_fire = false
+
+                      @impulse = impulse
+                    end
+                  end
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class GameBuilder
+
+                    def initialize(scene)
+                      @scene = scene
+                      add_clouds if scene.class != PreGame
+                      self
+                    end
+
+                    def scene
+                      @scene
+                    end
+
+                    def add_stone
+                      stone = Stone.new
+                      stone.configure
+                      scene.addChild(stone)
+                      stone
+                    end
+
+                    def add_slingshot
+                      s = Slingshot.new
+                      s.configure
+                      scene.addChild(s)
+                      s
+                    end
+
+                    def add_rubber
+                      s = Ruber.new
+                      s.configure
+                      scene.addChild(s)
+                      s
+                    end
+
+                    def add_raindrop
+                      raindrop = RainDrop.new
+                      raindrop.configure
+                      scene.addChild(raindrop)
+                      raindrop
+                    end
+
+                    def let_it_be_rain
+                      if scene.level.number >= 6
+                        scene.level.number.times do
+                          @rain_drop = add_raindrop
+                        end
+
+                        @rain_drop.sound
+                      end
+                      @rain_drop
+                    end
+
+                    def raindrop
+                        @rain_drop
+                    end
+
+                    def add_plane
+                      plane = Plane.new
+                      plane.configure
+                      scene.addChild(plane)
+                      plane
+                    end
+
+                    def add_hand
+                      hand = Hand.new
+                      hand.configure
+                      scene.addChild(hand)
+                    end
+
+                    def add_bird(name)
+                      bird = Bird.new
+                      bird.name = name
+                      bird.configure
+                      scene.addChild(bird)
+                      bird
+                    end
+
+                    def add_clouds
+                      cloud = Cloud.new
+                      cloud.top = Device.height - 200
+                      cloud.configure
+                      cloud.position = [60, Device.height - 30]
+                      cloud.size = [202, 112]
+                      scene.addChild(cloud)
+
+                      cloud = Cloud.new
+                      cloud.top = Device.height - 200
+                      cloud.configure
+                      cloud.position = [40,Device.height - 120]
+                      scene.addChild(cloud)
+
+                      cloud = Cloud.new
+                      cloud.top = Device.height - 200
+                      cloud.configure
+                      cloud.position = [Device.width - 80 , Device.height - 60]
+                      cloud.size = [270, 150]
+                      scene.addChild(cloud)
+                    end
+
+                  end
+
+    .clear
+
+    .climate-left
+      p Don't take our word for it. We run Therapy Sublet through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
+      .clear
+
+    .climate-right
+      .codeclimate
+        img src="/images/projects/opensublet/codeclimate.jpg" style="max-width: 912px; max-height: 447px;"
+      .clear
+
+    hr.small.center
+    .clear
+    .process.process_h.left
+      h1 The Process
+    .clear
+
+    .center_process
+      .piece.text
+        .icon
+          img src="/images/report.svg"
+        h1 Status updates
+        p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+      .piece.text
+        .icon
+          img src="/images/call.svg"
+        h1 Weekly calls
+        p On Tuesdays our team meets in Skype with Therapy Sublet's team to demo new features and brainstorm on new needs.
+      .piece.text
+        .icon
+          img src="/images/trello.svg"
+        h1 trello - project management
+        p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+      .clear
+      .piece.text
+        .icon
+          img src="/images/qa.svg"
+        h1 Quality Assurance
+        p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+      .piece.text 
+        .icon
+          img src="/images/deploys.svg"
+        h1 Deployments
+        p We do weekly deploys to the project and push all new features to production.
+      .piece
+        .icon
+          img src="/images/client.svg"
+        h1 Client approval
+        p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+      .clear

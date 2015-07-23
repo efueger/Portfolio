@@ -31,15 +31,16 @@ $textgrey: #959494;
 }
 
 body {
-	background-image: url('../images/texture2.jpg');
+	background-color: white;
 }
+
 .clear{
 	clear: both;
 }
 
 #wrapper {
 	width: 80%;
-	margin: 20px auto;
+	margin: 0 auto;
 }
 
 hr {
@@ -65,10 +66,11 @@ h1, h2, h3, h4, p, a, li{
 
 h1 {
 	font: {
-	  size: 3em;
+	  size: 2.7em;
 	  family: "museosans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "sans-serif";	
 	}
-	margin: 10px 0;
+	letter-spacing: -1.2px;
+	line-height: 2em;
 }
 
 h2 {
@@ -122,6 +124,9 @@ p{
 .logo {
 	width: 25%;
 	float: left;
+	img {
+		width: 50%;
+	}
 }
 
 .nav {
@@ -134,7 +139,7 @@ p{
     margin: 0 0 0 1em;
   }
   a {
-    color: #363636;
+    color: white;
     text-decoration: none;
     font-size: 0.85em;
     font-family: "museosans", "helveticaneue-light", "arial", "sans-serif";
@@ -148,25 +153,27 @@ p{
   }
 
   a:hover, &.light li a:hover {
-    color: #eb2200;
+    /*color: white;*/
+    background-color: #eb2200;
   }
 
   .active{
-  	border: 2px solid #363636;
+  	border: 2px solid white;
   	padding: 6px;
   }
 
   .active:hover{
-  	color: #363636;
+  	color: white;
   }
 }
 
 .piece{
 	float: left;
 	margin: 2%;
-  max-width: 355px;
+	max-width: 355px;
 	width: 31%;
 	text-align: center;
+	height: 300px;
 
 	h1 {
 		font-size: 1.2em;
@@ -179,6 +186,7 @@ p{
 	height: 300px;
 	border-radius: 3px;
 	overflow: hidden;
+	width: 100%;
 }
 
 .shorter {
@@ -186,20 +194,25 @@ p{
 }
 
 .title {
-	width: 100%;
+	width: 70%;
 	text-align: center;
-	margin: 50px 0 0 0;
+	margin: 0 auto;
+	padding: 1em 0 ;
 }
 
 .process {
 	width: 80%;
-	margin: 40px auto;
+	margin: 0 auto;
 
 	h1 {
 		text-transform: uppercase;
 		font-size: 1.5em;
 		letter-spacing: -1px;
 	}
+}
+
+.design, .development {
+	margin: 2em 0;
 }
 
 .full {
@@ -211,7 +224,7 @@ p{
 }
 
 .half {
-	width: 55%;
+	width: 15% !important;
 }
 
 .small {
@@ -224,7 +237,7 @@ p{
 
 .code{
 	background-color: #272822;
-	width: 80%;
+	width: 100%;
 	border-radius: 3px;
 	margin: 20px 0;
 	padding: 15px;
@@ -246,13 +259,13 @@ p{
 	.tag{
 			background-color: #afb6bb;
 			border-radius: 2px;
-			padding: 2px 10px;
+			padding: 6px 15px;
 			display: inline-block;
-			margin: 20px 7px 20px 0;
+			margin: 20px 7px 30px 0;
 		
 		p {
 			font-family: "museosans";
-			font-size: 13px;
+			font-size: 0.9em;
 			text-transform: uppercase;
 			color: white;
 			line-height: 0;
@@ -286,7 +299,7 @@ p{
 }
 
 .portfolio{
-	margin: 40px 0;
+	/*margin: 40px 0;*/
 
 	.piece {
 		border: 1px solid #ccc;
@@ -306,11 +319,12 @@ pre {
 }
 
 .codeclimate{
+	width: 55%;
 	border-radius: 3px;
 	overflow: hidden;
-	margin: 0 0 20px 0;
+	margin: 20px 0;
 	img {
-		width: 80%;
+		width: 100%;
 	}
 }
 
@@ -360,5 +374,40 @@ pre {
 }
 
 .video {
-	margin: 0 2em 0 0;
+	margin: 4em 0.5em;
+	width: 48%;
+}
+
+.video_media{
+	width: 100%;
+	height: 350px;
+}
+
+.header {
+	background-color: black;
+	width: 100%;
+	overflow: hidden;
+	padding: 0.5% 0 0 0;
+}
+
+.description {
+	/*width: 75%;*/
+	width: 80%;
+	margin: 0 auto;
+}
+
+.title-header {
+	background-image: url('/images/cream_dust.png');
+	width: 100%;
+}
+
+.process.codequality {
+	width: 40%;
+	float: left;
+	margin: 8em 0 0 0;
+}
+
+.process.steps{
+	text-align: center;
+	margin: 2em 0 !important;
 }
