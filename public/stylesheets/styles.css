@@ -345,6 +345,9 @@ pre {
 .contact {
   width: 70%; }
 
+.sociallinks{
+  margin-top: 10px;
+}
 .right {
   float: right; }
 
@@ -355,7 +358,7 @@ pre {
   margin: 0 2em 1em 0;
   /*width: 480px;
   height: 281px;*/
-  
+
   width: 648px;
   height: 380px;
   /*max-width: 648px;*/
