@@ -32,8 +32,9 @@
 }
 
 .view img {
-   display: block;
-   position: relative;
+  position: relative;
+  left: 100%;
+  margin-left: -200%;
 }
 
 
