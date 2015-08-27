@@ -9,6 +9,7 @@ $color_gray_nurse_approx: #e8e8e8;
 $color_scarlet_approx: #eb2200;
 $color_celeste_approx: #ccc;
 $color_bombay_approx: #afb6bb;
+$purple: #7986cb;
 
 //fonts
 $font_0: museosans;
@@ -22,6 +23,7 @@ $font_7: Lucida Grande;
 $font_8: sans-serif;
 $font_9: arial;
 $font_10: helveticaneue-light;
+$font_11: Roboto;
 
 //urls
 $url_0: url(/typography/museosans_500-webfont.eot);
@@ -35,6 +37,11 @@ $url_7: url(/typography/museo300-regular-webfont.woff);
 $url_8: url(/typography/museo300-regular-webfont.ttf);
 $url_9: url(/typography/museo300-regular-webfont.svg#museo300);
 $url_10: url(/images/cream_dust.png);
+$url_11: url(/typography/Roboto-Regular.eot);
+$url_12: url(/typography/Roboto-Regular.eot?#iefix);
+$url_13: url(/typography/Roboto-Regular.woff);
+$url_14: url(/typography/Roboto-Regular.ttf);
+$url_15: url(/typography/Roboto-Regular.svg#museo300);
 
 //@extend-elements
 //original selectors
@@ -50,7 +57,7 @@ $url_10: url(/images/cream_dust.png);
 //.nav, .footernav
 %extend_2 {
 	width: 75%;
-	margin: 10px 0 0;
+	margin: 3% 0 0 0;
 	text-align: right;
 	float: left;
 }
@@ -66,11 +73,11 @@ $url_10: url(/images/cream_dust.png);
 //original selectors
 //.nav a, .footernav a
 %extend_4 {
-	color: $color_tuatara_approx;
-	font-size: 0.8em;
+	color: $purple;
+	font-size: 0.85em;
 	margin: 0 2% 0 0;
 	text-transform: uppercase;
-	font-family: $font_0, $font_9, $font_8;
+	font-family: $font_11, $font_9, $font_8;
 }
 
 //original selectors
@@ -147,7 +154,7 @@ body {
 	clear: both;
 }
 #wrapper {
-	width: 80%;
+	width: 70%;
 	margin: 0 auto;
 }
 hr {
@@ -160,7 +167,6 @@ h1 {
 	font-size: 2.7em;
 	font-family: $font_0, $font_2, $font_3, $font_4, $font_5, $font_6, $font_7, $font_8;
 	letter-spacing: -1.2px;
-	line-height: 2em;
 }
 h2 {
 	@extend %extend_1;
@@ -272,12 +278,10 @@ li {
 	a {
 		@extend %extend_4;
 		text-decoration: none;
-		&:hover {
-			color: $color_scarlet_approx;
-		}
+		letter-spacing: 0.25px;
 	}
 	.active {
-		border: 2px solid $black;
+		border-bottom: 1px solid $purple;
 		padding: 6px;
 		&:hover {
 			color: $black;
