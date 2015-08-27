@@ -1,29 +1,79 @@
-@font-face {
-  font-family: 'museosans';
-  src: url("/typography/museosans_500-webfont.eot");
-  src: url("/typography/museosans_500-webfont.eot?#iefix") format("embedded-opentype"), url("/typography/museosans_500-webfont.woff") format("woff"), url("/typography/museosans_500-webfont.ttf") format("truetype"), url("/typography/museosans_500-webfont.svg#museo_sans500") format("svg"); }
-@font-face {
-  font-family: 'museo';
-  src: url("/typography/museo300-regular-webfont.eot");
-  src: url("/typography/museo300-regular-webfont.eot?#iefix") format("embedded-opentype"), url("/typography/museo300-regular-webfont.woff") format("woff"), url("/typography/museo300-regular-webfont.ttf") format("truetype"), url("/typography/museo300-regular-webfont.svg#museo300") format("svg"); }
-* {
-  margin: 0;
-  padding: 0; }
+h1, h2, h3, h4, p, a, li {
+  font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-weight: normal;
+  color: #282827;
+  line-height: 1em; }
 
+.nav, .footernav {
+  width: 75%;
+  margin: 10px 0 0;
+  text-align: right;
+  float: left; }
+
+.nav li, .footernav li {
+  display: inline;
+  text-transform: uppercase;
+  margin: 0 0 0 1em; }
+
+.nav a, .footernav a {
+  color: #363636;
+  font-size: 0.8em;
+  margin: 0 2% 0 0;
+  text-transform: uppercase;
+  font-family: museosans, arial, sans-serif; }
+
+.nav.light li a, .footernav.light li a {
+  color: #e8e8e8;
+  text-decoration: none;
+  font-size: 0.95em;
+  font-family: museosans, helveticaneue-light, arial, sans-serif; }
+
+.dev-tags .tag, .main-tags .tag {
+  background-color: #afb6bb;
+  border-radius: 2px;
+  padding: 6px 15px;
+  display: inline-block;
+  margin: 20px 7px 30px 0; }
+
+.dev-tags .tag p, .main-tags .tag p {
+  font-family: museosans;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  color: white;
+  line-height: 0;
+  float: right;
+  line-height: 5px; }
+
+.dev-tags .tag img, .main-tags .tag img {
+  width: 18px;
+  float: left;
+  margin: 3px 5px 0 0; }
+
+@font-face {
+  font-family: museosans;
+  src: url(/typography/museosans_500-webfont.eot);
+  src: url(/typography/museosans_500-webfont.eot?#iefix) format("embedded-opentype"), url(/typography/museosans_500-webfont.woff) format("woff"), url(/typography/museosans_500-webfont.ttf) format("truetype"), url(/typography/museosans_500-webfont.svg#museo_sans500) format("svg"); }
+@font-face {
+  font-family: museo;
+  src: url(/typography/museo300-regular-webfont.eot);
+  src: url(/typography/museo300-regular-webfont.eot?#iefix) format("embedded-opentype"), url(/typography/museo300-regular-webfont.woff) format("woff"), url(/typography/museo300-regular-webfont.ttf) format("truetype"), url(/typography/museo300-regular-webfont.svg#museo300) format("svg"); }
 body {
   background-color: white; }
 
-.fondo{
+.fondo {
   background-color: black;
   opacity: .5;
   width: 100%;
   height: 100%;
-  z-index: -1;
-}
+  z-index: -1; }
 
 .media {
   z-index: -1;
-}
+  border: 1px solid #ccc;
+  height: 300px;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%; }
 
 .clear {
   clear: both; }
@@ -37,64 +87,53 @@ hr {
   opacity: 0.3;
   height: 1px; }
 
-h1, h2, h3, h4, p, a, li {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: normal;
-  color: #282827;
-  line-height: 1em; }
-
 h1 {
   font-size: 2.7em;
-  font-family: "museosans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "sans-serif";
+  font-family: museosans, HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
   letter-spacing: -1.2px;
   line-height: 2em; }
 
 h2 {
   font-size: 1.2em;
-  font-family: "museosans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "sans-serif"; }
+  font-family: museosans, HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; }
 
 h3 {
   font-size: 1.2em;
-  font-family: "museo", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", "sans-serif";
+  font-family: museo, HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
   font-style: italic;
-  margin: 10px 0 20px 0; }
+  margin: 10px 0 20px; }
 
 h4 {
   font-size: 2em;
   letter-spacing: -0.5px;
-  margin: 10px 0 20px 0; }
+  margin: 10px 0 20px; }
 
-p, a, li {
+p {
   font-size: 1em;
-  line-height: 1.5em; }
+  line-height: 1.5em;
+  margin: 10px 0; }
 
 a {
+  font-size: 1em;
+  line-height: 1.5em;
   color: #fc5401; }
   a:hover {
     color: #282827; }
 
 li {
+  font-size: 1em;
+  line-height: 1.5em;
   line-height: 30px; }
 
-p {
-  margin: 10px 0; }
-
-/**PORTFOLIO**/
 .logo {
   width: 25%;
-  float: left;}
-
-#tabs li a {
-  font-size: 0.8125em;
-}
+  float: left; }
 
 .border-left {
-  border-top-left-radius: 4px !important;
-}
+  border-top-left-radius: 4px !important; }
 
 .border-right {
-  border-top-right-radius: 4px !important;
-}
+  border-top-right-radius: 4px !important; }
 
 .climate-top {
   width: 100%;
@@ -106,75 +145,67 @@ p {
     display: table-cell;
     vertical-align: middle;
     width: 95% !important; }
-
-.climate-left {
-  width: 50%;
-  height: 400px;
-  float: left;
-  margin: 30px 0 30px 0;
-  display: table; }
-  .climate-left p {
-    display: table-cell;
-    vertical-align: middle;
-    width: 95% !important; }
   .climate-top .codeclimate {
     width: 100%;
     height: 100%;
     display: table-cell;
     vertical-align: middle; }
-  .climate-top .codeclimate img {
-    width: 100%;
-    margin: 0 auto; }
+    .climate-top .codeclimate img {
+      width: 100%;
+      margin: 0 auto; }
+
+.climate-left {
+  width: 50%;
+  height: 400px;
+  float: left;
+  margin: 30px 0;
+  display: table; }
+  .climate-left p {
+    display: table-cell;
+    vertical-align: middle;
+    width: 95% !important; }
 
 .climate-right {
   width: 50%;
   height: 400px;
   float: left;
-  margin: 30px 0 30px 0;
+  margin: 30px 0;
   display: table; }
   .climate-right .codeclimate {
     width: 100%;
     height: 100%;
     display: table-cell;
     vertical-align: middle; }
-  .climate-right .codeclimate img {
-    width: 100%;
-    margin: 0 auto; }
+    .climate-right .codeclimate img {
+      width: 100%;
+      margin: 0 auto; }
 
-.nav, .footernav {
-  width: 75%;
-  margin: 10px 0 0 0;
-  text-align: right;
-  float: left; }
-  .nav li, .footernav li {
-    display: inline;
-    text-transform: uppercase;
-    margin: 0 0 0 1em; }
-  .nav a,.footernav a {
-    color: #363636;
-    font-size: 0.8em;
-    margin: 0 2% 0 0;
-    text-transform: uppercase;
-    font-family: "museosans", "arial", "sans-serif";}
-  .nav.light li a,.footernav.light li a {
-    color: #e8e8e8;
-    text-decoration: none;
-    font-size: 0.95em;
-    font-family: "museosans", "helveticaneue-light", "arial", "sans-serif"; }
-  .nav a:hover, .nav.light li a:hover, .footernav a:hover, .footernav.light li a:hover {
+.nav a {
+  text-decoration: none; }
+  .nav a:hover {
     color: #eb2200; }
-  .nav .active,.footernav .active {
-    border: 2px solid #000;
-    padding: 6px; }
-  .nav .active:hover,.footernav .active:hover {
-    color: #000; }
-  .nav a{
-    text-decoration: none;
-  }
+.nav .active {
+  border: 2px solid black;
+  padding: 6px; }
+  .nav .active:hover {
+    color: black; }
+.nav.light li a:hover {
+  color: #eb2200; }
 
-  .social {
-    margin-right: 3%;
-  }
+.footernav a:hover {
+  color: #eb2200; }
+.footernav .active {
+  border: 2px solid black;
+  padding: 6px; }
+  .footernav .active:hover {
+    color: black; }
+.footernav.light li a:hover {
+  color: #eb2200; }
+
+.social {
+  margin-right: 3%; }
+  .social img {
+    margin: 0 0 0 10px; }
 
 .piece {
   float: left;
@@ -185,18 +216,9 @@ p {
   .piece h1 {
     font-size: 1.2em;
     text-transform: uppercase; }
-
-.piece .media {
-  width: 100%;
-  height: 100%;
-}
-
-.media {
-  border: 1px solid #ccc;
-  height: 300px;
-  border-radius: 3px;
-  overflow: hidden;
-  width: 100%; }
+  .piece .media {
+    width: 100%;
+    height: 100%; }
 
 .shorter {
   height: 260px; }
@@ -215,11 +237,21 @@ p {
     font-size: 1.5em;
     letter-spacing: -1px;
     text-align: center; }
+  .process.codequality {
+    width: 40%;
+    float: left;
+    margin: 8em 0 0; }
+  .process.steps {
+    text-align: center;
+    margin: 2em 0 !important; }
 
 .process_h {
   margin-top: 2em; }
 
-.design, .development {
+.design {
+  margin: 2em 0; }
+
+.development {
   margin: 2em 0; }
 
 .full {
@@ -254,39 +286,25 @@ p {
   margin-left: -12px; }
 
 .dev-tags {
-  text-align: left !important; }
-  .dev-tags .tag {
-    margin: 4px 7px 4px 0 !important; }
-
-.main-tags, .dev-tags {
+  text-align: left !important;
   width: 100%;
   text-align: center; }
-  .main-tags .tag, .dev-tags .tag {
-    background-color: #afb6bb;
-    border-radius: 2px;
-    padding: 6px 15px;
-    display: inline-block;
-    margin: 20px 7px 30px 0; }
-    .main-tags .tag p, .dev-tags .tag p {
-      font-family: "museosans";
-      font-size: 0.9em;
-      text-transform: uppercase;
-      color: white;
-      line-height: 0;
-      float: right;
-      line-height: 5px; }
-    .main-tags .tag img, .dev-tags .tag img {
-      width: 18px;
-      float: left;
-      margin: 3px 5px 0 0; }
-  .main-tags a:hover .tag, .dev-tags a:hover .tag {
+  .dev-tags .tag {
+    margin: 4px 7px 4px 0 !important; }
+  .dev-tags a:hover .tag {
     background-color: #eb2200; }
 
-.description p {
-  font-size: 1.1em; }
+.main-tags {
+  width: 100%;
+  text-align: center; }
+  .main-tags a:hover .tag {
+    background-color: #eb2200; }
 
-.icon img {
-  width: 90px; }
+.description {
+  width: 80%;
+  margin: 0 auto; }
+  .description p {
+    font-size: 1.1em; }
 
 .text {
   width: 28%;
@@ -314,12 +332,12 @@ pre {
 
 .footer {
   width: 100%;
-  background-color: #000;
+  background-color: black;
   padding: 1% 0 2.4% 0;
   overflow: hidden;
-  margin: 60px 0 0 0; }
+  margin: 60px 0 0; }
   .footer .button {
-    margin: 3% 0 0 0;
+    margin: 3% 0 0;
     width: 55%; }
     .footer .button a {
       padding: 5% 3%; }
@@ -333,22 +351,16 @@ pre {
       .footer .footernav a:hover {
         color: #eb2200; }
 
-.social img {
-  margin: 0 0 0 10px; }
-
 .contact {
   width: 100%; }
 
 .right {
   float: right; }
 
-.left {
-  float: left; }
-
 .video {
   margin: 0 2em 1em 0;
   width: 648px;
-  height: 380px;}
+  height: 380px; }
 
 .video_media {
   width: 100%;
@@ -358,26 +370,19 @@ pre {
   width: 100%;
   padding: 1em 1em 1em 0; }
 
-.description {
-  width: 80%;
-  margin: 0 auto; }
-
 .title-header {
-  background-image: url("/images/cream_dust.png");
+  background-image: url(/images/cream_dust.png);
   width: 100%; }
-
-.process.codequality {
-  width: 40%;
-  float: left;
-  margin: 8em 0 0 0; }
-
-.process.steps {
-  text-align: center;
-  margin: 2em 0 !important; }
 
 .images {
   float: none;
   margin: 0 auto;
   width: 80%; }
+
+#tabs li a {
+  font-size: 0.8125em; }
+
+.icon img {
+  width: 90px; }
 
 /*# sourceMappingURL=styles.css.map */
