@@ -14,7 +14,7 @@
    transition: all 0.2s linear;
    text-transform: uppercase;
    font-size: 1.25em;
-   line-height: 40px;
+   line-height: 25px;
 }
 
 .view-first .mask {
