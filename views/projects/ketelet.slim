@@ -5,14 +5,19 @@
   .story
     .process.full
       .description
-        p Josh came to us with a well defined set of screen that outlined his vision for this IOS Game. His superb graphic design skills allowed him to create all the graphic elements for the game and he found the programing help needed to realice his vision with SoftwareCriollo. 
-        p The game is simple. Kill 2 birds with 1 stone. See how far you can get and challenge your friends.
+        p Ketelet is an iOS and Android Application that calculates your ideal body weight.
+        p This project was born as a component of Meals App (another health application we used to have). Meals App offered a part in which users could calculate their Ideal Body Weight. Seeing that most users were mostly engaged with this section we extracted it and created its own application.
     hr.small.center
     .main-tags
-      a href="https://itunes.apple.com/us/app/2-birds-1-stone/id946651018?mt=8" target="_blank"
+      a href="https://itunes.apple.com/us/app/ketelet-discover-your-ideal/id724872554?mt=8" target="_blank"
         .tag
           img src="/images/apple-logo-white.svg"
           p Download it in the APP STORE
+      a href="https://play.google.com/store/apps/details?id=com.softwarecriollo.ketelet" target="_blank"
+        .tag
+          img src="/images/googleplay.svg"
+          p Download it in GOOGLE PLAY
+
       .tag
         img src="/images/time.svg"
         p ongoing +2 months
@@ -36,50 +41,183 @@
     hr.small.center
     .clear
     .process.design.left
+      h1 Design
+      p For the design of Ketelet we went with simple flat UI. Big buttons and easy interactions.
     .process.development.left
       h1 Development
-      p This project tooks us a couple of months to release. We integrated it with Apple's Game Center in order to be able to challange friend and post the players highest score into GC's leader board. Moreover, we use the Motion-Social gem - that we previously developed - in order to easily share the highest score on Facebook and Twitter.
+      p The first version of this app was created using Rubymotion for iOS. We then created the Android version a couple of months ago.
     .clear
 
     div id="tabs"
       ul
         li.border-left
-          a href="#tabs-1" Code Example
+          a href="#tabs-1" Ideal Weight Calculator
         li.border-right
-          a href="#tabs-2" Code Example
-
+          a href="#tabs-2" Ideal Weight Calculator Test
       div id="tabs-1"
         .code
           blockquote
             pre
               code data-language="ruby"
-                | def create_impulse_vector_from_location(location)
-                    initial_x = Stone.initial_position[0]
-                    initial_y = Stone.initial_position[1]
+                | class IdealBodyWeightCalculator
+                    attr_accessor :range_absolute_height, :range_absolute_weight, :absolute_height, :absolute_weight
+                    attr_accessor :settings
 
-                    dx = location.x - initial_x
-                    dy = location.y - initial_y
-
-                    magnitud = Math.sqrt( (dx * dx ) + (dy * dy) )
-
-                    force = 20
-
-                    x = (dx / magnitud) * force 
-                    y = (dy / magnitud) * force
-
-                    impulse = CGVectorMake(x * -1 , y * -1)
-
-                    if Stone.initial_position[1] > location.y
-                      @stone.enable_physics
-                      @stone.hidden = false
-                      @stone.physicsBody.applyImpulse(impulse)
-
-                      @ruber.apply_impulse(impulse)
-                      @slingshot.play_fired
-                      @should_fire = false
-
-                      @impulse = impulse
+                    def initialize
+                      locale = NSLocale.currentLocale
+                      locale.objectForKey(NSLocaleUsesMetricSystem) ? self.set_metric_system : set_imperial_system
                     end
+
+                    def calculate
+                      result = ( sex_base_weigth + ( constant * inches_over_5_ft)).round(2)
+                      imperial_system? ? kgs_to_lbs(result).to_i : result.to_i
+                    end
+
+                    def data
+                      {:ideal => calculate, :current => weight}
+                    end
+
+                    def constant ; 2.3 ; end
+
+                    def sex_base_weigth 
+                      male? ? 50.0 : 45.5
+                    end
+
+                    def inches_over_5_ft
+                      if imperial_system?
+                        result = feet_to_inch(height)
+                      else 
+                        result = meter_to_inch(height)
+                      end    
+                      result -= feet_to_inch(5)
+                    end
+
+                    def set_height_absolute(range)
+                      @range_absolute_height = range
+                    end
+                    
+                    def set_weight_absolute(range)
+                      @range_absolute_weight = range
+                    end
+
+                    def height
+                      sprintf('%.2f', total_height(@absolute_height,range_height))
+                    end
+
+                    def weight
+                      total_weight(@absolute_weight,range_weight).to_i
+                    end
+
+                    def range_height
+                      imperial_system? ? range_height_in_feet : range_height_in_meters
+                    end
+
+                    def range_weight
+                      imperial_system? ? range_weight_in_lbs : range_weight_in_kgs
+                    end
+
+                    def range_height_in_meters
+                       {min: 1.52, max: 2.40 }
+                    end
+
+                    def range_height_in_feet
+                      hash = {}
+                      range_height_in_meters.each{ |key,value| hash[key] = meter_to_feet(value)}
+                      hash
+                    end
+
+                    def range_weight_in_kgs
+                       {min: 40 ,max: 250 }
+                    end
+
+                    def range_weight_in_lbs
+                      hash = {}
+                      range_weight_in_kgs.each{ |key,value| hash[key] = kgs_to_lbs(value).to_i}
+                      hash
+                    end
+
+                    def male?
+                      @gender == "male"
+                    end
+
+                    def female?
+                      @gender = "female"
+                    end
+
+                    def set_female
+                      @gender = "female"
+                    end
+
+                    def set_male
+                      @gender = "male"
+                    end
+
+
+                    def set_imperial_system
+                      @system = {height: 'ft.', weight: 'lbs.'}
+                    end
+
+                    def set_metric_system
+                      @system = {height: 'mts.', weight: 'kgs.'}
+                    end
+
+                    def height_units
+                      @system[:height]
+                    end
+
+                    def weight_units
+                      @system[:weight]
+                    end
+                    
+                    private
+
+                    def imperial_system?
+                      @system == {height: 'ft.', weight: 'lbs.'}
+                    end
+
+                    def meter_to_feet(meters)
+                      (meters.to_f * 3.2808399).round(2)
+                    end
+
+                    def kgs_to_lbs(kgs)
+                      (kgs * 2.20462262).round(2)
+                    end
+
+                    def feet_to_inch(feet)
+                      (feet.to_f * 12).round(2)
+                    end
+
+                    def meter_to_inch(meters)
+                      feet_to_inch(meter_to_feet(meters))
+                    end
+
+                    def total_height(value,range_unit)
+                      percent = percent_height_absolute(value)
+                      convert_to_units(value,range_unit,percent)
+                    end
+
+                    def total_weight(value,range_unit)    
+                      percent = percent_weight_absolute(value)
+                      convert_to_units(value,range_unit,percent)
+                    end
+
+                    def convert_to_units(value,range_unit,percent)
+                     difference = (range_unit[:max] - range_unit[:min])
+                     range_unit[:min] + (difference * percent)
+                    end
+
+                    def percent_height_absolute(value)
+                      percent_absolute(value,range_absolute_height)
+                    end
+
+                    def percent_weight_absolute(value)
+                      percent_absolute(value,range_absolute_weight)
+                    end
+
+                    def percent_absolute(value,range)
+                      (value - range[:max].to_f) / (range[:min] - range[:max])
+                    end
+
                   end
 
       div id="tabs-2"
@@ -87,102 +225,92 @@
           blockquote
             pre
               code data-language="ruby"
-                | class GameBuilder
+                | describe IdealBodyWeightCalculator do
+                    before { @calculator = IdealBodyWeightCalculator.new }
 
-                    def initialize(scene)
-                      @scene = scene
-                      add_clouds if scene.class != PreGame
-                      self
+                    it "ranges values for meters" do
+                      range = @calculator.range_height_in_meters
+                      range.should == {min: 1.52 ,max: 2.40 }
+                    end
+                    
+                    it "ranges values for feet" do
+                      range = @calculator.range_height_in_feet
+                      range.should == {min: (4.99).round(2) ,max: 7.87.round(2)}
+                      # tuve que hacerlo... colocar sin el round lo convierte a un numero diferente
+                    end
+                    
+                    it "ranges values for kgs" do
+                      range = @calculator.range_weight_in_kgs
+                      range.should == {min: 40 ,max: 250 }
+                    end
+                    
+                    it "ranges values for lbs" do
+                      range = @calculator.range_weight_in_lbs
+                      range.should == {min: 88 ,max: 551}
                     end
 
-                    def scene
-                      @scene
+                    it "Get units for height in metric system" do
+                      @calculator.set_metric_system
+                      @calculator.height_units.should == "mts."
+                    end
+                    it "Get units for weight in metric system" do
+                      @calculator.set_metric_system
+                      @calculator.weight_units.should == "kgs."
+                    end
+                      it "Get units for height in imperial system" do
+                      @calculator.set_imperial_system
+                      @calculator.height_units.should == "ft."
+                    end
+                    it "Get units for weight in imperial system" do
+                      @calculator.set_imperial_system
+                      @calculator.weight_units.should == "lbs."
                     end
 
-                    def add_stone
-                      stone = Stone.new
-                      stone.configure
-                      scene.addChild(stone)
-                      stone
+                    it "convert ranges absolutes to valid range min value" do
+                      @calculator.set_metric_system
+                      @calculator.set_height_absolute(min: 0, max: 10)
+                      @calculator.absolute_height = 0
+                      @calculator.height.should == 2.40.round(2)
                     end
 
-                    def add_slingshot
-                      s = Slingshot.new
-                      s.configure
-                      scene.addChild(s)
-                      s
+                    it "convert ranges absolutes to valid range max value" do
+                      @calculator.set_metric_system
+                      @calculator.set_height_absolute(min: 0, max: 10)
+                      @calculator.absolute_height = 10
+                      @calculator.height.should == 1.52.round(2)
+                    end
+                    it "convert ranges absolutes to valid range mid value" do
+                      @calculator.set_metric_system
+                      @calculator.set_height_absolute(min: 0, max: 10)
+                      @calculator.absolute_height = 5
+                      @calculator.height.should == 1.96.round(2)
                     end
 
-                    def add_rubber
-                      s = Ruber.new
-                      s.configure
-                      scene.addChild(s)
-                      s
+                    it "convert ranges absolutes to valid range min value for weight" do
+                      @calculator.set_metric_system
+                      @calculator.set_weight_absolute(min: 0, max: 1000)
+                      @calculator.absolute_weight = 0
+                      @calculator.weight.should == 250
                     end
 
-                    def add_raindrop
-                      raindrop = RainDrop.new
-                      raindrop.configure
-                      scene.addChild(raindrop)
-                      raindrop
+                    it "convert ranges absolutes to valid range max value for weight" do
+                      @calculator.set_metric_system
+                      @calculator.set_weight_absolute(min: 0, max: 1000)
+                      @calculator.absolute_weight = 1000
+                      @calculator.weight.should == 40
+                    end
+                    it "convert ranges absolutes to valid range mid value for weight" do
+                      @calculator.set_metric_system
+                      @calculator.set_weight_absolute(min: 0, max: 1000)
+                      @calculator.absolute_weight = 500
+                      @calculator.weight.should == 145
                     end
 
-                    def let_it_be_rain
-                      if scene.level.number >= 6
-                        scene.level.number.times do
-                          @rain_drop = add_raindrop
-                        end
-
-                        @rain_drop.sound
-                      end
-                      @rain_drop
-                    end
-
-                    def raindrop
-                        @rain_drop
-                    end
-
-                    def add_plane
-                      plane = Plane.new
-                      plane.configure
-                      scene.addChild(plane)
-                      plane
-                    end
-
-                    def add_hand
-                      hand = Hand.new
-                      hand.configure
-                      scene.addChild(hand)
-                    end
-
-                    def add_bird(name)
-                      bird = Bird.new
-                      bird.name = name
-                      bird.configure
-                      scene.addChild(bird)
-                      bird
-                    end
-
-                    def add_clouds
-                      cloud = Cloud.new
-                      cloud.top = Device.height - 200
-                      cloud.configure
-                      cloud.position = [60, Device.height - 30]
-                      cloud.size = [202, 112]
-                      scene.addChild(cloud)
-
-                      cloud = Cloud.new
-                      cloud.top = Device.height - 200
-                      cloud.configure
-                      cloud.position = [40,Device.height - 120]
-                      scene.addChild(cloud)
-
-                      cloud = Cloud.new
-                      cloud.top = Device.height - 200
-                      cloud.configure
-                      cloud.position = [Device.width - 80 , Device.height - 60]
-                      cloud.size = [270, 150]
-                      scene.addChild(cloud)
+                    it "ideal weight in kgs" do
+                      @calculator.set_metric_system
+                      @calculator.set_height_absolute(min: 0, max: 10)
+                      @calculator.absolute_height = 5
+                      @calculator.calculate.should == 84
                     end
 
                   end
@@ -195,24 +323,12 @@
     .process.process_h.left
       h1 The Process
     .clear
-
     .center_process
-      .piece.text
-        .icon
-          img src="/images/report.svg"
-        h1 Status updates
-        p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
-      .piece.text
-        .icon
-          img src="/images/call.svg"
-        h1 Weekly calls
-        p On Tuesdays our team meets in Skype with Therapy Sublet's team to demo new features and brainstorm on new needs.
       .piece.text
         .icon
           img src="/images/trello.svg"
         h1 trello - project management
         p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
-      .clear
       .piece.text
         .icon
           img src="/images/qa.svg"
@@ -223,9 +339,4 @@
           img src="/images/deploys.svg"
         h1 Deployments
         p We do weekly deploys to the project and push all new features to production.
-      .piece
-        .icon
-          img src="/images/client.svg"
-        h1 Client approval
-        p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
       .clear
