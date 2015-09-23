@@ -64,12 +64,23 @@ html
 
 
 	body
-
     #wrapper
-      == partial :'shared/_full_header', :locals => { :active => 'portfolio', :logo => 'logo', :navigation => '' }
+      .header
+        .logo
+          a href="http://softwarecriollo.com/"
+            img src="/images/logo.svg"
+        .nav.nav-home-new
+          .phone
+            p CALL US AT (844) 4-CRIOLLO
+
+          a href="http://softwarecriollo.com/#whyus" Why Us
+          a href="http://softwarecriollo.com/ourprocess" Our Process
+          a.active href="/" Portfolio
+          a href="http://softwarecriollo.com/values" Our Values
     .clear
 
     == yield
 
     script type="text/javascript" src="/js/slick.min.js"
  
+
