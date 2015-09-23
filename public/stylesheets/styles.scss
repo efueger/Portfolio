@@ -211,6 +211,22 @@ li {
 	width: 25%;
 	float: left;
 }
+
+.logo, .phone {
+	margin: 0.5em 0;
+}
+
+.phone p, .button a {
+	font-size: 0.5em;
+	font-weight: 300;
+	line-height: 1.5em;
+	letter-spacing: 0.1em;
+}
+
+.flow-text {
+	font-size: 1.68rem;
+}
+
 .border-left {
 	//Instead of the line below you could use @include border-top-left-radius($radius)
 	border-top-left-radius: 4px !important;

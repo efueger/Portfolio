@@ -14,6 +14,10 @@ class App < Sinatra::Base
     def partial(page, options={})
       haml page, options.merge!(:layout => false)
     end
+    
+    def partial(page, options={})
+      slim page, options.merge!(:layout => false)
+    end
   end
 
 

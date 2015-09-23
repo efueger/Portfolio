@@ -66,13 +66,7 @@ html
 	body
 
     #wrapper
-      .header
-          .logo
-            a href="http://softwarecriollo.com/"
-              img src="/images/logo.svg"
-          .nav
-            a href="http://softwarecriollo.com/ourprocess" Our Process
-            a.active href="/" Portfolio
+      == partial :'shared/_full_header', :locals => { :active => 'portfolio', :logo => 'logo', :navigation => '' }
     .clear
 
     == yield
