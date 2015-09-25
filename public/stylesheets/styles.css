@@ -164,6 +164,21 @@ li {
   line-height: 1.5em;
   letter-spacing: 0.1em; }
 
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  margin: 0; }
+
+.nav-footer-home {
+  margin: 2% auto 0 auto;
+  float: none; }
+
+.nav-footer-home a {
+  color: white; }
+
+.nav-footer-home a:hover {
+  color: #7986cb; }
+
 .border-left {
   border-top-left-radius: 4px !important; }
 
