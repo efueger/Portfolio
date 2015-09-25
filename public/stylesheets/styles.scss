@@ -23,7 +23,7 @@ $font_7: Lucida Grande;
 $font_8: sans-serif;
 $font_9: arial;
 $font_10: helveticaneue-light;
-$font_11: Roboto;
+$font_11: "Roboto";
 
 //urls
 $url_0: url(/typography/museosans_500-webfont.eot);
@@ -47,10 +47,10 @@ $url_15: url(/typography/Roboto-Regular.svg#museo300);
 //original selectors
 //h1, h2, h3, h4, p, a, li
 %extend_1 {
-	font-family: $font_2, $font_3, $font_4, $font_5, $font_6, $font_7, $font_8;
-	font-weight: normal;
+	font-family: $font_11, $font_8;
+	font-weight: 300;
 	color: $color_shark_approx;
-	line-height: 1em;
+	line-height: 110%;
 }
 
 //original selectors
@@ -120,6 +120,35 @@ $url_15: url(/typography/Roboto-Regular.svg#museo300);
 	margin: 3px 5px 0 0;
 }
 
+@font-face {
+  font-family: $font_11;
+  src: url(/typography/Roboto-Thin.woff2) format("woff2"), url(/typography/Roboto-Thin.woff) format("woff"), url(/typography/Roboto-Thin.ttf) format("truetype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: $font_11;
+  src: url(/typography/Roboto-Light.woff2) format("woff2"), url(/typography/Roboto-Light.woff) format("woff"), url(/typography/Roboto-Light.ttf) format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: $font_11;
+  src: url(/typography/Roboto-Regular.woff2) format("woff2"), url(/typography/Roboto-Regular.woff) format("woff"), url(/typography/Roboto-Regular.ttf) format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: $font_11;
+  src: url(/typography/Roboto-Medium.woff2) format("woff2"), url(/typography/Roboto-Medium.woff) format("woff"), url(/typography/Roboto-Medium.ttf) format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: $font_11;
+  src: url(/typography/Roboto-Bold.woff2) format("woff2"), url(/typography/Roboto-Bold.woff) format("woff"), url(/typography/Roboto-Bold.ttf) format("truetype");
+  font-weight: 700;
+}
 
 @font-face {
 	font-family: $font_0;
@@ -164,9 +193,9 @@ hr {
 }
 h1 {
 	@extend %extend_1;
-	font-size: 2.7em;
-	font-family: $font_0, $font_2, $font_3, $font_4, $font_5, $font_6, $font_7, $font_8;
-	letter-spacing: -1.2px;
+	font-size: 3.56rem;
+	font-family: $font_11, $font_8;
+	margin: 1.78rem 0 1.424rem 0;
 }
 h2 {
 	@extend %extend_1;
@@ -176,7 +205,7 @@ h2 {
 h3 {
 	@extend %extend_1;
 	font-size: 1.2em;
-	font-family: $font_1, $font_2, $font_3, $font_4, $font_5, $font_6, $font_7, $font_8;
+	font-family: $font_11, $font_8;
 	font-style: italic;
 	margin: 10px 0 20px;
 }
