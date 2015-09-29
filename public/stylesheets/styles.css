@@ -171,6 +171,9 @@ li {
   line-height: 1.5em;
   letter-spacing: 0.1em; }
 
+.main .view-first h1 {
+  margin-top: 1rem; }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
