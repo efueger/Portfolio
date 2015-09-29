@@ -1,8 +1,8 @@
 h1, h2, h3, h4, p, a, li {
-  font-family: HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-  font-weight: normal;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
   color: #282827;
-  line-height: 1em; }
+  line-height: 110%; }
 
 .nav, .footernav {
   width: 75%;
@@ -20,7 +20,7 @@ h1, h2, h3, h4, p, a, li {
   font-size: 0.85em;
   margin: 0 2% 0 0;
   text-transform: uppercase;
-  font-family: Roboto, arial, sans-serif; }
+  font-family: "Roboto", arial, sans-serif; }
 
 .nav.light li a, .footernav.light li a {
   color: #e8e8e8;
@@ -49,6 +49,26 @@ h1, h2, h3, h4, p, a, li {
   float: left;
   margin: 3px 5px 0 0; }
 
+@font-face {
+  font-family: "Roboto";
+  src: url(/typography/Roboto-Thin.woff2) format("woff2"), url(/typography/Roboto-Thin.woff) format("woff"), url(/typography/Roboto-Thin.ttf) format("truetype");
+  font-weight: 200; }
+@font-face {
+  font-family: "Roboto";
+  src: url(/typography/Roboto-Light.woff2) format("woff2"), url(/typography/Roboto-Light.woff) format("woff"), url(/typography/Roboto-Light.ttf) format("truetype");
+  font-weight: 300; }
+@font-face {
+  font-family: "Roboto";
+  src: url(/typography/Roboto-Regular.woff2) format("woff2"), url(/typography/Roboto-Regular.woff) format("woff"), url(/typography/Roboto-Regular.ttf) format("truetype");
+  font-weight: 400; }
+@font-face {
+  font-family: "Roboto";
+  src: url(/typography/Roboto-Medium.woff2) format("woff2"), url(/typography/Roboto-Medium.woff) format("woff"), url(/typography/Roboto-Medium.ttf) format("truetype");
+  font-weight: 500; }
+@font-face {
+  font-family: "Roboto";
+  src: url(/typography/Roboto-Bold.woff2) format("woff2"), url(/typography/Roboto-Bold.woff) format("woff"), url(/typography/Roboto-Bold.ttf) format("truetype");
+  font-weight: 700; }
 @font-face {
   font-family: museosans;
   src: url(/typography/museosans_500-webfont.eot);
@@ -88,9 +108,9 @@ hr {
   height: 1px; }
 
 h1 {
-  font-size: 2.7em;
-  font-family: museosans, HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-  letter-spacing: -1.2px; }
+  font-size: 3.56rem;
+  font-family: "Roboto", sans-serif;
+  margin: 1.78rem 0 1.424rem 0; }
 
 h2 {
   font-size: 1.2em;
@@ -98,7 +118,7 @@ h2 {
 
 h3 {
   font-size: 1.2em;
-  font-family: museo, HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: italic;
   margin: 10px 0 20px; }
 
@@ -125,8 +145,60 @@ li {
   line-height: 30px; }
 
 .logo {
-  width: 25%;
-  float: left; }
+  float: left;
+  width: 41.66667%; }
+
+.header .logo img {
+  max-width: 100%; }
+
+.nav-home-new {
+  width: 58.33333%;
+  margin: 0; }
+
+.phone p {
+  margin-right: 2%;
+  margin-top: -13px;
+  margin-bottom: 23px;
+  font-size: 0.8em;
+  font-weight: 300;
+  line-height: 1.5em;
+  letter-spacing: 0.1em; }
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  margin: 0; }
+
+.nav-footer-home {
+  margin: 0 auto;
+  float: none; }
+
+.nav-footer-home a {
+  color: white; }
+
+.nav-footer-home a:hover {
+  color: #7986cb; }
+
+.nav-footer-social-icons {
+  width: 50%;
+  margin-left: 0;
+  margin: 10px 0 20px 0;
+  float: left;
+  text-align: left; }
+
+.nav-footer-social-icons a {
+  margin: 0 5px 0 0; }
+
+.nav-footer-link {
+  width: 50%;
+  margin-left: 0;
+  margin: 10px 0 20px 0;
+  float: left;
+  text-align: right; }
+
+.nav-footer-link a {
+  margin: 0 0 0 1.5em;
+  padding: 0.5em 0; }
 
 .border-left {
   border-top-left-radius: 4px !important; }
@@ -331,7 +403,7 @@ pre {
 .footer {
   width: 100%;
   background-color: black;
-  padding: 1% 0 2.4% 0;
+  padding: 0.5% 0 0 0;
   overflow: hidden;
   margin: 60px 0 0; }
   .footer .button {
@@ -365,7 +437,6 @@ pre {
   height: 100%; }
 
 .header {
-  width: 100%;
   padding: 1em 1em 1em 0; }
 
 .title-header {

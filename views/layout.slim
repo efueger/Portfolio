@@ -64,18 +64,36 @@ html
 
 
 	body
-
     #wrapper
       .header
-          .logo
-            a href="http://softwarecriollo.com/"
-              img src="/images/logo.svg"
-          .nav
-            a href="http://softwarecriollo.com/ourprocess" Our Process
-            a.active href="/" Portfolio
+        .logo
+          a href="http://softwarecriollo.com/"
+            img src="/images/logo.svg"
+        .nav.nav-home-new
+          .phone
+            p CALL US AT (844) 4-CRIOLLO
+
+          a href="http://softwarecriollo.com/#whyus" Why Us
+          a href="http://softwarecriollo.com/ourprocess" Our Process
+          a.active href="/" Portfolio
+          a href="http://softwarecriollo.com/values" Our Values
     .clear
 
     == yield
 
+    footer.footer
+      .nav.nav-footer-home
+        .nav-footer-social-icons
+          a href="https://github.com/bakedweb" target="_blank"
+            img src="/images/github-small.svg"
+          a href="http://dribbble.com/bellatrixmartnz" target="_blank"
+            img src="/images/dribbble-small.svg"
+          a href="http://twitter.com/softcriollo" target="_blank"
+            img src="/images/twitter-small.svg"
+          a href="http://www.facebook.com/pages/SoftwareCriollo/628828890535036" target="_blank"
+            img src="/images/facebook-small.svg"
+        .nav-footer-link
+          a href="http://softwarecriollo.com/privacy" Privacy Policy
+          a href="http://softwarecriollo.com/contact" Contact
+
     script type="text/javascript" src="/js/slick.min.js"
- 
