@@ -80,7 +80,7 @@
 		font-size: 1.375em;
 	}
 
-	h3{
+	h6 {
 		font-size: 0.8em;
 	}
 
@@ -119,6 +119,10 @@
 }
 
 @media (min-width:480px) and (max-width: 640px){
+	h6 {
+		font-size: 0.8em;
+	}
+
 	.nav-footer-social-icons {
 		width: 41.66667%;
 	}
@@ -197,6 +201,10 @@
 
 @media (min-width:641px) and (max-width: 767px){
 /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+	h6 {
+		font-size: 0.8em;
+	}
+	
 	#wrapper{
 		width: 96%;
 	}
