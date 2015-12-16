@@ -27,6 +27,11 @@ class App < Sinatra::Base
   end
 
 
+  error Sinatra::NotFound do 
+    slim :"projects/greenlight"
+  end
+
+
   get('/') do 
     slim :index
   end
