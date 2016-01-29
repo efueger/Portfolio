@@ -1,0 +1,183 @@
+.title-header
+  #wrapper
+    .title
+      h1 Social Media Bridge
+      hr.half.center
+    .story
+      .process.full
+        .description
+          p In this project our team created an app that follows certain hashtags in Twitter and Facebook and triggers events such as movements, videos or audio. 
+          p Our client used this for their store window so everytime their hashtag came along the brand's audio and video came up along with doors and boxes opening up in their doll house. 
+      hr.small.center
+      .main-tags
+        .tag
+          img src="/images/time.svg"
+          p 1.5 months
+
+    .clear
+
+.centro
+  .piece index="0" style="width: 700px;"
+    .media
+      img src="/images/projects/socialmediabridge/107039274.jpg"
+      .fondo
+  .piece index="1" style="width: 700px;"
+    .media
+      img src="/images/projects/socialmediabridge/106920580.jpg"
+      .fondo
+  .piece index="2" style="width: 700px;"
+    .media
+      img src="/images/projects/socialmediabridge/107039275.jpg"
+  .piece index="3" style="width: 700px;"
+    .media
+      img src="/images/projects/socialmediabridge/107039277.jpg"
+      .fondo
+  .piece index="4" style="width: 700px;"
+    .media
+      img src="/images/projects/socialmediabridge/107541677.jpg"
+      .fondo
+
+.clear
+
+#wrapper
+    .center-video
+      .video
+        <iframe src="https://player.vimeo.com/video/146429902" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+      .video
+        <iframe src="https://player.vimeo.com/video/146432824" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+      .video
+        <iframe src="https://player.vimeo.com/video/146434995" class="video_media" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+      .clear
+
+    .clear
+    .process.design.left
+      h1 Design of ui and ux
+      p For Social Media Bridge we designed an admin panel where users will be able to follow the hashtags they want and set up their media in the timeline. 
+    .clear
+
+    hr.small.center
+    .clear
+    .process.development.left
+      h1 Development
+      p This is a Ruby on Rails project. One of the most interesting parts of the app is the in depth integration with the Facebook API.
+      p The development team was conformed by 2 engineers working full time.
+
+    .clear
+
+    div id="tabs" 
+      ul
+        li.border-left
+          a href="#tabs-1" Code Example - Facebook
+        li.border-right
+          a href="#tabs-2" Code Example - TagsController
+
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class Facebook
+
+                    def initialize(user_token)
+                      @graph = Koala::Facebook::API.new(user_token)
+                    end
+
+                    def all_friends
+                      @graph.get_connections("me", "taggable_friends?fields=name, picture.width(215).height(215)")  
+                    end
+
+                    def info_user
+                      @graph.get_object("me")
+                    end
+
+                    def picture_user
+                      @graph.get_object('me', fields: "picture.width(215).height(215)")
+                    end
+
+                  end
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class TagsController < ApplicationController
+                    before_action :authenticate_user!
+                    before_action :check_current_user
+                    before_action :validation_user_friend
+                    before_action :initialize_model, only: [:add_friend_tag, :tags_friend_vote]
+
+                    def params_tag
+                      params.permit(:friend_id, :new_friend_tag, :tags_friend_id, :state)
+                    end
+
+                    def add_friend_tag
+                      friend_id = params_tag[:friend_id].to_i
+                      @tags_friends.add_friend_tag(friend_id, params_tag[:new_friend_tag])
+                      @tags = TagsFriend.where(friend_tagged_id: friend_id)
+                      render :json => {:tag => @tags }
+                    end
+
+                    def tags_friend_vote
+                      @tags_friends.tags_friend_vote(params_tag[:state], params_tag[:tags_friend_id], params_tag[:friend_id])
+                      @votes = TagsVote.vote_by_tag_friend(params_tag[:tags_friend_id], params_tag[:friend_id])
+                      render :json => {:vote => @votes }
+                    end
+
+                    def friend_latest_tags
+                      @vote = TagsVote.vote_by_tag_friend(params_tag[:tags_friend_id], params_tag[:friend_id])
+                      render :json => {:vote => @vote }
+                    end
+
+                    def count_profesional_tags
+                      count = Profession.count
+                      render :json => {:count => count}
+                    end
+
+                    private
+
+                    def initialize_model
+                      @tags_friends = ManageTagsFriends.new(current_user)
+                    end
+                  end
+    .clear
+    .process.process_h.left
+      h1 The Process
+    .clear
+
+    .center_process
+      .piece.text
+        .icon
+          img src="/images/call.svg"
+        h1 kick off call
+        p To start the project our team met in Skype with Reputation Pie's team to fully understand the concept and brainstorm to execute some ideas.
+      .piece.text
+        .icon
+          img src="/images/report.svg"
+        h1 Status updates
+        p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+      .piece.text
+        .icon
+          img src="/images/trello.svg"
+        h1 trello - project management
+        p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+      .piece.text
+        .icon
+          img src="/images/qa.svg"
+        h1 Quality Assurance
+        p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+      .piece.text 
+        .icon
+          img src="/images/deploys.svg"
+        h1 Deployments
+        p We do weekly deploys to the project and push all new features to production.
+      .piece.text
+        .icon
+          img src="/images/client.svg"
+        h1 Client approval
+        p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+      .clear
+    
