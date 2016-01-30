@@ -1,0 +1,129 @@
+#wrapper
+  .title
+    h1 Acumendata
+    hr.half.center
+  .story
+    .process.full
+      .description
+        p Acumendata needed a simple solution they could use to automate the error handling of their customer's CSV imports. Too many users where importing CSV files with errors. Their development team was super busy analyzing and fixing these for their users. 
+        p Now this app is part of their process in importing CSV files. It helps inform their users how to format their imports properly. Their development team is focused in making a better product.
+    hr.small.center
+    .main-tags
+      a href="http://acumendata.herokuapp.com" target="_blank"
+        .tag
+          img src="/images/url.svg"
+          p acumendata.herokuapp.com
+      .tag
+        img src="/images/time.svg"
+        p 6 weeks
+
+    .clear
+    
+.centro
+  .piece index="0" style="width: 700px; max-width: 700px;"
+    .media
+      img src="/images/projects/acumendata/acumendata1.jpg"
+      .fondo
+  .piece index="1" style="width: 700px; max-width: 700px;"
+    .media
+      img src="/images/projects/acumendata/acumendata2.jpg"
+      .fondo
+  .piece index="2" style="width: 700px; max-width: 700px;"
+    .media
+      img src="/images/projects/acumendata/acumendata3.jpg"
+      .fondo
+.clear
+
+#wrapper
+    .center-video
+      .video
+        <iframe src="https://player.vimeo.com/video/153558771" class="video_media"frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+      .clear
+    .clear
+    hr.small.center
+    .clear
+    .process.development.left
+      h1 Design of UI
+      p We started off with some rough mockups to define the user flows of the application. The design itself had to serve the purposes of the final user (customer) and the admin usage within the Acumendata organization. We used the brand's colors and implemented a clean and useful user interface.
+    hr.small.center
+    .clear
+    .process.design.left
+      h1 Development
+
+      p Acumendata is a simple Ruby on Rails app. The app validates uploaded csv files against a previously csv template added. To achieve this we implemented the validation functionality using a library called CSVLint. Once the validation is done the app returns a complete report of the conflicts the imported CSV presents and an efficient solution for them.
+
+    div id="tabs"
+      ul
+        li.border-left
+          a href="#tabs-1" Code example #1
+        li
+          a href="#tabs-2" Code example #2
+
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class CsvFilesController < ApplicationController
+                    def destroy
+                      @csv = CsvFile.find(params[:id])
+                      @csv.destroy
+                      redirect_to csv_files_validations_path and return
+                    end
+                  end
+
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | def unzip(url, group)
+                    zip = open(url)
+                    @files = Unzipper.new(zip).unzip
+                    @files.each do |file|
+                      @file = CsvFile.create(filename: open(file), group_id: session[:group_id])
+                    end
+                  end
+
+
+    .clear
+    hr.small.center
+    .clear
+    .process.process_h.left
+      h1 The Process
+    .clear
+
+    .center_process
+      .piece.text
+        .icon
+          img src="/images/call.svg"
+        h1 Kick Off call
+        p When starting off the project, the team met with Acumendata's team and together created a project brief. Detailing the project needs and brainstormed the best way to achieve them.
+      .piece.text
+        .icon
+          img src="/images/report.svg"
+        h1 Status updates
+        p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+      .piece.text
+        .icon
+          img src="/images/trello.svg"
+        h1 trello - project management
+        p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+      .piece.text
+        .icon
+          img src="/images/qa.svg"
+        h1 Quality Assurance
+        p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+      .piece.text
+        .icon
+          img src="/images/deploys.svg"
+        h1 Deployments
+        p We do weekly deploys to the project and push all new features to production.
+      .piece.text
+        .icon
+          img src="/images/client.svg"
+        h1 Client approval
+        p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+      .clear

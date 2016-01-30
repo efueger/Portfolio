@@ -88,5 +88,8 @@ class App < Sinatra::Base
     slim :"projects/socialmediabridge"
   end
 
+  get('/projects/acumendata') do 
+    slim :"projects/acumendata"
+  end
 
 end

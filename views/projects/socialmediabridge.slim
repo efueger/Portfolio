@@ -63,6 +63,9 @@
     .process.development.left
       h1 Development
       p This application was developed using Ruby on Rails. It connects to social media sites like Twitter and Facebook to follow hashtags from configured accounts. This allows the application read these hashtags and trigger events according to the content. The events that the app can trigger are videos, audios and it also has an USB connection to trigger relays that can move things in its surroundings with some installed electronic systems.
+
+      p The development team was conformed by 2 engineers working full time.
+
     .clear
 
     div id="tabs" 
@@ -85,7 +88,7 @@
                     scope :audios, -> { where(type: 'Audio') }
                     scope :images, -> { where(type: 'Image') }
                     scope :videos, -> { where(type: 'Video') }
-                  end
+
 
       div id="tabs-2"
         .code
@@ -116,8 +119,6 @@
                         }
                       end
                   end
-
-
     .clear
     .process.process_h.left
       h1 The Process
