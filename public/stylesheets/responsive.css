@@ -21,7 +21,6 @@
 	}
 
 	.nav {
-		/*width: 100%;*/
 		margin: 0 auto;
     width: 93%;
 		text-align: right;
@@ -47,7 +46,7 @@
 
 	.nav-home-new {
 		width: 100%;
-		font-size: 0.80em;
+		font-size: 0.8em;
 		text-align: center;
 	}
 
@@ -118,6 +117,15 @@
 	}
 }
 
+@media (min-width: 480px) and (max-width: 560px){
+	.nav-home-new {
+		width: 100%;
+		font-size: 0.56em !important;
+		margin: 0 auto;
+		text-align: center;
+	}
+}
+
 @media (min-width:480px) and (max-width: 640px){
 	h6 {
 		font-size: 0.8em;
@@ -153,7 +161,6 @@
 	}
 
 	.nav {
-		/*width: 100%;*/
 		margin: 0 auto;
     width: 90%;
 		text-align: center;
@@ -181,7 +188,9 @@
 
 	.nav-home-new {
 		width: 100%;
-		font-size: 0.80em;
+		font-size: 0.73em;
+		margin: 0 auto;
+		text-align: center;
 	}
 
 	.phone {
@@ -244,7 +253,15 @@
 	}
 
 	.nav-home-new {
-		font-size: 0.80em;
+		width: 100%;
+		font-size: 0.85em;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.logo {
+		width: 100%;
+		text-align: center;
 	}
 
 	.piece.slick-slide {
@@ -255,6 +272,26 @@
 	.center_process {
 		padding-left: 0%;
 		width: 100%
+	}
+}
+
+@media (min-width:768px) and (max-width: 839px) {
+	.nav-home-new {
+		width: 100%;
+		font-size: 0.85em;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.logo {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+@media (min-width:840px) and (max-width: 920px) {
+	.nav-home-new {
+		font-size: 0.85em;
 	}
 }
 
@@ -317,11 +354,6 @@
 
 @media (min-width:1024px) and (max-width: 1280px) {
 /* big landscape tablets, laptops, and desktops */
-	.nav-footer-home {
-		/*margin: 0 auto 0 auto;*/
-		/*float: none;*/
-	}
-
 	#wrapper{
 		width: 95%;
 	}

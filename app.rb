@@ -18,19 +18,15 @@ class App < Sinatra::Base
     def erb_partial(page, options={})
       erb page, options.merge!(:layout => false)
     end
-
-
     
     def partial(page, options={})
       slim page, options.merge!(:layout => false)
     end
   end
 
-
   error Sinatra::NotFound do 
     slim :"projects/greenlight"
   end
-
 
   get('/') do 
     slim :index
