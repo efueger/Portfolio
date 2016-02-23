@@ -88,4 +88,7 @@ class App < Sinatra::Base
     slim :"projects/acumendata"
   end
 
+  get('/projects/myezbuild') do 
+    slim :"projects/myezbuild"
+  end
 end
