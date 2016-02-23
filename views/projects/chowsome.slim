@@ -1,0 +1,188 @@
+.title-header
+  #wrapper
+    .title
+      h1 Chowsome
+      hr.half.center
+    .story
+      .process.full
+        .description
+          p Chowsome helps you pick the best dishes when dining out based on other users ratings on dishes from restaurant's menu. This app allows you to discover the best dishes near to you.
+
+      hr.small.center
+      .main-tags
+        .tag
+          img src="/images/time.svg"
+          p 4 months
+    .clear
+.centro
+  .piece index="0" style="width: 700px;"
+    .media
+      img src="/images/projects/chowsome/chowsome-1.jpg" style="height: 100%;"
+      .fondo
+  .piece index="1" style="width: 700px;"
+    .media
+      img src="/images/projects/chowsome/chowsome-2.jpg" style="height: 100%;"
+      .fondo
+  .piece index="2" style="width: 700px;"
+    .media
+      img src="/images/projects/chowsome/chowsome-3.jpg" style="height: 100%;"
+      .fondo
+  .piece index="2" style="width: 700px;"
+    .media
+      img src="/images/projects/chowsome/chowsome-4.jpg" style="height: 100%;"
+      .fondo
+
+
+.clear
+
+#wrapper
+    hr.small.center
+    .clear
+    .process.design.left
+    .process.development.left
+      h1 Development
+      p This is an iOS app developed using Rubymotion. We used JASidePanels to create the main navigation. For the login we integrated with Facebook API to allow users to log in with their Facebook account. We integrated with a service called Single Platform to gather all restaurant and food menu data.
+    .clear
+
+    div id="tabs"
+      ul
+        li.border-left
+          a href="#tabs-1" Code Example
+        li.border-right
+          a href="#tabs-2" Code Example
+
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class DishRatedViewController < UIViewController
+                    include Navigator
+                    include Conection
+                    include FlurryEvents
+                    stylesheet :main
+
+                    layout do
+                      $back_item = 'rateddishes'
+                      fe_log_go_to("Rated Dishes")
+                      NSNotificationCenter.defaultCenter.addObserver(self, selector:'goDishInfo', name:"goDishInfo", object:nil)    
+                      @user = User.instance(nil)
+                      @dish_list = []
+                      subview(UIView, :top_margin) do
+                        @tableView = subview(UIView, :restaurants_table_container)
+                      end  
+                      self.view.stylename = :full_screen_main
+                      menu_recently_rated
+                      Flurry.logPageView
+                    end
+                    
+                    def viewDidAppear(animated)
+                      rated_dishes_views
+                    end
+                    
+                    def goDishInfo
+                      change_center("dish_info_main")
+                    end  
+
+                    def clean_container
+                      @tableView.subviews.each{|sv| sv.removeFromSuperview }
+                    end  
+
+                    def rated_dishes_views
+                      clean_container
+                      list = DishRatedTableViewController.alloc.initWithNibName("DishRatedTableViewController", bundle:nil)
+                      @tableView.addSubview(list.view)       
+                    end 
+
+                  end
+
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class MenuFullViewController < UIViewController
+                    include Navigator
+                    include Conection
+                    include FlurryEvents
+                    stylesheet :main
+
+                    layout do
+                      NSNotificationCenter.defaultCenter.addObserver(self, selector:'goDishRate', name:"goDishRate", object:nil)    
+                      @user = User.instance(nil)
+                      @dish_list = []
+                      subview(UIView, :top_margin) do
+                        @tableView = subview(UIView, :restaurants_table_container)
+                      end  
+                      self.view.stylename = :full_screen_main
+                      menu_full_view
+                      rates_queue_views
+                      Flurry.logPageView
+                    end
+                    
+                    def goDishRate
+                      change_center("dish_info_main")
+                    end  
+
+                    def clean_container
+                      @tableView.subviews.each{|sv| sv.removeFromSuperview }
+                    end  
+
+                    def rates_queue_views
+                      clean_container
+                      list = DishListFullViewController.alloc.initWithNibName("DishListFullViewController", bundle:nil)
+                      @tableView.addSubview(list.view)       
+                    end
+                    
+                    def change_center(id_segue)
+                      storyboard = UIStoryboard.storyboardWithName "iphone_storyboard", bundle: nil    
+                      vc = storyboard.instantiateViewControllerWithIdentifier(id_segue)
+                      self.revealSideViewController.popViewControllerWithNewCenterController(vc,animated:false)
+                    end  
+
+                  end
+
+
+    .clear
+    .clear
+
+    hr.small.center
+    .clear
+    .process.process_h.left
+      h1 The Process
+    .clear
+
+    .center_process
+      .piece.text
+        .icon
+          img src="/images/report.svg"
+        h1 Status updates
+        p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+      .piece.text
+        .icon
+          img src="/images/call.svg"
+        h1 Weekly calls
+        p On Tuesdays our team meets in Skype to demo new features and brainstorm on new needs.
+      .piece.text
+        .icon
+          img src="/images/trello.svg"
+        h1 trello - project management
+        p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+      .clear
+      .piece.text
+        .icon
+          img src="/images/qa.svg"
+        h1 Quality Assurance
+        p A Sr Developer will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+      .piece.text
+        .icon
+          img src="/images/deploys.svg"
+        h1 Deployments
+        p We do weekly deploys to the project and push all new features to production.
+      .piece
+        .icon
+          img src="/images/client.svg"
+        h1 Client approval
+        p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+      .clear

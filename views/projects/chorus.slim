@@ -1,0 +1,225 @@
+.title-header
+  #wrapper
+    .title
+      h1 Chorus
+      hr.half.center
+    .story
+      .process.full
+        .description
+          p The department of neuroscience of UCLA contacted us with the idea of developing this application. Chorus is a web app that empowers people and communities to simply create their own text messaging and interactive voice applications.
+          
+
+      hr.small.center
+      .main-tags
+        a href="https://chorus.semel.ucla.edu/" target="_blank"
+          .tag
+            img src="/images/url.svg"
+            p chorus.semel.ucla.edu
+        .tag
+          img src="/images/time.svg"
+          p 8 months
+
+    .clear
+    
+.centro
+  .piece index="0" style="width: 700px;"
+    .media
+      img src="/images/projects/chorus/chorus-1.jpg"
+      .fondo
+  .piece index="1" style="width: 700px;"
+    .media
+      img src="/images/projects/chorus/chorus-2.jpg"
+      .fondo
+
+.clear
+
+#wrapper
+
+  hr.small.center
+  .clear
+    .process.development.left
+      h1 Development
+      p Chorus is a Ruby on Rails app that works to facilitate the creation and configuration of applications for the automatic response  on mobile messaging services, this app is integrated with Twilio and Trope as SMS services. The application provides a variety of tools to configure applications providing replies to the messages received.
+    .clear
+    div id="tabs"
+      ul
+        li.border-left
+          a href="#tabs-1" Code Example
+        li.border-left
+          a href="#tabs-2" Code Example 2
+      div id="tabs-1"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | module ClientFinder
+              		def find_client(network, id, appid)
+              			send(network.downcase+"_find", id, appid)
+              		end
+
+              		def text_find(id, appid)
+              			app_client_id(:phonenumber, id, appid)
+              		end
+
+              		def sms_find(id, appid)
+              			app_client_id(:phonenumber, id, appid)
+              		end
+
+              		def voice_find(id, appid)
+              			voice_id(id, appid)
+              		end
+
+              		def voip_find(id, appid)
+              			voice_id(id, appid)
+              		end
+
+              		def sip_find(id, appid)
+              			voice_id(id, appid)
+              		end
+
+              		def voice_id(id, appid)
+              			app_client_id(:voicenumber, id, appid)
+              		end
+
+              		def skype_find(id, appid)
+              		  app_client_id(:instantMessage, id, appid)
+              		end
+
+              		def app_client_id(column, id, appid)
+              		  fixed_id = check_phonec(id)
+              		  client = AppClient.where(["app_id = ? AND (voicenumber = ? OR instantMessage = ? OR phonenumber = ?)", appid, fixed_id, fixed_id , fixed_id]).last
+              		  if client.nil?
+              		    new_client(column, fixed_id, appid)
+              		  else
+              		    client.update_attribute(column, fixed_id)
+              		    client.id
+              		  end
+              		end
+
+              		def new_client(column, id, appid)
+              		  AppClient.create(:app_id => appid, column => id).id
+              		end
+
+              		private
+
+              		def clean_numberc(numberc)
+              		  numberc.gsub(/[^0-9]/i, '')
+              		end
+
+              		def check_phonec(phonenumber)
+              		  phonenumber = clean_numberc(phonenumber)
+              		  return phonenumber if phonenumber[0..1] == '58'
+              		  if phonenumber[0] != '1'
+              		    return “1”+phonenumber
+              		  else
+              		    return phonenumber
+              		  end
+              		end
+                end  
+
+      div id="tabs-2"
+        .code
+          blockquote
+            pre
+              code data-language="ruby"
+                | class CheckCaller
+                    attr_reader :id, :network
+                      def initialize(session, app)
+                        @app = app
+                        @id = session[:from][:id]
+                        @network = session[:from][:network].downcase
+                      end
+
+                      def is_valid?
+                        app_membership_type_name == 'open' ? true : app_have_caller_id?
+                      end
+
+                      private
+
+                      def app_have_caller_id?
+                        @app.app_clients.where(send(@network+"_caller") => @id).size > 0
+                      end
+
+                      def sms_caller
+                        :phonenumber
+                      end
+
+                      def sip_caller
+                        voice_c
+                      end
+
+                      def voice_caller
+                        voice_c
+                      end
+
+                      def ivr_caller
+                        voice_c
+                      end
+
+                      def voip_caller
+                        voice_c
+                      end 
+
+                      def voice_c
+                        :voicenumber
+                      end
+
+                      def skype_caller
+                        :instantMessage
+                      end
+
+                      def app_membership_type_name
+                        !@app.app_membership_type_id.nil? ? AppMembershipType.find(@app.app_membership_type_id).name.downcase : 'close'
+                      end
+
+                    end  
+
+
+    .clear
+
+    .climate-left
+      p Don't take our word for it. We run Chorus through Code Climate, and this third party app rates our code and gives us recommendations in how to improve it.
+      .clear
+
+    .climate-right
+      .codeclimate
+        img src="/images/projects/chorus/codeclimate.jpg" style="max-width: 261px; max-height: 332px;"
+      .clear
+    hr.small.center
+    .clear
+    .process.process_h.left
+      h1 The Process
+    .clear
+
+    .center_process
+      .piece.text
+        .icon
+          img src="/images/call.svg"
+        h1 kick off call
+        p To start the project our team met in Skype with Kellogg University admissions office team to fully understand the concept and brainstorm to execute some ideas.
+      .piece.text
+        .icon
+          img src="/images/report.svg"
+        h1 Status updates
+        p Every Monday we send a report on what the team was able to accomplish the prior week and what the plan is for the upcoming week.
+      .piece.text
+        .icon
+          img src="/images/trello.svg"
+        h1 trello - project management
+        p We detail in cards all stories that need to happen in the project. When completed, each card shows an Acceptance Criteria, Pull Request to Github, and Test coverage.
+      .piece.text
+        .icon
+          img src="/images/qa.svg"
+        h1 Quality Assurance
+        p A Functional Tester will conduct Code Reviews and accept or reject the story. When approved a member of the Q/A team tests the story in the production environment.
+      .piece.text
+        .icon
+          img src="/images/deploys.svg"
+        h1 Deployments
+        p We do weekly deploys to the project and push all new features to production.
+      .piece.text
+        .icon
+          img src="/images/client.svg"
+        h1 Client approval
+        p We will still need your feedback in this process to tell us whether it meets the needs or needs further tweaking. Ultimatelly the story must be accepted by you.
+      .clear

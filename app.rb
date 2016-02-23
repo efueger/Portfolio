@@ -91,4 +91,24 @@ class App < Sinatra::Base
   get('/projects/myezbuild') do 
     slim :"projects/myezbuild"
   end
+
+  get('/projects/chorus') do 
+    slim :"projects/chorus"
+  end
+
+  get('/projects/chowsome') do 
+    slim :"projects/chowsome"
+  end
+
+  get('/projects/engagement') do 
+    slim :"projects/engagement"
+  end
+
+  get('/projects/venezuelapeace') do 
+    slim :"projects/venezuelapeace"
+  end
+
+  get('/projects/fallacies') do 
+    slim :"projects/fallacies"
+  end
 end
