@@ -10,7 +10,7 @@
 [![Build Status](https://img.shields.io/badge/SASS-run-green.svg)](http://sass-lang.com/)
 
 
-###HEROKU:
+###Heroku:
 -------
 - heroku create --stack cedar
 
