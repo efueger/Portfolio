@@ -1,19 +1,21 @@
 #Portfolio
 
-*This is a base project we use to start the party with Sinatra*
+**This is a base project we use to start the party with Sinatra**
 
-Gems:
+###Gems:
 -----
+[![Build Status](https://img.shields.io/badge/sinatra-run-green.svg)](http://www.sinatrarb.com/)
 
-Sinatra
-RSpec
-HAML
-SASS
+[![Build Status](https://img.shields.io/badge/RSpec-run-green.svg)](http://rspec.info/)
+
+[![Build Status](https://img.shields.io/badge/HAML-run-green.svg)](http://haml.info/)
+
+[![Build Status](https://img.shields.io/badge/SASS-run-green.svg)](http://sass-lang.com/)
 
 
-HEROKU
+###HEROKU:
 -------
- heroku create --stack cedar
+- heroku create --stack cedar
 
- heroku addons:add mongohq:free
+- heroku addons:add mongohq:free
 
