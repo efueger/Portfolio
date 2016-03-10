@@ -4,7 +4,7 @@
 
 ###Gems:
 -----
-[![Build Status](https://img.shields.io/badge/sinatra-run-green.svg)](http://www.sinatrarb.com/)
+[![Build Status](https://img.shields.io/badge/Sinatra-run-green.svg)](http://www.sinatrarb.com/)
 [![Build Status](https://img.shields.io/badge/RSpec-run-green.svg)](http://rspec.info/)
 [![Build Status](https://img.shields.io/badge/HAML-run-green.svg)](http://haml.info/)
 [![Build Status](https://img.shields.io/badge/SASS-run-green.svg)](http://sass-lang.com/)
