@@ -1,5 +1,7 @@
 #Portfolio
 
+[![Code Climate](https://codeclimate.com/repos/56e1a68215533d00900064c4/badges/192babcbd535008c6621/gpa.svg)](https://codeclimate.com/repos/56e1a68215533d00900064c4/feed)
+
 **This is a base project we use to start the party with Sinatra**
 
 -----
