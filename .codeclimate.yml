@@ -1,6 +1,9 @@
-languages:
-  Ruby: true
-  JavaScript: true
+# languages:
+#   Ruby: true
+#   JavaScript: true
+engines:
+  scss-lint:
+    enabled: true
 exclude_paths:
 - spec/**/*
 - public/**/*
